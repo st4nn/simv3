@@ -7,7 +7,7 @@
   <meta name="description" content="bootstrap admin template">
   <meta name="author" content="">
 
-  <title>Acceder | S.I.M.</title>
+  <title>Registrar | SIM</title>
 
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="assets/vendor/flag-icon-css/flag-icon.css">
 
   <!-- Page -->
-  <link rel="stylesheet" href="assets/examples/css/pages/login.css">
+  <link rel="stylesheet" href="assets/examples/css/pages/register.css">
 
   <!-- Fonts -->
   <link rel="stylesheet" href="assets/fonts/web-icons/web-icons.min.css">
@@ -49,7 +49,7 @@
     Breakpoints();
   </script>
 </head>
-<body class="page-login layout-full page-dark">
+<body class="page-register layout-full page-dark">
   <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -57,38 +57,40 @@
 
   <!-- Page -->
   <div class="page animsition vertical-align text-center" data-animsition-in="fade-in"
-  data-animsition-out="fade-out">>
+  data-animsition-out="fade-out">
     <div class="page-content vertical-align-middle">
       <div class="brand">
         <img class="brand-img" src="assets/images/logo100.png" alt="...">
-        <h2 class="brand-text">Sistema de Información Mercadeo</h2>
+        <h2 class="brand-text">Sistema de Información de Mercadeo</h2>
       </div>
-      <p>Formulario de Acceso para Usuarios SIM</p>
-      <form method="post" action="login.html">
+      <p>Registrese para acceder a la Plataforma</p>
+      <form method="post" role="form">
         <div class="form-group">
-          <label class="sr-only" for="inputName">Nombre de Usuario</label>
-          <input type="text" class="form-control" id="inputName" name="name" placeholder="Nombre">
+          <label class="sr-only" for="inputName">Nombre</label>
+          <input type="text" class="form-control" id="inputName" name="name" placeholder="Name">
         </div>
         <div class="form-group">
-          <label class="sr-only" for="inputPassword">Contraseña</label>
+          <label class="sr-only" for="inputEmail">Email</label>
+          <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="inputPassword">Password</label>
           <input type="password" class="form-control" id="inputPassword" name="password"
-          placeholder="Contraseña">
+          placeholder="Password">
         </div>
-        <div class="form-group clearfix">
-          <div class="checkbox-custom checkbox-inline checkbox-primary pull-left">
-            <input type="checkbox" id="inputCheckbox" name="remember">
-            <label for="inputCheckbox">Recordarme</label>
-          </div>
-          <a class="pull-right" href="recuperar-password.html">Olvidó la contraseña?</a>
+        <div class="form-group">
+          <label class="sr-only" for="inputPasswordCheck">Retype Password</label>
+          <input type="password" class="form-control" id="inputPasswordCheck" name="passwordCheck"
+          placeholder="Confirm Password">
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Acceder</button>
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
       </form>
-      <p>Aún no tiene Cuenta? Solicite una <a href="registrar.html">Registrar</a></p>
+      <p>Have account already? Please go to <a href="login.html">Sign In</a></p>
 
       <footer class="page-copyright page-copyright-inverse">
-        <p>Sistema de Mercadeo</p>
-        <p>© 2016. Todos los derechos reservados.</p>
-        <!-- <div class="social">
+        <p>WEBSITE BY amazingSurge</p>
+        <p>© 2015. All RIGHT RESERVED.</p>
+        <div class="social">
           <a href="javascript:void(0)">
             <i class="icon bd-twitter" aria-hidden="true"></i>
           </a>
@@ -98,7 +100,7 @@
           <a href="javascript:void(0)">
             <i class="icon bd-dribbble" aria-hidden="true"></i>
           </a>
-        </div> -->
+        </div>
       </footer>
     </div>
   </div>
@@ -142,6 +144,7 @@
 
   <!-- Scripts For This Page -->
   <script src="assets/js/components/jquery-placeholder.js"></script>
+  <script src="assets/js/components/animate-list.js"></script>
 
   <script>
     (function(document, window, $) {
