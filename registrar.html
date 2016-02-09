@@ -64,67 +64,88 @@
         <h2 class="brand-text">Sistema de Información de Mercadeo</h2>
       </div>
       <div class="panel">
-              <div class="panel-heading">
+        <div class="panel-heading">
           <h3 class="panel-title"><p>Registrese para acceder a la Plataforma</p></h3>
         </div>
         <div class="panel-body container-fluid">
-      <form method="post" role="form">
-				<div class="row row-sm">
-				<div class="example-wrap">
-					<div class="col-md-12 form-group">
-						<h4 class="example-title">Nombres y Apellidos</h4>
-						<input type="text" class="form-control" placeholder="Nombre">
-					</div>
-					<div class="col-md-12 form-group">
-						<h4 class="example-title">Empresa</h4>
-						<input type="text" class="form-control" placeholder="Empresa">
-					</div>
-					<div class="col-md-6 form-group">
-						<h4 class="example-title">Sede</h4>
-						<input type="text" class="form-control" placeholder="Sede">
-					</div>
-					<div class="col-md-6 form-group">
-						<h4 class="example-title">Área</h4>
-						<input type="text" class="form-control" placeholder="Área">
-					</div>
-					<div class="col-md-6 form-group">
-						<h4 class="example-title">Username</h4>
-						<input type="text" class="form-control" placeholder="Nombre">
-					</div>
-					<div class="col-md-6 form-group">
-						<h4 class="example-title">Perfil</h4>
-						<select name="" id="" class="form-control input-l">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select>
-					</div>
-					<div class="col-md-6 form-group">
-						<h4 class="example-title">Contraseña</h4>
-						<input type="password" class="form-control" placeholder="Contraseña">
-					</div>
-					<div class="col-md-6 form-group">
-						<h5 class="example-title">Confirmar</h5>
-						<input type="password" class="form-control" placeholder="Confirmar Contraseña">
-					</div>
-					<div class="col-md-6 form-group">
-						<h5 class="example-title">Correo</h5>
-						<input type="email" class="form-control" placeholder="e-mail">
-					</div>
-					<div class="col-md-6 form-group">
-						<h5 class="example-title">Lista de Correo</h5>
-						<select name="" id="" class="form-control input-l">
-								<option value="SI">SI</option>
-								<option value="NO">NO</option>
-						</select>
-					</div>
-					</div>
-				</div>
-        <button type="submit" class="btn btn-primary btn-block">Registrar</button>
-      </form>
-      </div>
+          <form method="post" role="form">
+    				<div class="row row-sm">
+    				<div class="example-wrap">
+    					<div class="col-md-12 form-group">
+    						<h4 class="example-title">Nombres y Apellidos</h4>
+    						<input type="text" class="form-control" placeholder="Nombre">
+    					</div>
+    					<div class="col-md-12 form-group">
+    						<h4 class="example-title">Empresa</h4>
+    						<select class="form-control" placeholder="Empresa" id="txtRegistrar_Empresa">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+    					</div>
+    					<div class="col-md-6 form-group">
+    						<h4 class="example-title">Sede</h4>
+    						<select class="form-control" placeholder="Sede">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+    					</div>
+    					<div class="col-md-6 form-group">
+    						<h4 class="example-title">Área</h4>
+    						<select class="form-control" placeholder="Área">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+    					</div>
+    					<div class="col-md-12 form-group">
+    						<h5 class="example-title">Correo</h5>
+                <div class="input-group">
+      						<input type="text" class="form-control" placeholder="e-mail">
+                  <span class="input-group-addon">@wspgroup.com</span>
+                </div>
+    					</div>
+              <div class="col-md-12 form-group">
+                <h4 class="example-title">Usuario</h4>
+                <input type="text" class="form-control" placeholder="Usuario">
+              </div>
+              <div class="col-md-6 form-group">
+                <h4 class="example-title">Contraseña</h4>
+                <input type="password" class="form-control" placeholder="Contraseña">
+              </div>
+              <div class="col-md-6 form-group">
+                <h5 class="example-title">Confirmar</h5>
+                <input type="password" class="form-control" placeholder="Confirmar Contraseña">
+              </div>
+              <div class="col-md-6 form-group">
+                <h4 class="example-title">Perfil</h4>
+                <select name="" id="" class="form-control input-l">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="col-md-6 form-group">
+                <h5 class="example-title">Lista de Correo</h5>
+                <select name="" id="" class="form-control input-l">
+                    <option value="NO">NO</option>
+                    <option value="SI">SI</option>
+                </select>
+              </div>
+            </div>
+    			</div>
+            <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+          </form>
+        </div>
       </div>
       <footer class="page-copyright page-copyright-inverse">
 				<p>Sistema de Información de Mercadeo | SIM </p>
@@ -173,6 +194,9 @@
   <!-- Scripts For This Page -->
   <script src="assets/js/components/jquery-placeholder.js"></script>
   <script src="assets/js/components/animate-list.js"></script>
+
+  <script src="js/funciones.js"></script>
+  <script src="js/registrar.js"></script>
 
   <script>
     (function(document, window, $) {
