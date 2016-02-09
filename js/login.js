@@ -1,6 +1,4 @@
-$(document).on("ready", loginReady);
-
-function loginReady()
+function ready_login()
 {
   $("#btnEntrar").on("click", frmLogin_submit);
   $("#frmLogin").on("submit", frmLogin_submit);
@@ -45,7 +43,7 @@ function frmLogin_submit(event)
   event.preventDefault();
   var cDate = new Date();
 
-  $.post("server/php/validarUsuario.php", 
+  $.post("server/php/scripts/validarUsuario.php", 
     {
       pUsuario : $("#txtLogin_Usuario").val(),
       pClave : $("#txtLogin_Clave").val(),
