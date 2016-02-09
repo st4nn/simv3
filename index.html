@@ -83,6 +83,7 @@
           </div>
           <a class="pull-right" href="recuperar-password.html">Olvidó la contraseña?</a>
         </div>
+        <div class="alert red-600"></div>
         <button type="submit" class="btn btn-primary btn-block" id="btnEntrar">Acceder</button>
       </form>
       <p>Aún no tiene Cuenta? Solicite una <a href="registrar.html">Registrar</a></p>
@@ -145,6 +146,8 @@
   <!-- Scripts For This Page -->
   <script src="assets/js/components/jquery-placeholder.js"></script>
 
+  <script src="js/login.js"></script>
+
   <script>
     (function(document, window, $) {
       'use strict';
@@ -152,6 +155,7 @@
       var Site = window.Site;
       $(document).ready(function() {
         Site.run();
+        ready_login();
       });
     })(document, window, jQuery);
   </script>
