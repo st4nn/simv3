@@ -210,18 +210,18 @@ $.fn.cargarCombo = function(seccion, callback, restricciones)
       var idx = 0;
       var tds = "";
       var flag = 0;
-      $.each(data, function(index, perfil)
+      $.each(data, function(index, campo)
         {
           $.each(restricciones, function(idx, restriccion) 
           {
-             if (restriccion == perfil.idPerfil)
+             if (restriccion == campo.id)
              {
                 flag = 1;
              }
           });
           if (flag == 0)
           {
-            tds += '<option value="' + perfil.idPerfil + '">' + perfil.Nombre + '</option>';
+            tds += '<option value="' + campo.id + '">' + campo.Nombre + '</option>';
           }
 
           flag = 0;
