@@ -12,31 +12,24 @@
 
    $link = Conectar();
 
-   $sql = "SELECT * FROM Perfiles WHERE idPerfil >= " . $idPerfil . ";";
+   $sql = "SELECT idPerfil as id, Nombre FROM Perfiles WHERE idPerfil >= " . $idPerfil . ";";
    $result = $link->query($sql);
 
+   $idx = 0;
    if ( $result->num_rows > 0)
    {
-      class Perfil
+      $Resultado = array();
+      while ($row = mysqli_fetch_assoc($result))
       {
-         public $idPerfil;
-         public $Nombre;
-         public $Descripcion;
-      }
-      
-      $idx = 0;
-         while ($row = mysqli_fetch_assoc($result))
-         { 
-            $Perfiles[$idx] = new Perfil();
-            $Perfiles[$idx]->idPerfil = utf8_encode($row['idPerfil']);
-            $Perfiles[$idx]->Nombre = utf8_encode($row['Nombre']);
-            $Perfiles[$idx]->Descripcion = utf8_encode($row['Descripcion']);
-
-            $idx++;
+         $Resultado[$idx] = array();
+         foreach ($row as $key => $value) 
+         {
+            $Resultado[$idx][$key] = utf8_encode($value);
          }
-         
-            mysqli_free_result($result);  
-            echo json_encode($Perfiles);   
+         $idx++;
+      }
+         mysqli_free_result($result);  
+         echo json_encode($Resultado);
    } else
    {
       echo 0;

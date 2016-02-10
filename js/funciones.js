@@ -185,8 +185,11 @@ function aplicarRestricciones()
     $(val.campo).remove();
   });
 }
-$.fn.cargarPerfiles = function(restricciones, callback)
+$.fn.cargarCombo = function(seccion, callback, restricciones)
 {
+  /**
+   * seccion  {Perfiles, Empresas, Areas, Sedes};
+  **/
   var obj = $(this);
 
   if (callback === undefined)
@@ -201,7 +204,7 @@ $.fn.cargarPerfiles = function(restricciones, callback)
   }
 
   var ruta = calcularSubDirectorio();
-  ruta += "server/php/scripts/cargarPerfiles.php";
+  ruta += "server/php/scripts/cargar" + seccion + ".php";
   $.post(ruta, {usuario : idUsuario}, function(data)
     {
       var idx = 0;
@@ -227,7 +230,7 @@ $.fn.cargarPerfiles = function(restricciones, callback)
 
       if (idx == 0)
       {
-        Mensaje("Error", "No fue posible cargar los Perfiles, por favor actualiza la página.");
+        Mensaje("Error", "No fue posible cargar " + seccion + ", por favor actualiza la página.");
       } else
       {
         $(obj).find("option").remove();
@@ -238,63 +241,8 @@ $.fn.cargarPerfiles = function(restricciones, callback)
     {
       
     }).fail(function() {
-      Mensaje("Error", "No fue posible cargar los Perfiles, por favor actualiza la página.");
+      Mensaje("Error", "No fue posible cargar " + seccion + ", por favor actualiza la página.");
     });
-}
-$.fn.cargarEmpresas = function(restricciones, callback)
-{
-  var obj = $(this);
-  if (callback === undefined)
-    {callback = function(){};}
-  if (restricciones === undefined)
-    {restricciones = [];}
-
-  var idUsuario = 0;
-  if (Usuario != null && Usuario != undefined)
-  {
-    idUsuario = Usuario.id;
-  }
-
-  var ruta = calcularSubDirectorio();
-  ruta += "server/php/scripts/cargarEmpresas.php";
-  $.post(ruta, {usuario : idUsuario}, function(data)
-  {
-    var idx = 0;
-    var tds = "";
-    var flag = 0;
-
-    $.each(data, function(index, empresa)
-      {
-        $.each(restricciones, function(idx, restriccion) 
-          {
-             if (restriccion == perfil.idPerfil)
-             {
-                flag = 1;
-             }
-          });
-          if (flag == 0)
-          {
-            tds += '<option value="' + empresa.idEmpresa + '">' + empresa.Nombre + '</option>';
-          }
-
-          flag = 0;
-          idx++
-      });
-    if (idx == 0)
-    {
-      Mensaje("Error", "No fue posible cargar las Empresas, por favor actualiza la página.");
-    } else
-    {
-      $(obj).find("option").remove();
-      $(obj).append(tds);
-      callback();
-    }
-  }, "json").always(function() 
-  {
-
-  }).fail(function() {
-    Mensaje("Error", "No fue posible cargar las Empresas, por favor actualiza la página.");
-  });
 }
 function calcularSubDirectorio()
 {
