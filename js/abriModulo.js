@@ -3,6 +3,8 @@ jQuery(document).ready(function($) {
 });
 function abrirModulo()
 {
+
+  $("head").abrirModulo_cargarArchivos("../admin/head.html");
   $("head").abrirModulo_cargarArchivos("../admin/head");
   
 }
@@ -12,9 +14,7 @@ $.fn.abrirModulo_cargarArchivos = function (modulo, callback)
     {callback = function(){};}
   var obj = this;
 
-  var nomArchivo = modulo + ".html";
-
-  $.get(nomArchivo, function(data) 
+  $.get(modulo, function(data) 
     {
       $(obj).html(data);
       callback();
