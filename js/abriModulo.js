@@ -1,10 +1,24 @@
+jQuery(document).ready(function($) {
+  abrirModulo();
+});
 function abrirModulo()
 {
-  var numDirectorios = parseInt(location.href.split("/").length) - 5;
-  var res = "";
-  for (var i = 0; i < numDirectorios; i++) 
-  {
-    res += "../";
-  }
-  return res;
+  $("head").abrirModulo_cargarArchivos("../admin/head");
+  
 }
+$.fn.abrirModulo_cargarArchivos = function (modulo, callback)
+{
+  if (callback === undefined)
+    {callback = function(){};}
+  var obj = this;
+
+  var nomArchivo = modulo + ".html";
+
+  $.get(nomArchivo, function(data) 
+    {
+      $(obj).html(data);
+      callback();
+    });
+  return 1;
+}
+
