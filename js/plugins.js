@@ -1,3 +1,5 @@
+/**
+ *
 var modulos = 
 {
 	"nomArchivo.html" : "home"
@@ -21,3 +23,4 @@ var archivosJS =
 	"pluginN" : "jsN",
 };
 
+**/
