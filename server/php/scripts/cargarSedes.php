@@ -10,7 +10,7 @@
       $Usuario = datosUsuario($idUsuario);
    }
    
-   $sql = "SELECT idSede, Nombre FROM confSedes";
+   $sql = "SELECT id, Nombre FROM confSedes";
    $result = $link->query($sql);
 
    $idx = 0;

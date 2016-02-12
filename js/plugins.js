@@ -1,26 +1,16 @@
-/**
- *
 var modulos = 
 {
-	"nomArchivo.html" : "home"
-}
-var plugins 
+	"clientes/informacionEstructural.html" : {titulo : "Información Estructural del Cliente", nick : "cl_InformacionEstructural"}
+};
+var arrPlugins =
 {
-	"home" : ["plugin1", "plugin2"],
-	"modulo2" [],
-	"moduloN"
+	cl_InformacionEstructural : ["jointjs"]
 };
 var archivosCSS = 
 {
-	"plugin1" : "<link rel='stylesheet' href='assets/css/estilo1'><link rel='stylesheet' href='assets/css/estilo2'>",
-	"plugin2" : "css2",
-	"pluginN" : "cssN",
+	"jointjs" : "<link rel='stylesheet' href='../assets/vendor/jointjs/joint.css'>"
 };
 var archivosJS = 
 {
-	"plugin1" : "<script src='assets/vendor/script1.js'></script>",
-	"plugin2" : "js2",
-	"pluginN" : "jsN",
+	"jointjs" : "<script src='../assets/vendor/jointjs/lodash.min.js'></script><script src='../assets/vendor/jointjs/backbone-min.js'></script></script><script src='../assets/vendor/jointjs/joint.js'></script>"
 };
-
-**/

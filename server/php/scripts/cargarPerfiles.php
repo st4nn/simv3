@@ -12,7 +12,7 @@
 
    $link = Conectar();
 
-   $sql = "SELECT idPerfil as id, Nombre FROM Perfiles WHERE idPerfil >= " . $idPerfil . ";";
+   $sql = "SELECT id as id, Nombre FROM Perfiles WHERE idPerfil >= " . $idPerfil . ";";
    $result = $link->query($sql);
 
    $idx = 0;
