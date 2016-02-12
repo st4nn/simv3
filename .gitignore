@@ -1,0 +1,6 @@
+*.sublime-workspace
+*.sublime-project
+compara/*
+/index-Org.html
+/resgistrar22.html
+/frame.php 

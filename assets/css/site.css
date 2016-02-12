@@ -1,9 +1,9 @@
 .site-navbar {
-  background-color: #62a8ea;
+  background-color: #FFF;
 }
 .site-navbar .navbar-header {
   color: #fff;
-  background-color: transparent;
+  background-color: #FFF;
 }
 .site-navbar .navbar-header .navbar-toggle {
   color: #fff;
@@ -24,7 +24,8 @@
   }
 }
 .site-navbar .navbar-container {
-  background-color: #fff;
+  background-color: #E3E3E3;
+  box-shadow: inset 0 5px 0 rgba(234,14,41,0.7), inset 5px 5px 0 rgba(234,14,41,0.0)
 }
 @media (min-width: 768px) {
   .site-navbar .navbar-container {
@@ -50,7 +51,7 @@ body {
   height:         calc(100% - 66px);
   font-family: "Roboto", sans-serif;
   color: rgba(163, 175, 183, .9);
-  background: #263238;
+  background: #0B4499;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
           box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
 }
@@ -181,7 +182,7 @@ body {
 }
 .site-menu-item a {
   display: block;
-  color: rgba(163, 175, 183, .9);
+  color: rgba(255, 255, 255, .9);
 }
 .site-menu-item.is-hidden {
   opacity: 0;
@@ -193,7 +194,7 @@ body {
   padding: 0;
 }
 .site-menu > .site-menu-item.open {
-  background: #242f35;
+  background: #0098DB;
 }
 .site-menu > .site-menu-item.open > a {
   color: #fff;
