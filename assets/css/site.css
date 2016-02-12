@@ -1599,7 +1599,7 @@ body.layout-full {
   margin-top: 20px;
   font-size: 15px;
   line-height: 46px;
-  color: #76838f;
+  color: #FFF;
   text-transform: uppercase;
   -webkit-transition: all .25s, font .1s .15s, color .1s .15s;
        -o-transition: all .25s, font .1s .15s, color .1s .15s;
