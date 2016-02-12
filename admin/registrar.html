@@ -62,15 +62,17 @@
   <!-- Page -->
   <div class="page animsition vertical-align text-center" data-animsition-in="fade-in"
   data-animsition-out="fade-out">
-    <div class="page-content vertical-align-middle">
+    <div class="page-content vertical-align-middle width-full">
       <div class="brand">
         <img class="brand-img" src="assets/images/logo100.png" alt="...">
         <h2 class="brand-text">Sistema de Información de Mercadeo</h2>
       </div>
-      <div class="panel">
+      <div class="col-md-2"></div>
+      <div class="panel col-md-8">
         <div class="panel-heading">
           <h3 class="panel-title"><p>Registrese para acceder a la Plataforma</p></h3>
         </div>
+<<<<<<< HEAD
         <div class="panel-body container-fixed">
           <form method="post" id="frmRegistrar" role="form">
     				<div class="row row-sm">
@@ -118,48 +120,99 @@
                 <div class="input-group">
       						<input id="txtRegistrar_correo" type="text" class="form-control guardar" placeholder="e-mail" required>
                   <span class="input-group-addon">@wspgroup.com</span>
+=======
+        <div class="panel-body container-fluid">
+          <form method="post" id="frmRegistrar" role="form" class="width-full text-left">
+    				<div class="row row-sm width-full">
+      				<div id="cntRegistrar_Panel1" class="col-md-6">
+      					<div class="col-md-12 form-group">
+      						<h4 class="example-title">Nombres y Apellidos</h4>
+      						<input id="txtRegistrar_nombre" type="text" class="form-control guardar" placeholder="Nombre" required>
+      					</div>
+      					<div class="col-md-6 form-group">
+      						<h4 class="example-title">Empresa</h4>
+      						<select id="txtRegistrar_empresa" class="form-control guardar" placeholder="Empresa" id="txtRegistrar_Empresa" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+      					</div>
+                <div class="col-md-6 form-group">
+                  <h4 class="example-title">Cargo</h4>
+                  <input id="txtRegistrar_cargo" type="text" class="form-control guardar" placeholder="Cargo" required>
+>>>>>>> origin/master
                 </div>
-    					</div>
-              <div class="col-md-12 form-group">
-                <h4 class="example-title">Usuario</h4>
-                <input id="txtRegistrar_usuario" type="text" class="form-control guardar" placeholder="Usuario" required>
+      					<div class="col-md-6 form-group">
+      						<h4 class="example-title">Sede</h4>
+      						<select id="txtRegistrar_sede" class="form-control guardar" placeholder="Sede" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+      					</div>
+      					<div class="col-md-6 form-group">
+      						<h4 class="example-title">Área</h4>
+      						<select id="txtRegistrar_area" class="form-control guardar" placeholder="Área" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+      					</div>
+      					<div class="col-md-12 form-group">
+      						<h5 class="example-title">Correo</h5>
+                  <div class="input-group">
+        						<input id="txtRegistrar_correo" type="text" class="form-control guardar" placeholder="e-mail" required>
+                    <span class="input-group-addon">@wspgroup.com</span>
+                  </div>
+      					</div>
               </div>
-              <div class="col-md-6 form-group">
-                <h4 class="example-title">Contraseña</h4>
-                <input id="txtRegistrar_clave" type="password" class="form-control guardar" placeholder="Contraseña" required>
-              </div>
-              <div class="col-md-6 form-group">
-                <h5 class="example-title">Confirmar</h5>
-                <input id="txtRegistrar_clave2" type="password" class="form-control guardar" placeholder="Confirmar Contraseña" required>
-              </div>
-              <div class="col-md-6 form-group">
-                <h4 class="example-title">Perfil</h4>
-                <select name="" id="txtRegistrar_perfil" class="form-control guardar input-l" required>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </div>
-              <div class="col-md-6 form-group">
-                <h5 class="example-title">Lista de Correo</h5>
-                <select name="" id="txtRegistrar_ListaCorreo"  class="form-control guardar input-l">
-                    <option value="NO">NO</option>
-                    <option value="SI">SI</option>
-                </select>
+              <div class="col-md-6">
+                <div class="col-md-12 form-group">
+                  <h4 class="example-title">Usuario</h4>
+                  <input id="txtRegistrar_usuario" type="text" class="form-control guardar" placeholder="Usuario" required>
+                </div>
+                <div class="col-md-12 form-group">
+                  <h4 class="example-title">Contraseña</h4>
+                  <input id="txtRegistrar_clave" type="password" class="form-control guardar" placeholder="Contraseña" required>
+                </div>
+                <div class="col-md-12 form-group">
+                  <h5 class="example-title">Confirmar contraseña</h5>
+                  <input id="txtRegistrar_clave2" type="password" class="form-control guardar" placeholder="Confirmar Contraseña" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <h4 class="example-title">Perfil</h4>
+                  <select name="" id="txtRegistrar_perfil" class="form-control guardar input-l" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+                <div class="col-md-6 form-group">
+                  <h5 class="example-title">Lista de Correo</h5>
+                  <select name="" id="txtRegistrar_ListaCorreo"  class="form-control guardar input-l">
+                      <option value="NO">NO</option>
+                      <option value="SI">SI</option>
+                  </select>
+                </div>
               </div>
             </div>
-    			</div>
             <button type="submit" class="btn btn-primary btn-block">Registrar</button>
           </form>
         </div>
       </div>
-      <footer class="page-copyright page-copyright-inverse">
-				<p>Sistema de Información de Mercadeo | SIM </p>
-        <p>© 2016. Todos los derechos reservados.</p>
-      </footer>
     </div>
+    <footer class="page-copyright page-copyright-inverse">
+			<p>Sistema de Información de Mercadeo | SIM </p>
+      <p>© 2016. Todos los derechos reservados.</p>
+    </footer>
   </div>
   <!-- End Page -->
 

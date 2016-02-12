@@ -3,8 +3,10 @@ jQuery(document).ready(function($) {
 });
 function ready_registrar()
 {
- $("#txtRegistrar_empresa").cargarEmpresas();
- $("#txtRegistrar_perfil").cargarPerfiles();
+ $("#txtRegistrar_empresa").cargarCombo("Empresas");
+ $("#txtRegistrar_perfil").cargarCombo("Perfiles");
+ $("#txtRegistrar_sede").cargarCombo("Sedes");
+ $("#txtRegistrar_area").cargarCombo("Areas");
  $("#frmRegistrar").on("submit", function(evento)
  	{
  		evento.preventDefault();
