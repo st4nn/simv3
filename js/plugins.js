@@ -1,11 +1,9 @@
 var modulos = 
 {
-	"admin/ejemploEstructuraBasica.html" : {titulo : "Ejemplo Básico", nick : "ad_EjemploBasico"},
 	"clientes/informacionEstructural.html" : {titulo : "Información Estructural del Cliente", nick : "cl_InformacionEstructural"}
 };
 var arrPlugins =
 {
-	"ad_EjemploBasico" : [],
 	cl_InformacionEstructural : ["jointjs"]
 };
 var archivosCSS = 

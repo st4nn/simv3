@@ -1,21 +1,24 @@
 jQuery(document).ready(function($) {
+  $("body").css("color", "white")
   abrirModulo();
 });
 function abrirModulo()
 {
-
   $("body > header").abrirModulo_cargarArchivos("../admin/header.html");
-  $("fixedHead").abrirModulo_cargarArchivos("../admin/head.html", function()
-    {
-    });
+  $("fixedHead").abrirModulo_cargarArchivos("../admin/head.html");
     $("body > sidebar").abrirModulo_cargarArchivos("../admin/sidebar.html", function()
     {
       $("body > footer").abrirModulo_cargarArchivos("../admin/footer.html", function()
         {
-              var nomArchivo = location.href;
-              var arrNomArchivo = location.href.split("/");
-              nomArchivo = arrNomArchivo[arrNomArchivo.length - 2] + "/" + arrNomArchivo[arrNomArchivo.length - 1];
-              abrirModulo_cargarPlugins(nomArchivo);
+            var nomArchivo = location.href;
+            var arrNomArchivo = location.href.split("/");
+            nomArchivo = arrNomArchivo[arrNomArchivo.length - 2] + "/" + arrNomArchivo[arrNomArchivo.length - 1];
+            abrirModulo_cargarPlugins(nomArchivo);
+
+            if (modulos[nomArchivo] != undefined )
+            {
+              $("#lblNomModulo").text(modulos[nomArchivo].titulo);
+            } 
         });
     });
 }
@@ -38,11 +41,17 @@ $.fn.abrirModulo_cargarArchivos = function (modulo, callback)
 }
 function abrirModulo_cargarPlugins(nomArchivo)
 {
-    $.each(arrPlugins[modulos[nomArchivo].nick], function(index, val) 
+  if (modulos[nomArchivo] != undefined )
+  {
+    if  (arrPlugins[modulos[nomArchivo].nick].length > 0)
     {
-       $("customCss").append(archivosCSS[val]);
-       $("fixedScripts").append(archivosJS[val]);
-    });
+      $.each(arrPlugins[modulos[nomArchivo].nick], function(index, val) 
+      {
+         $("customCss").append(archivosCSS[val]);
+         $("fixedScripts").append(archivosJS[val]);
+      });
+    }
+  }
     Site.run();
     var arrNomArchivo = location.href.split("/");
     nomArchivo = arrNomArchivo[arrNomArchivo.length - 1];
