@@ -45,7 +45,7 @@ $.components.register("alertify", {
     type: "alert",
     labels: {
       ok: "OK",
-      cancel: "Cancel"
+      cancel: "Cancelar"
     },
     delay: 5000,
     buttonReverse: false,

@@ -7,7 +7,7 @@ $.components.register("dataTable", {
   defaults: {
     responsive: true,
     language: {
-      "sSearchPlaceholder": "Search..",
+      "sSearchPlaceholder": "Filtrar..",
       "lengthMenu": "_MENU_",
       "search": "_INPUT_",
       "paginate": {
@@ -45,3 +45,4 @@ $.components.register("dataTable", {
     });
   }
 });
+

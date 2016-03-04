@@ -2483,10 +2483,10 @@ var joint = {
             if (typeof window !== 'undefined') {
 
                 raf = window.requestAnimationFrame     ||
-		    window.webkitRequestAnimationFrame ||
-	            window.mozRequestAnimationFrame    ||
-		    window.oRequestAnimationFrame      ||
-		    window.msRequestAnimationFrame;
+            window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame    ||
+            window.oRequestAnimationFrame      ||
+            window.msRequestAnimationFrame;
             }
 
             if (!raf) {
@@ -2521,14 +2521,14 @@ var joint = {
             if (client) {
 
                 caf = window.cancelAnimationFrame            ||
-		    window.webkitCancelAnimationFrame        ||
-	            window.webkitCancelRequestAnimationFrame ||
-		    window.msCancelAnimationFrame            ||
-	            window.msCancelRequestAnimationFrame     ||
-		    window.oCancelAnimationFrame             ||
-	            window.oCancelRequestAnimationFrame      ||
-	            window.mozCancelAnimationFrame           ||
-		    window.mozCancelRequestAnimationFrame;
+            window.webkitCancelAnimationFrame        ||
+                window.webkitCancelRequestAnimationFrame ||
+            window.msCancelAnimationFrame            ||
+                window.msCancelRequestAnimationFrame     ||
+            window.oCancelAnimationFrame             ||
+                window.oCancelRequestAnimationFrame      ||
+                window.mozCancelAnimationFrame           ||
+            window.mozCancelRequestAnimationFrame;
             }
 
             caf = caf || clearTimeout;
@@ -5849,8 +5849,8 @@ joint.dia.ElementView = joint.dia.CellView.extend({
                 !_.isUndefined(attrs['ref-y']) ||
                 !_.isUndefined(attrs['ref-dx']) ||
                 !_.isUndefined(attrs['ref-dy']) ||
-		!_.isUndefined(attrs['x-alignment']) ||
-		!_.isUndefined(attrs['y-alignment']) ||
+        !_.isUndefined(attrs['x-alignment']) ||
+        !_.isUndefined(attrs['y-alignment']) ||
                 !_.isUndefined(attrs['ref-width']) ||
                 !_.isUndefined(attrs['ref-height'])
                ) {
@@ -6460,7 +6460,7 @@ joint.dia.Link = joint.dia.Cell.extend({
         '<g class="tool-remove" event="remove">',
         '<circle r="11" />',
         '<path transform="scale(.8) translate(-16, -16)" d="M24.778,21.419 19.276,15.917 24.777,10.415 21.949,7.585 16.447,13.087 10.945,7.585 8.117,10.415 13.618,15.917 8.116,21.419 10.946,24.248 16.447,18.746 21.948,24.248z" />',
-        '<title>Remove link.</title>',
+        '<title>Eliminar Conexión</title>',
         '</g>',
         '<g class="tool-options" event="link:options">',
         '<circle r="11" transform="translate(25)"/>',
@@ -11266,10 +11266,10 @@ joint.shapes.org.Member = joint.dia.Element.extend({
     defaults: joint.util.deepSupplement({
 
         type: 'org.Member',
-        size: { width: 180, height: 130 },
+        size: { width: 210, height: 110 },
         attrs: {
 
-            rect: { width: 170, height: 100 },
+            rect: { width: 210, height: 100 },
 
             '.card': {
                 overflow : 'hidden',
@@ -11278,47 +11278,37 @@ joint.shapes.org.Member = joint.dia.Element.extend({
             },
 
             image: {
-                width: 48, height: 48,
+                width: 24, height: 24,
                 ref: '.card', 'ref-x': 10, 'ref-y': 5
             },
 
             '.cargo': {
                 'text-decoration': 'underline',
-                ref: '.card', 'ref-x': 0.9, 'ref-y': 0.2,
-                'font-family': 'Courier New', 'font-size': 14,
-                'text-anchor': 'end'
+                ref: '.card', 'ref-x': 0.25, 'ref-y': 0.15,
+                'font-family': 'Courier New', 'font-size': 12
             },
 
             '.nombre': {
                 'font-weight': '800',
-                ref: '.card', 'ref-x': 0.9, 'ref-y': 0.4,
-                'font-family': 'Courier New', 'font-size': 14,
-                'text-anchor': 'end'
+                ref: '.card', 'ref-x': 0.1, 'ref-y': 0.35,
+                'font-family': 'Courier New', 'font-size': 12
             },
             '.correo': {
                 'text-decoration': 'underline',
-                'font-weight': '200',
-                    ref: '.card', 'ref-x': 0.9, 'ref-y': 0.5,
-                'font-family': 'Courier New', 'font-size': 10,
-                'text-anchor': 'end'
+                    ref: '.card', 'ref-x': 0.1, 'ref-y': 0.5,
+                'font-family': 'Courier New', 'font-size': 1,
             },
             '.tel': {
-                'font-weight': '800',
-                    ref: '.card', 'ref-x': 0.4, 'ref-y': 0.7,
-                'font-family': 'Courier New', 'font-size': 14,
-                'text-anchor': 'end'
+                    ref: '.card', 'ref-x': 0.1, 'ref-y': 0.7,
+                'font-family': 'Courier New', 'font-size': 12
             },
             '.ext': {
-                'font-weight': '800',
-                    ref: '.card', 'ref-x': 0.9, 'ref-y': 0.7,
-                'font-family': 'Courier New', 'font-size': 14,
-                'text-anchor': 'end'
+                    ref: '.card', 'ref-x': 0.5, 'ref-y': 0.7,
+                'font-family': 'Courier New', 'font-size': 12
             },
             '.cel': {
-                'font-weight': '800',
-                    ref: '.card', 'ref-x': 0.9, 'ref-y': 0.9,
-                'font-family': 'Courier New', 'font-size': 14,
-                'text-anchor': 'end'
+                    ref: '.card', 'ref-x': 0.1, 'ref-y': 0.85,
+                'font-family': 'Courier New', 'font-size': 12
             }
         }
     }, joint.dia.Element.prototype.defaults)
@@ -11326,12 +11316,11 @@ joint.shapes.org.Member = joint.dia.Element.extend({
 
 joint.shapes.org.Arrow = joint.dia.Link.extend({
 
-    defaults: {
-        type: 'org.Arrow',
-        source: { selector: '.card' }, target: { selector: '.card' },
-        attrs: { '.connection': { stroke: '#585858', 'stroke-width': 3 }},
-        z: -1
-    }
+    defaults: joint.util.deepSupplement({
+        type: 'fsa.Arrow',
+        attrs: { '.marker-target': { d: 'M 10 0 L 0 5 L 10 10 z' }},
+        smooth: false
+    }, joint.dia.Link.prototype.defaults)
 });
 
 //      JointJS library.
@@ -12471,9 +12460,9 @@ joint.layout.DirectedGraph = {
 };
 
 
-	joint.g = g;
-	joint.V = joint.Vectorizer = V;
+    joint.g = g;
+    joint.V = joint.Vectorizer = V;
 
-	return joint;
+    return joint;
 
 }));

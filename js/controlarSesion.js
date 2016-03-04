@@ -12,7 +12,7 @@ function expirarSesion()
     sessionFlag = false;
   } else
   {
-    var objUser = JSON.parse(localStorage.getItem('wsp_sim'));
+    var objUser = JSON.parse(localStorage.getItem('wsp_simv3'));
     var cDate = new Date();
     var sessionFlag = true;
   
@@ -25,7 +25,7 @@ function expirarSesion()
     if (Math.round((objDate/1000)/60) < 30 && sessionFlag)
     {
       objUser.cDate = cDate;
-      localStorage.setItem("wsp_sim", JSON.stringify(objUser));    
+      localStorage.setItem("wsp_simv3", JSON.stringify(objUser));    
     } else
     {
       delete localStorage.hesPu;

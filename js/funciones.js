@@ -1,36 +1,12 @@
 var Usuario = null;
 var Permisos = null;
-var dtSpanish = {
-    "sProcessing":     "Procesando...",
-    "sLengthMenu":     "Mostrar _MENU_ registros",
-    "sZeroRecords":    "No se encontraron resultados",
-    "sEmptyTable":     "Ningún dato disponible en esta tabla",
-    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-    "sInfoPostFix":    "",
-    "sSearch":         "Buscar:",
-    "sUrl":            "",
-    "sInfoThousands":  ",",
-    "sLoadingRecords": "Cargando...",
-    "oPaginate": {
-        "sFirst":    "Primero",
-        "sLast":     "Último",
-        "sNext":     "Siguiente",
-        "sPrevious": "Anterior"
-    },
-    "oAria": {
-        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-    }
-};
 
 $(document).ready(function() {
 	functiones();
 });
 function functiones()
 {
-  Usuario = JSON.parse(localStorage.getItem('wsp_horus'));
+  Usuario = JSON.parse(localStorage.getItem('wsp_simv3'));
 }
 
 function cargarModulo(vinculo, titulo, callback)
@@ -98,7 +74,13 @@ $.fn.generarDatosEnvio = function(restricciones, callback)
 }
 function Mensaje(Titulo, Mensaje)
 {
-  alertify.success(Mensaje);
+  if (Titulo == "Error")
+  {
+    alertify.error(Mensaje);
+  } else
+  {
+    alertify.success(Mensaje);
+  }
 }
 function cargadorDeArchivos()
 {
@@ -159,7 +141,7 @@ function CompletarConCero(n, length)
 
 function cerrarSesion()
 {
-  delete localStorage.wsp_horus;
+  delete localStorage.wsp_simv3;
   window.location.replace("../index.html");
 }
 
@@ -253,4 +235,69 @@ function calcularSubDirectorio()
     res += "../";
   }
   return res;
+}
+function obtenerFecha()
+{
+  var f = new Date();
+    return f.getFullYear() + "-" + CompletarConCero(f.getMonth() +1, 2) + "-" + CompletarConCero(f.getDate(), 2) + " " + CompletarConCero(f.getHours(), 2) + ":" + CompletarConCero(f.getMinutes(), 2) + ":" + CompletarConCero(f.getSeconds(), 2);
+}
+
+$.fn.crearDataTable = function(tds, callback)
+{
+  if (callback === undefined)
+    {callback = function(){};}
+
+  var dtSpanish = {
+    "sProcessing":     "Procesando...",
+    "sLengthMenu":     "Mostrar _MENU_ registros",
+    "sZeroRecords":    "No se encontraron resultados",
+    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+    "sInfoPostFix":    "",
+    "sSearch":         "Filtrar:",
+    "sUrl":            "",
+    "sInfoThousands":  ",",
+    "sLoadingRecords": "Cargando...",
+    "oPaginate": {
+        "sFirst":    "Primero",
+        "sLast":     "Último",
+        "sNext":     "Siguiente",
+        "sPrevious": "Anterior"
+    },
+    "oAria": {
+        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+    }
+  };
+
+  var options = {
+        "aoColumnDefs": [{
+          'bSortable': false,
+          'aTargets': [-1]
+        }],
+        "iDisplayLength": 10,
+        "aLengthMenu": [
+          [5, 10, 25, 50, -1],
+          [5, 10, 25, 50, "All"]
+        ],
+        "sDom": '<"dt-panelmenu clearfix"Tfr>t<"dt-panelfooter clearfix"ip>',
+        "oTableTools": {
+          "sSwfPath": "../assets/vendor/datatables-tabletools/swf/copy_csv_xls_pdf.swf"
+        },
+        "language" : dtSpanish
+      };
+
+      var idObj = $(this).attr("id");
+  if ($("#" + idObj + "_wrapper").length == 1)
+    {
+        $(this).dataTable().fnDestroy();
+    } 
+
+    $(this).find("tbody").find("tr").remove();
+    $("#" + idObj + " tbody").append(tds);
+
+  $(this).DataTable(options);
+  callback();
 }

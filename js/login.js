@@ -7,7 +7,7 @@ function ready_login()
    * Fragmento para controlar si la sesión está activa
   **/
 
-  var Usuario = JSON.parse(localStorage.getItem('wsp_sim'));  
+  var Usuario = JSON.parse(localStorage.getItem('wsp_simv3'));  
 
   var objDate = 16;
   if (Usuario == null)
@@ -15,7 +15,7 @@ function ready_login()
     sessionFlag = false;
   } else
   {
-    var objUser = JSON.parse(localStorage.getItem('wsp_sim'));
+    var objUser = JSON.parse(localStorage.getItem('wsp_simv3'));
     var cDate = new Date();
     var sessionFlag = true;
   
@@ -28,11 +28,11 @@ function ready_login()
   if (Math.round((objDate/1000)/60) < 60 && sessionFlag)
   {
     objUser.cDate = cDate;
-    localStorage.setItem("wsp_sim", JSON.stringify(objUser));    
-    window.location.replace("aplicacion/index.html");
+    localStorage.setItem("wsp_simv3", JSON.stringify(objUser));    
+    window.location.replace("admin/home.html");
   } else
   {
-    delete localStorage.wsp_horus;    
+    delete localStorage.wsp_simv3;    
   }
 }
 /**
@@ -52,8 +52,8 @@ function frmLogin_submit(event)
     {
       if (data != 0)
       {
-        localStorage.setItem("wsp_sim", JSON.stringify(data));  
-        window.location.replace("aplicacion/index.html");
+        localStorage.setItem("wsp_simv3", JSON.stringify(data));  
+        window.location.replace("admin/home.html");
       } else
       {
         $(".alert").html("<strong>Error!</strong> Acceso denegado.");
