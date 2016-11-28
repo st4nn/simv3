@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta name="description" content="bootstrap admin template">
+	<meta name="author" content="">
+
+  	<title>Información Estructural | S.I.M.</title>
+
+	<link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+  	<link rel="shortcut icon" href="../assets/images/favicon.ico">
+	<fixedHead>
+		<!-- Stylesheets -->
+		<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../assets/css/bootstrap-extend.min.css">
+		<link rel="stylesheet" href="../assets/css/site.css">
+
+		<!-- Plugins -->
+		<!--<link rel="stylesheet" href="../assets/vendor/animsition/animsition.css">-->
+		<link rel="stylesheet" href="../assets/vendor/asscrollable/asScrollable.css">
+		<link rel="stylesheet" href="../assets/vendor/switchery/switchery.css">
+		<link rel="stylesheet" href="../assets/vendor/intro-js/introjs.css">
+		<link rel="stylesheet" href="../assets/vendor/slidepanel/slidePanel.css">
+		<link rel="stylesheet" href="../assets/vendor/flag-icon-css/flag-icon.css">
+
+		<!-- Page -->
+
+		<!-- Fonts -->
+		<link rel="stylesheet" href="../assets/fonts/web-icons/web-icons.min.css">
+		<link rel="stylesheet" href="../assets/fonts/font-awesome/font-awesome.css">
+		<link rel="stylesheet" href="../assets/fonts/brand-icons/brand-icons.min.css">
+		<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+
+		<!--[if lt IE 9]>
+		<script src="../assets/vendor/html5shiv/html5shiv.min.js"></script>
+		<![endif]-->
+
+		<!--[if lt IE 10]>
+		<script src="../assets/vendor/media-match/media.match.min.js"></script>
+		<script src="../assets/vendor/respond/respond.min.js"></script>
+		<![endif]-->
+
+		<!-- Scripts -->
+		<script src="../assets/vendor/modernizr/modernizr.js"></script>
+		<script src="../assets/vendor/breakpoints/breakpoints.js"></script>
+
+		<script>
+		Breakpoints();
+		</script>
+		<!-- Plugins For Alertify -->
+		<link rel="stylesheet" href="../assets/vendor/alertify-js/alertify.css">
+		<link rel="stylesheet" href="../assets/examples/css/advanced/alertify.css"> 
+	</fixedHead>
+	<customCss></customCss>
+</head>
+<body>
+	<header></header>
+	<sidebar></sidebar>
+	<content>
+		<div class="page" data-animsition-in="fade-in" data-animsition-out="fade-out">
+		    <div class="page-content padding-30 container-fluid">
+		      <div class="row" data-plugin="matchHeight" data-by-row="true">
+		      	<input type="hidden" id="txtInformacionEstructural_idOrganigrama">
+		        <div class="col-md-4" id="cntInformacionEstructual_Panel1">
+		        	<div class="panel">
+      					<button class="btn btn-default btn-block" id="btnInformacionEstructural_PanelOcultar"><i class="icon fa-arrow-circle-left"></i> Ocultar Panel</button>
+		        	</div>
+		          	<div class="panel">
+						<div class="panel-title">Estructuras Creadas</div>
+						<div class="panel-body">
+							<table class="table is-indent" id="tblInformacionEstructural_Estructuras">
+								<tbody></tbody>
+							</table>
+						</div>
+					</div>
+					<div class="height-300">
+						<div class="panel">
+						<div class="panel-title">Crear Estructura</div>
+						<div class="panel-body">
+							<form role="form" id="frmInformacionEstructural_Crear">
+					          	<div class="col-md-12 form-group">
+									<h4 class="example-title">Nombre</h4>
+									<input  type="text" class="form-control" id="txtInformacionEstructural_CrearNombre" placeholder="Nombre" required>
+								</div>
+					          	<button type="submit" class="btn btn-success"><i class="icon wb-add-file"></i> Crear Estructura</button>
+							</form>
+						</div>
+					</div>
+					</div>
+		        </div>
+		        <div id="cntInformacionEstructural_AreaTrabajo" class="col-md-8">
+		          <div class="height-100 col-md-12">
+		          	<button class="btn btn-default btn-block margin-5 hide" id="btnInformacionEstructural_PanelMostrar"><i class="icon fa-arrow-circle-right"></i> Mostrar Panel</button>
+					<button class="btn btn-info" id="btnInformacionEstructural_NuevoElemento" data-target="#cntInformacionEstructural_NuevoElemento" data-toggle="modal"><i class="icon wb-user-add"></i> Nuevo elemento</button>
+					<button class="btn btn-primary" id="btnInformacionEstructural_LineaNuevo"><i class="icon fa-level-down"></i> Nueva Línea</button>
+					<button class="btn btn-success" id="btnInformacionEstructural_GraficoGuardar"><i class="icon fa-save"></i> Guardar Cambios</button>
+					<div class="pull-right margin-5 blue-grey-700">
+						<button class="btn btn-dark popover-info" 
+							data-content="Para editar un elemento, debe dar doble click sobre el elmento a editar"
+	                  		data-trigger="hover" data-toggle="popover" data-original-title="Editar Elemento" 
+	                  		data-placement="auto" 
+	                  		tabindex="0" title="" type="button"><i class="icon wb-help"></i>Editar Elemento
+	                  	</button>
+						
+						<button class="btn btn-dark popover-info" 
+							data-content="Para editar una conexión, debe ubicar el cursor sobre la línea que identifica la conexión, el circulo Rojo le permitirá borrar la conexión"
+	                  		data-trigger="hover" data-toggle="popover" data-original-title="Editar Conexión" 
+	                  		data-placement="auto" 
+	                  		tabindex="0" title="" type="button"><i class="icon wb-help"></i>Editar Conexión
+	                  	</button>
+						
+					</div>
+		          </div>
+		          <div class="col-md-12">
+		          	<h4 id="lblInformacionEstructural_Titulo"></h4>
+		          	<div id="cntInfEstructural_Paper" class="bg-blue-grey-300">
+		          		<div class="col-md-6" id="cntInformacionEstructural_Inicio">
+			          		<div class="example example-popover">
+			                  <button type="button" class="btn btn-info popover-info sr-only">
+			                    Info
+			                  </button>
+			                  <div class="popover right">
+			                    <div class="arrow "></div>
+			                    <h3 class="popover-title">Abrir Estructura Existente</h3>
+			                    <div class="popover-content">
+			                      <p>Para iniciar abra una de las estructuras existentes, ahi se listan el Nombre de la Estuctura, el Nombre de la última persona en Editarlo y la fecha de la última edición.</p>
+			                    </div>
+			                  </div>
+			                </div>
+			                <div class="example example-popover">
+			                  <button type="button" class="btn btn-info popover-info sr-only">
+			                    Info
+			                  </button>
+			                  <div class="popover right">
+			                    <div class="arrow"></div>
+			                    <h3 class="popover-title">Crear una Nueva Estructura</h3>
+			                    <div class="popover-content">
+			                      <p>También puede crear una nueva estructura indicando unicamente el nombre, una vez la haya creado, aparecerá en el listado de <i>Estructuras Creadas</i> donde podrá seleccionarla y editarla.</p>
+			                    </div>
+			                  </div>
+			                </div>
+		          			
+		          		</div>
+		          	</div>
+		          </div>
+		          <div class="modal fade modal-fade-in-scale-up" id="cntInformacionEstructural_NuevoElemento" aria-hidden="true"
+                   role="dialog" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                          <h4 class="modal-title">Agregar Miembro</h4>
+                        </div>
+                        <div class="modal-body">
+                          <form role="form">
+                          	<input type="hidden" id="txtInformacionEstructural_MiembroId" class="form-control">
+                          	<div class="form-group">
+	    						<h6 class="example-title">Cargo</h6>
+	    						<input id="txtInformacionEstructural_MiembroCargo" type="text" class="form-control guardar" placeholder="Cargo" required>
+    						</div>
+    						<div class="form-group">
+	    						<h6 class="example-title">Nombre</h6>
+	    						<input id="txtInformacionEstructural_MiembroNombre" type="text" class="form-control guardar" placeholder="Nombre" required>
+    						</div>
+    						<div>
+	    						<div class="form-group col-md-8">
+		    						<h6 class="example-title">Correo</h6>
+		    						<input id="txtInformacionEstructural_MiembroCorreo" type="text" class="form-control guardar" placeholder="Correo">
+	    						</div>
+	    						<div class="form-group col-md-4">
+		    						<h6 class="example-title">Celular</h6>
+		    						<input id="txtInformacionEstructural_MiembroCelular" type="text" class="form-control guardar" placeholder="Celular">
+	    						</div>
+    						</div>
+    						<div>
+    							<div class="form-group col-md-8">
+		    						<h6 class="example-title">Telefono</h6>
+		    						<input id="txtInformacionEstructural_MiembroTelefono" type="text" class="form-control guardar" placeholder="Telefono">
+	    						</div>
+	    						<div class="form-group col-md-4">
+		    						<h6 class="example-title">Extensión</h6>
+		    						<input id="txtInformacionEstructural_MiembroExtension" type="text" class="form-control guardar" placeholder="Extensión">
+	    						</div>
+    						</div>
+    						<div class="col-md-12">
+    							<!--
+    							<div class="form-group col-md-6">
+		    						<h6 class="example-title">Color</h6>
+    								<input type="text" id="txtInformacionEstructural_MiembroColor" class="asColorpicker form-control" data-plugin="asColorPicker" data-mode="simple" value="#5CD29D">
+	    						</div>
+	    						-->
+	    						<div class="form-group col-md-6">
+		    						<h6 class="example-title">Genero</h6>
+    								<select id="txtInformacionEstructural_MiembroGenero" class="form-control guardar" placeholder="Genero">
+    									<option value="male">Masculino</option>
+    									<option value="female">Femenino</option>
+    								</select>
+	    						</div>
+    							
+    						</div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-dark margin-0" data-dismiss="modal">Cancelar</button>
+                          <button type="button" class="btn btn-danger" id="btnInformacionEstructural_MiembroBorrar"><i class="icon wb-trash"></i> Borrar</button>
+                          <button type="button" class="btn btn-warning" data-dismiss="modal" id="btnInformacionEstructural_MiembroEditar"><i class="icon wb-edit"></i> Editar</button>
+                          <button type="button" class="btn btn-success" data-dismiss="modal" id="btnInformacionEstructural_MiembroAgregar"><i class="icon wb-user-add"></i> Agregar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+  <!-- End Page -->
+	</content>
+	<fixedScripts>
+		<script src="../assets/vendor/jquery/jquery.js"></script>
+		<script src="../js/plugins.js"></script>
+		<script src="../js/abriModulo.js"></script>
+		<script src="../js/funciones.js"></script>
+	</fixedScripts>
+	<footer>
+		<!-- Core  -->
+		<!--<script src="../assets/vendor/jquery/jquery.js"></script>-->
+		<script src="../assets/vendor/bootstrap/bootstrap.js"></script>
+		<!--<script src="../assets/vendor/animsition/jquery.animsition.js"></script>-->
+		<script src="../assets/vendor/asscroll/jquery-asScroll.js"></script>
+		<script src="../assets/vendor/mousewheel/jquery.mousewheel.js"></script>
+		<script src="../assets/vendor/asscrollable/jquery.asScrollable.all.js"></script>
+		<script src="../assets/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
+
+		<!-- Plugins -->
+		<script src="../assets/vendor/switchery/switchery.min.js"></script>
+		<script src="../assets/vendor/intro-js/intro.js"></script>
+		<script src="../assets/vendor/screenfull/screenfull.js"></script>
+		<script src="../assets/vendor/slidepanel/jquery-slidePanel.js"></script>
+
+		<!-- Scripts -->
+		<script src="../assets/js/core.js"></script>
+		<script src="../assets/js/site.js"></script>
+
+		<script src="../assets/js/sections/menu.js"></script>
+		<script src="../assets/js/sections/menubar.js"></script>
+		<script src="../assets/js/sections/gridmenu.js"></script>
+		<script src="../assets/js/sections/sidebar.js"></script>
+
+		<script src="../assets/js/configs/config-colors.js"></script>
+		<script src="../assets/js/configs/config-tour.js"></script>
+
+		<script src="../assets/js/components/asscrollable.js"></script>
+		<!--<script src="../assets/js/components/animsition.js"></script>-->
+		<script src="../assets/js/components/slidepanel.js"></script>
+		<script src="../assets/js/components/switchery.js"></script>
+
+		<script src="../assets/vendor/alertify-js/alertify.js"></script>
+		<script src="../assets/js/components/alertify-js.js"></script> 
+	</footer>
+</body>
+</html>
