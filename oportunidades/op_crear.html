@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta name="description" content="bootstrap admin template">
+	<meta name="author" content="">
+
+  	<title>Oportunidades | S.I.M.</title>
+
+	<link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+  	<link rel="shortcut icon" href="../assets/images/favicon.ico">
+	<fixedHead>
+		<!-- Stylesheets -->
+		<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../assets/css/bootstrap-extend.min.css">
+		<link rel="stylesheet" href="../assets/css/site.css">
+
+		<!-- Plugins -->
+		<!--<link rel="stylesheet" href="../assets/vendor/animsition/animsition.css">-->
+		<link rel="stylesheet" href="../assets/vendor/asscrollable/asScrollable.css">
+		<link rel="stylesheet" href="../assets/vendor/switchery/switchery.css">
+		<link rel="stylesheet" href="../assets/vendor/intro-js/introjs.css">
+		<link rel="stylesheet" href="../assets/vendor/slidepanel/slidePanel.css">
+		<link rel="stylesheet" href="../assets/vendor/flag-icon-css/flag-icon.css">
+
+		<!-- Page -->
+
+		<!-- Fonts -->
+		<link rel="stylesheet" href="../assets/fonts/web-icons/web-icons.min.css">
+		<link rel="stylesheet" href="../assets/fonts/font-awesome/font-awesome.css">
+		<link rel="stylesheet" href="../assets/fonts/brand-icons/brand-icons.min.css">
+		<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+
+
+		<!--[if lt IE 9]>
+		<script src="../assets/vendor/html5shiv/html5shiv.min.js"></script>
+		<![endif]-->
+
+		<!--[if lt IE 10]>
+		<script src="../assets/vendor/media-match/media.match.min.js"></script>
+		<script src="../assets/vendor/respond/respond.min.js"></script>
+		<![endif]-->
+
+		<!-- Scripts -->
+		<script src="../assets/vendor/modernizr/modernizr.js"></script>
+		<script src="../assets/vendor/breakpoints/breakpoints.js"></script>
+
+		<script>
+		Breakpoints();
+		</script>
+		<!-- Plugins For Alertify -->
+		<link rel="stylesheet" href="../assets/vendor/alertify-js/alertify.css">
+		<link rel="stylesheet" href="../assets/examples/css/advanced/alertify.css"> 
+	</fixedHead>
+	<customCss></customCss>
+</head>
+<body>
+	<header></header>
+	<sidebar></sidebar>
+	<content>
+<div class="page">
+	<div class="page-content padding-30 container-fluid">
+		<div class="row" data-plugin="matchHeight" data-by-row="true">
+			<div class="col-xlg-12 col-md-12">
+				<div class="widget widget-shadow widget-responsive" id="widgetLineareaColor">
+					<div class="widget-content">
+						<div class="padding-top-30 padding-30">
+							<div class="row">
+								<h2 id="lblCl_Crear_Tipo">Crear Oportunidad</h2>
+								<form class="form-group" id="frmOp_Crear">
+									<input type="hidden" id="txtOp_Crear_idOportunidad" class="guardar">
+									<div class="row">	
+										<div class="col-md-6 form-group">
+											<label for="txtOp_Crear_Cliente" class="control-label">Cliente</label>
+											<input type="text" id="txtOp_Crear_Cliente" class="form-control guardar" required>
+										</div>
+										<div class="col-md-6 form-group">
+											<label for="txtOp_Crear_Proceso" class="control-label">Numero de Proceso:</label>
+											<input type="text" id="txtOp_Crear_Proceso" class="form-control guardar">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-12 form-group">
+											<label for="txtOp_Crear_Objeto" class="control-label">Objeto del Proceso</label>
+											<textarea id="txtOp_Crear_Objeto" class="form-control guardar" rows="3"></textarea>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 form-group">
+											<label for="txtOp_Crear_Presupuesto" class="control-label">Presupuesto <strong>SIN IVA:</strong> </label>
+											<input id="txtOp_Crear_Presupuesto" class="form-control guardar">
+										</div>
+										<div class="col-md-6 form-group">
+											<label for="txtOp_Crear_Plazo" class="control-label">Plazo <strong>(En Meses)</strong></label>
+											<input type="number" id="txtOp_Crear_Plazo" class="form-control guardar">
+										</div>
+									</div>
+									<div class="row">	
+										<div class="col-md-6 form-group">
+											<label for="txtOp_Crear_idArea" class="control-label">Area</label>
+											<select id="txtOp_Crear_idArea" class="form-control guardar" data-plugin="select2"></select>
+										</div>
+										<div class="col-md-6 form-group">
+											<label for="txtOp_Crear_idPais" class="control-label">Pais</label>
+											<select id="txtOp_Crear_idPais" class="form-control guardar" data-plugin="select2">	
+												<option value="8099761">Sin Definir</option>										
+											</select>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 form-group">
+											<label for="txtOp_Crear_idDepartamento" class="control-label">Departamento</label>
+											<select id="txtOp_Crear_idDepartamento" class="form-control guardar" data-plugin="select2">	
+												<option value="8099761">Sin Definir</option>										
+											</select>
+										</div>
+										<div class="col-md-6 form-group">
+											<label for="txtOp_Crear_idCiudad" class="control-label">Ciudad</label>
+											<select id="txtOp_Crear_idCiudad" class="form-control guardar" data-plugin="select2">	
+												<option value="8099761">Sin Definir</option>										
+											</select>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 form-group">
+											<label for="txtOp_Crear_ExpresionDeInteres" class="control-label">Expresion de Interés</label>
+											<select id="txtOp_Crear_ExpresionDeInteres" class="form-control guardar" data-plugin="select2">	
+												<option value="No">No se require</option>										
+												<option value="Si">Es necesaria</option>										
+											</select>
+										</div>
+										<div class="col-md-6 form-group">
+											<label for="txtOp_Crear_Propuesta" class="control-label">Propuesta</label>
+											<input type="text" id="txtOp_Crear_Propuesta" class="form-control guardar">	
+										</div>
+									</div>
+
+									<div class="col-md-12">	
+										<div class="panel panel-bordered">
+          									<div class="panel-heading">
+              									<h3 class="panel-title">Fechas Importantes</h3>
+							            	</div>
+							            	<div class="panel-body">
+								              	<div class="row">
+								              		<div class="col-md-6 form-group">
+														<label for="txtOp_Crear_Fecha_Propuesta" class="control-label">Publicación</label>
+														<div class="input-group input-group-icon">
+										                    <input id="txtOp_Crear_Fecha_Propuesta" type="text" class="form-control datepicker" placeholder="Publicación">
+										                    <span class="input-group-addon">
+										                      <span class="icon wb-calendar" aria-hidden="true"></span>
+										                    </span>
+										                </div>
+													</div>
+													<div class="col-md-6 form-group">
+														<label for="txtOp_Crear_Fecha_ObservacionesPrepliego" class="control-label">Observaciones Prepliego</label>
+														<div class="input-group input-group-icon">
+										                    <input id="txtOp_Crear_Fecha_ObservacionesPrepliego" type="text" class="form-control datepicker" placeholder="Observaciones Prepliego">
+										                    <span class="input-group-addon">
+										                      <span class="icon wb-calendar" aria-hidden="true"></span>
+										                    </span>
+										                </div>
+													</div>
+								              	</div>
+								              	<div class="row">
+								              		<div class="col-md-6 form-group">
+														<label for="txtOp_Crear_Fecha_Apertura" class="control-label">Apertura</label>
+														<div class="input-group input-group-icon">
+										                    <input id="txtOp_Crear_Fecha_Apertura" type="text" class="form-control" placeholder="Apertura">
+										                    <span class="input-group-addon">
+										                      <span class="icon wb-calendar" aria-hidden="true"></span>
+										                    </span>
+										                </div>
+													</div>
+													<div class="col-md-6 form-group">
+														<label for="txtOp_Crear_Fecha_Audiencia" class="control-label">Visita y/o Audiencia</label>
+														<div class="input-group input-group-icon">
+										                    <input id="txtOp_Crear_Fecha_Audiencia" type="text" class="form-control datepicker" placeholder="Visita y/o Audiencia">
+										                    <span class="input-group-addon">
+										                      <span class="icon wb-calendar" aria-hidden="true"></span>
+										                    </span>
+										                </div>
+													</div>
+								              	</div>
+								              	<div class="row">
+								              		<div class="col-md-6 form-group">
+														<label for="txtOp_Crear_Fecha_ObservacionesPliego" class="control-label">Observaciones al Pliego</label>
+														<div class="input-group input-group-icon">
+										                    <input id="txtOp_Crear_Fecha_ObservacionesPliego" type="text" class="form-control datepicker" placeholder="Observaciones al Pliego">
+										                    <span class="input-group-addon">
+										                      <span class="icon wb-calendar" aria-hidden="true"></span>
+										                    </span>
+										                </div>
+													</div>
+													<div class="col-md-6 form-group">
+														<label for="txtOp_Crear_Fecha_PlazoCompraPliego" class="control-label">Plazo compra pliego</label>
+														<div class="input-group input-group-icon">
+										                    <input id="txtOp_Crear_Fecha_PlazoCompraPliego" type="text" class="form-control datepicker datepicker" placeholder="Plazo compra pliego">
+										                    <span class="input-group-addon">
+										                      <span class="icon wb-calendar" aria-hidden="true"></span>
+										                    </span>
+										                </div>
+													</div>
+								              	</div>
+								              	<div class="row">
+								              		<div class="col-md-6 form-group">
+														<label for="txtOp_Crear_Fecha_Observaciones_Pliego" class="control-label">Valor Pliego</label>
+														<div class="input-group input-group-icon">
+										                    <input id="txtOp_Crear_Fecha_ValorPliego" type="text" class="form-control datepicker" placeholder="Valor Pliego">
+										                    <span class="input-group-addon">
+										                      <span class="icon wb-calendar" aria-hidden="true"></span>
+										                    </span>
+										                </div>
+													</div>
+													<div class="col-md-6 form-group">
+														<label for="txtOp_Crear_Fecha_Cierre" class="control-label">Cierre</label>
+														<div class="input-group input-group-icon">
+										                    <input id="txtOp_Crear_Fecha_Cierre" type="text" class="form-control datepicker datepicker" placeholder="Cierre">
+										                    <span class="input-group-addon">
+										                      <span class="icon wb-calendar" aria-hidden="true"></span>
+										                    </span>
+										                </div>
+													</div>
+								              	</div>
+								            </div>
+							          	</div>
+									</div>
+									<div class="col-md-12">	
+										<div class="panel panel-bordered">
+          									<div class="panel-heading">
+              									<h3 class="panel-title">Requisitos</h3>
+							            	</div>
+							            	<div class="panel-body">
+							            		<table class="table table-hover table-striped">
+							            			<thead>
+							            				<tr>
+							            					<th>INDICADOR</th>
+							            					<th>SOLICITADO</th>
+							            					<th>WSP COLOMBIA</th>
+							            					<th>PARSONS</th>
+							            					<th>WSP SERVICIOS</th>
+							            				</tr>
+							            			</thead>
+							            			<tbody>
+							            				<tr>
+							            					<td>Patrimonio</td>
+							            					<td><input type="text" class="form-control"></td>
+							            					<td>
+							            						<div class="col-xs-2 green-600">
+							            							<span class="icon wb-check"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">9</span>
+							            						</div>
+							            					</td>
+							            					<td>
+							            						<div class="col-xs-2">
+							            							<span class="icon wb-minus"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">9</span>
+							            						</div>
+							            					</td>
+							            					<td>
+							            						<div class="col-xs-2 red-600">
+							            							<span class="icon wb-close"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">9</span>
+							            						</div>
+							            					</td>
+							            				</tr>
+							            				<tr>
+							            					<td>Capital de Trabajo</td>
+							            					<td><input type="text" class="form-control"></td>
+							            					<td>
+							            						<div class="col-xs-2 green-600">
+							            							<span class="icon wb-check"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">9</span>
+							            						</div>
+							            					</td>
+							            					<td>
+							            						<div class="col-xs-2">
+							            							<span class="icon wb-minus"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">9</span>
+							            						</div>
+							            					</td>
+							            					<td>
+							            						<div class="col-xs-2 red-600">
+							            							<span class="icon wb-close"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">9</span>
+							            						</div>
+							            					</td>
+							            				</tr>
+							            				<tr>
+							            					<td>Liquidez</td>
+							            					<td><input type="text" class="form-control"></td>
+							            					<td>
+							            						<div class="col-xs-2 green-600">
+							            							<span class="icon wb-check"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">9</span>
+							            						</div>
+							            					</td>
+							            					<td>
+							            						<div class="col-xs-2">
+							            							<span class="icon wb-minus"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">9</span>
+							            						</div>
+							            					</td>
+							            					<td>
+							            						<div class="col-xs-2 red-600">
+							            							<span class="icon wb-close"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">9</span>
+							            						</div>
+							            					</td>
+							            				</tr>
+							            			</tbody>
+							            		</table>
+							            		<div class="row">
+							            			<div class="col-sm-12 form-group">
+														<label for="txtOp_Crear_ExperienciaHabilitante" class="control-label">Experiencia Habilitante</label>
+														<textarea id="txtOp_Crear_ExperienciaHabilitante" class="form-control guardar" placeholder="Experiencia Habilitante" rows="3"></textarea>
+													</div>
+							            		</div>
+							            		<div class="row">
+							            			<div class="col-sm-12 form-group">
+														<label for="txtOp_Crear_ExperienciaEspecifica" class="control-label">Experiencia Específica</label>
+														<textarea id="txtOp_Crear_ExperienciaEspecifica" class="form-control guardar" placeholder="Experiencia Específica" rows="3"></textarea>
+													</div>
+							            		</div>
+
+							            		<h4>Personal Solicitado</h4>
+	
+							            		<div class="row">
+							            			<div class="col-xs-2"><p class="text-middle">Cantidad</p></div>
+							            			<div class="col-xs-2"><p class="text-middle">Cargo</p></div>
+							            			<div class="col-xs-4">
+							            				<p class="col-xs-12 text-center">Habilitante</p>
+							            				<div class="col-xs-6 text-center">
+							            					<p class="col-xs-12">Estudios</p>
+							            				</div>
+							            				<div class="col-xs-6 text-center">
+							            					<p class="col-xs-12">Experiencia</p>
+							            				</div>
+							            			</div>
+							            			<div class="col-xs-4">
+							            				<p class="col-xs-12 text-center">Adicional</p>
+							            				<div class="col-xs-6">
+							            					<p class="col-xs-12">Estudios</p>
+							            				</div>
+							            				<div class="col-xs-6">
+							            					<p class="col-xs-12">Experiencia</p>
+							            				</div>
+							            			</div>
+							            		</div>
+							            		<div class="row">
+							            			<div class="col-xs-1">
+							            				<input type="number" class="form-control">
+						            					<button type="button" class="btn btn-icon btn-danger btn-round"><i class="icon wb-trash" aria-hidden="true"></i></button>
+							            			</div>
+							            			<div class="col-xs-3">
+							            				<input type="text" class="form-control">
+							            			</div>
+							            			<div class="col-xs-4">
+							            				<div class="col-xs-6">
+							            					<textarea id="" rows="2" class="form-control"></textarea>
+							            				</div>
+							            				<div class="col-xs-6">
+							            					<textarea id="" rows="2" class="form-control"></textarea>
+							            				</div>
+							            			</div>
+							            			<div class="col-xs-4">
+							            				<div class="col-xs-6">
+							            					<textarea id="" rows="2" class="form-control"></textarea>
+							            				</div>
+							            				<div class="col-xs-6">
+							            					<textarea id="" rows="2" class="form-control"></textarea>
+							            				</div>
+							            			</div>
+							            		</div>
+							            		<div class="row">
+							            			<div class="col-xs-1">
+							            				<input type="number" class="form-control">
+						            					<button type="button" class="btn btn-icon btn-danger btn-round"><i class="icon wb-trash" aria-hidden="true"></i></button>
+							            			</div>
+							            			<div class="col-xs-3">
+							            				<input type="text" class="form-control">
+							            			</div>
+							            			<div class="col-xs-4">
+							            				<div class="col-xs-6">
+							            					<textarea id="" rows="2" class="form-control"></textarea>
+							            				</div>
+							            				<div class="col-xs-6">
+							            					<textarea id="" rows="2" class="form-control"></textarea>
+							            				</div>
+							            			</div>
+							            			<div class="col-xs-4">
+							            				<div class="col-xs-6">
+							            					<textarea id="" rows="2" class="form-control"></textarea>
+							            				</div>
+							            				<div class="col-xs-6">
+							            					<textarea id="" rows="2" class="form-control"></textarea>
+							            				</div>
+							            			</div>
+							            		</div>
+							            	</div>
+							            </div>
+							        </div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</content>
+	<fixedScripts>
+		<script src="../assets/vendor/jquery/jquery.js"></script>
+		<script src="../js/plugins.js"></script>
+		<script src="../js/abriModulo.js"></script>
+		<script src="../js/funciones.js"></script>
+	</fixedScripts>
+	<footer>
+		<!-- Core  -->
+		<!--<script src="../assets/vendor/jquery/jquery.js"></script>-->
+		<script src="../assets/vendor/bootstrap/bootstrap.js"></script>
+		<!--<script src="../assets/vendor/animsition/jquery.animsition.js"></script>-->
+		<script src="../assets/vendor/asscroll/jquery-asScroll.js"></script>
+		<script src="../assets/vendor/mousewheel/jquery.mousewheel.js"></script>
+		<script src="../assets/vendor/asscrollable/jquery.asScrollable.all.js"></script>
+		<script src="../assets/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
+
+		<!-- Plugins -->
+		<script src="../assets/vendor/switchery/switchery.min.js"></script>
+		<script src="../assets/vendor/intro-js/intro.js"></script>
+		<script src="../assets/vendor/screenfull/screenfull.js"></script>
+		<script src="../assets/vendor/slidepanel/jquery-slidePanel.js"></script>
+
+		<!-- Scripts -->
+		<script src="../assets/js/core.js"></script>
+		<script src="../assets/js/site.js"></script>
+
+		<script src="../assets/js/sections/menu.js"></script>
+		<script src="../assets/js/sections/menubar.js"></script>
+		<script src="../assets/js/sections/gridmenu.js"></script>
+		<script src="../assets/js/sections/sidebar.js"></script>
+
+		<script src="../assets/js/configs/config-colors.js"></script>
+		<script src="../assets/js/configs/config-tour.js"></script>
+
+		<script src="../assets/js/components/asscrollable.js"></script>
+		<!--<script src="../assets/js/components/animsition.js"></script>-->
+		<script src="../assets/js/components/slidepanel.js"></script>-->
+		<script src="../assets/js/components/switchery.js"></script>
+
+		<script src="../assets/vendor/alertify-js/alertify.js"></script>
+		<script src="../assets/js/components/alertify-js.js"></script>
+
+	</footer>
+</body>
+</html>

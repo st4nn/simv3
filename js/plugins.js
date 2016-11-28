@@ -3,14 +3,16 @@ var modulos =
 	"admin/home.html" : {titulo : "Inicio", nick : "ad_Home"},
 	"clientes/cl_home.html" : {titulo : "Clientes", nick : "cl_Home"},
 	"clientes/cl_Crear.html" : {titulo : "Clientes", nick : "cl_Crear"},
-	"clientes/informacionEstructural.html" : {titulo : "Información Estructural del Cliente", nick : "cl_InformacionEstructural"}
+	"clientes/informacionEstructural.html" : {titulo : "Información Estructural del Cliente", nick : "cl_InformacionEstructural"},
+	"oportunidades/op_crear.html" : {titulo : "Oportunidad de Negocios", nick : "op_crear"}
 };
 var arrPlugins =
 {
 	ad_Home : ["charjs"],
 	cl_Home : ["datatable"],
 	cl_Crear : ["select2"],
-	cl_InformacionEstructural : ["jointjs"]
+	cl_InformacionEstructural : ["jointjs"],
+	op_crear : ["select2"]
 };
 var archivosCSS = 
 {
