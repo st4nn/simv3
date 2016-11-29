@@ -301,3 +301,9 @@ $.fn.crearDataTable = function(tds, callback)
   $(this).DataTable(options);
   callback();
 }
+
+function abrirURL(url)
+{
+  var win = window.open(url, "_blank", "directories=no, location=no, menubar=no, resizable=yes, scrollbars=yes, statusbar=no, tittlebar=no");
+  win.focus();
+}

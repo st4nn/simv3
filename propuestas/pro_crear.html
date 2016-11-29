@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta name="description" content="bootstrap admin template">
+	<meta name="author" content="">
+
+  	<title>Propuesta | S.I.M.</title>
+
+	<link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+  	<link rel="shortcut icon" href="../assets/images/favicon.ico">
+	<fixedHead>
+		<!-- Stylesheets -->
+		<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../assets/css/bootstrap-extend.min.css">
+		<link rel="stylesheet" href="../assets/css/site.css">
+
+		<!-- Plugins -->
+		<!--<link rel="stylesheet" href="../assets/vendor/animsition/animsition.css">-->
+		<link rel="stylesheet" href="../assets/vendor/asscrollable/asScrollable.css">
+		<link rel="stylesheet" href="../assets/vendor/switchery/switchery.css">
+		<link rel="stylesheet" href="../assets/vendor/intro-js/introjs.css">
+		<link rel="stylesheet" href="../assets/vendor/slidepanel/slidePanel.css">
+		<link rel="stylesheet" href="../assets/vendor/flag-icon-css/flag-icon.css">
+
+		<!-- Page -->
+
+		<!-- Fonts -->
+		<link rel="stylesheet" href="../assets/fonts/web-icons/web-icons.min.css">
+		<link rel="stylesheet" href="../assets/fonts/font-awesome/font-awesome.css">
+		<link rel="stylesheet" href="../assets/fonts/brand-icons/brand-icons.min.css">
+		<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+
+		<!--[if lt IE 9]>
+		<script src="../assets/vendor/html5shiv/html5shiv.min.js"></script>
+		<![endif]-->
+
+		<!--[if lt IE 10]>
+		<script src="../assets/vendor/media-match/media.match.min.js"></script>
+		<script src="../assets/vendor/respond/respond.min.js"></script>
+		<![endif]-->
+
+		<!-- Scripts -->
+		<script src="../assets/vendor/modernizr/modernizr.js"></script>
+		<script src="../assets/vendor/breakpoints/breakpoints.js"></script>
+
+		<script>
+		Breakpoints();
+		</script>
+		<!-- Plugins For Alertify -->
+		<link rel="stylesheet" href="../assets/vendor/alertify-js/alertify.css">
+		<link rel="stylesheet" href="../assets/examples/css/advanced/alertify.css"> 
+	</fixedHead>
+	<customCss>
+		<link rel='stylesheet' href='../assets/vendor/bootstrap-datepicker/bootstrap-datepicker.css'>
+	</customCss>
+</head>
+<body>
+	<header></header>
+	<sidebar></sidebar>
+	<content>
+<div class="page">
+	<div class="page-content padding-30 container-fluid">
+		<div class="row" data-plugin="matchHeight" data-by-row="true">
+			<div class="col-xlg-12 col-md-12">
+				<div class="widget widget-shadow widget-responsive" id="widgetLineareaColor">
+					<div class="widget-content">
+						<div class="padding-top-30 padding-30">
+							<div class="row">
+								<h2 id="lblCl_Crear_Tipo">Crear Propuesta</h2>
+								<form class="form-group" id="frmPro_Crear">
+									<input type="hidden" id="txtPro_Crear_idOportunidad" class="guardar">
+									<div class="row">	
+										<div class="col-md-6 form-group">
+											<label for="txtPro_Crear_Cliente" class="control-label">Cliente</label>
+											<div class="input-group input-group-file">
+							                    <input type="text" id="txtPro_Crear_Cliente" class="form-control guardar" required>
+							                    <span class="input-group-btn">
+							                     	<span class="btn btn-primary">
+							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
+							                        	
+							                      	</span>
+							                    </span>
+							                </div>
+										</div>
+										<div class="col-md-6 form-group">
+											<label for="txtPro_Crear_Proceso" class="control-label">Numero de Proceso:</label>
+											<input type="text" id="txtPro_Crear_Proceso" class="form-control guardar">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-12 form-group">
+											<label for="txtPro_Crear_Objeto" class="control-label">Objeto del Proceso</label>
+											<textarea id="txtPro_Crear_Objeto" class="form-control guardar" rows="3"></textarea>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 form-group">
+											<label for="txtPro_Crear_ValorOfera" class="control-label">Valor de la Oferta</label>
+											<input id="txtPro_Crear_ValorOfera" class="form-control guardar">
+										</div>
+										<div class="col-md-6 form-group">
+											<label for="txtPro_Crear_Plazo" class="control-label">Plazo <strong>(En Meses)</strong></label>
+											<input type="number" id="txtPro_Crear_Plazo" class="form-control guardar">
+										</div>
+									</div>
+									<div class="row">	
+										<div class="col-md-6 form-group">
+											<label for="txtPro_Crear_idArea" class="control-label">Area</label>
+											<div class="input-group input-group-file">
+							                    <select id="txtPro_Crear_idArea" class="form-control guardar" data-plugin="select2"></select>
+							                    <span class="input-group-btn">
+							                     	<span class="btn btn-primary">
+							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
+							                        	
+							                      	</span>
+							                    </span>
+							                </div>											
+										</div>
+										<div class="col-md-6 form-group">
+											<label for="txtPro_Crear_idPais" class="control-label">Pais</label>
+											<div class="input-group input-group-file">
+												<select id="txtPro_Crear_idPais" class="form-control guardar" data-plugin="select2">	
+													<option value="8099761">Sin Definir</option>										
+												</select>
+							                    <span class="input-group-btn">
+							                     	<span class="btn btn-primary">
+							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
+							                        	
+							                      	</span>
+							                    </span>
+							                </div>
+
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 form-group">
+											<label for="txtPro_Crear_idDepartamento" class="control-label">Departamento</label>
+											<div class="input-group input-group-file">
+												<select id="txtPro_Crear_idDepartamento" class="form-control guardar" data-plugin="select2">	
+													<option value="8099761">Sin Definir</option>										
+												</select>
+							                    <span class="input-group-btn">
+							                     	<span class="btn btn-primary">
+							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
+							                        	
+							                      	</span>
+							                    </span>
+							                </div>
+										</div>
+										<div class="col-md-6 form-group">
+											<label for="txtPro_Crear_idCiudad" class="control-label">Ciudad</label>
+											<div class="input-group input-group-file">
+												<select id="txtPro_Crear_idCiudad" class="form-control guardar" data-plugin="select2">	
+													<option value="8099761">Sin Definir</option>										
+												</select>
+							                    <span class="input-group-btn">
+							                     	<span class="btn btn-primary">
+							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
+							                        	
+							                      	</span>
+							                    </span>
+							                </div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 form-group">
+											<label for="txtPro_Crear_ResponsableTecnico" class="control-label">Responsable Técnico</label>
+											<input type="number" id="txtPro_Crear_ResponsableTecnico" class="form-control guardar">
+										</div>
+										<div class="col-md-6 form-group">
+											<label for="txtPro_Crear_ResponsableComercial" class="control-label">Responsable Comercial</label>
+											<input type="number" id="txtPro_Crear_ResponsableComercial" class="form-control guardar">
+										</div>
+									</div>
+
+									<div class="col-md-12">	
+										<div class="panel panel-bordered">
+          									<div class="panel-heading">
+              									<h3 class="panel-title">Fechas Importantes</h3>
+							            	</div>
+							            	<div class="panel-body">
+								              	<div class="row">
+								              		<div class="col-md-6 form-group">
+														<label for="txtPro_Crear_Fecha_Apertura" class="control-label">Apertura</label>
+														<div class="input-group input-group-icon">
+										                    <input id="txtPro_Crear_Fecha_Apertura" type="text" class="form-control datepicker" placeholder="Apertura">
+										                    <span class="input-group-addon">
+										                      <span class="icon wb-calendar" aria-hidden="true"></span>
+										                    </span>
+										                </div>
+													</div>
+													<div class="col-md-6 form-group">
+														<label for="txtPro_Crear_Fecha_Audiencia" class="control-label">Visita y/o Audiencia</label>
+														<div class="input-group input-group-icon">
+										                    <input id="txtPro_Crear_Fecha_Audiencia" type="text" class="form-control datepicker" placeholder="Visita y/o Audiencia">
+										                    <span class="input-group-addon">
+										                      <span class="icon wb-calendar" aria-hidden="true"></span>
+										                    </span>
+										                </div>
+													</div>
+								              	</div>
+								              	<div class="row">
+								              		<div class="col-md-6 form-group">
+														<label for="txtPro_Crear_Fecha_ObservacionesPliego" class="control-label">Observaciones al Pliego</label>
+														<div class="input-group input-group-icon">
+										                    <input id="txtPro_Crear_Fecha_ObservacionesPliego" type="text" class="form-control datepicker" placeholder="Observaciones al Pliego">
+										                    <span class="input-group-addon">
+										                      <span class="icon wb-calendar" aria-hidden="true"></span>
+										                    </span>
+										                </div>
+													</div>
+													<div class="col-md-6 form-group">
+														<label for="txtPro_Crear_Fecha_Cierre" class="control-label">Cierre</label>
+														<div class="input-group input-group-icon">
+										                    <input id="txtPro_Crear_Fecha_Cierre" type="text" class="form-control datepicker" placeholder="Cierre">
+										                    <span class="input-group-addon">
+										                      <span class="icon wb-calendar" aria-hidden="true"></span>
+										                    </span>
+										                </div>
+													</div>
+								              	</div>
+								              	<div class="row">
+								              		<div class="col-md-6 form-group">
+														<label for="txtPro_Crear_Fecha_Observaciones_InformeEvaluacion" class="control-label">Informe Evaluación</label>
+														<div class="input-group input-group-icon">
+										                    <input id="txtPro_Crear_Fecha_Observaciones_InformeEvaluacion" type="text" class="form-control datepicker" placeholder="Informe Evaluación">
+										                    <span class="input-group-addon">
+										                      <span class="icon wb-calendar" aria-hidden="true"></span>
+										                    </span>
+										                </div>
+													</div>
+													<div class="col-md-6 form-group">
+														<label for="txtPro_Crear_Fecha_Adjudicacion" class="control-label">Adjudicación</label>
+														<div class="input-group input-group-icon">
+										                    <input id="txtPro_Crear_Fecha_Adjudicacion" type="text" class="form-control datepicker" placeholder="Adjudicación">
+										                    <span class="input-group-addon">
+										                      <span class="icon wb-calendar" aria-hidden="true"></span>
+										                    </span>
+										                </div>
+													</div>
+								              	</div>
+								            </div>
+							          	</div>
+									</div>
+									<div class="col-md-12">	
+										<div class="panel panel-bordered">
+          									<div class="panel-heading">
+              									<h3 class="panel-title">Presentación</h3>
+							            	</div>
+							            	<div class="panel-body">
+							            		<div class="row">
+							            			<div class="col-sm-12 form-group">
+														<label for="txtPro_Crear_Empresa" class="control-label">Empresa del Grupo</label>
+														<select id="txtPro_Crear_Empresa" class="form-control guardar" data-plugin="select2">	
+															<option value="1">WSP Colombia</option>
+															<option value="2">Parsons</option>
+															<option value="3">WSP Servicios</option>
+															<option value="4">WSP Canada Inc</option>
+															<option value="5">Tecnoambiental</option>
+														</select>
+													</div>
+							            		</div>
+							            		<div class="row">
+							            			<div class="col-sm-6 form-group">
+														<label for="txtPro_Crear_Consorcio" class="control-label">Consorcio</label>
+														<select id="txtPro_Crear_Consorcio" class="form-control guardar" placeholder="Consorcio">
+															<option value="No">NO</option>
+															<option value="Si">SI</option>
+														</select>
+													</div>
+													<div class="col-sm-6 form-group">
+														<label for="txtPro_Crear_PorcentajeParticipacion" class="control-label">Porcentaje de Participación WSP</label>
+														<div class="input-group input-group-icon">
+										                    <input id="txtPro_Crear_PorcentajeParticipacion" type="number" class="form-control" placeholder="Porcentaje de Participación" value="100" readonly="true">
+										                    <span class="input-group-addon">
+										                      <span class="icon" aria-hidden="true">%</span>
+										                    </span>
+										                </div>
+													</div>
+
+							            		</div>
+
+							            		<div class="col-md-12">
+							            			<h4>Consorcio
+							            				<button id="btnPropuestas_AgregarConsorciado" type="button" class="btn btn-icon btn-warning pull-right"><i class="icon wb-plus-circle" aria-hidden="true"></i> Agregar Consorciado</button>
+							            			</h4>
+							            		</div>
+							            		<br><br>
+	
+							            		<div id="cntPropuestas_Consorcios">
+							            			<div id="cntPropuestas_Consorcios_PrimeraFila" class="col-sm-12">
+							            				<div class="col-md-5 form-group">
+															<label  class="control-label">Nombre Consorciado</label>
+										                    <input  type="text" class="form-control" placeholder="Nombre Consorciado">
+														</div>
+														<div class="col-md-5 form-group">
+															<label  class="control-label">Porcentaje de Participación</label>
+															<div class="input-group input-group-icon">
+											                    <input type="text" class="form-control" placeholder="Porcentaje de Participación">
+											                    <span class="input-group-addon">
+											                      <span class="icon" aria-hidden="true">%</span>
+											                    </span>
+											                </div>
+														</div>
+														<div class="col-md-2 btnQuitarFake hide">
+															<button class="btn btn-danger btn-block btnPorpuestas_Consorciado_Quitar"><i class="icon wb-trash"></i></button>
+														</div>
+							            			</div>
+											    </div>
+											    <div class="col-md-12">
+							            			<h4>Resultados</h4>
+							            			<div class="row col-md-12">
+							            				<div class="col-md-6 form-group">
+															<label for="txtPro_Crear_PuntajeTotal" class="control-label">Puntaje Total</label>
+															<input id="txtPro_Crear_PuntajeTotal" type="text" class="form-control">
+								            			</div>
+								            			<div class="col-md-6 form-group">
+															<label for="txtPro_Crear_Final" class="control-label">Final</label>
+															<select id="txtPro_Crear_Final" class="form-control">
+																<option value="Habilitados">Habilitados</option>
+																<option value="No habilitados">No habilitados</option>
+																<option value="Habil">Habil</option>
+																<option value="No habil">No habil</option>
+																<option value="Adjudicada a WSP y/o Consorcio">Adjudicada a WSP y/o Consorcio</option>
+																<option value="Declarado Desierto">Declarado Desierto</option>
+															</select>
+								            			</div>
+							            			</div>
+							            			<div class="row col-md-12">
+							            				<div class="col-md-12 form-group">
+															<label for="txtPro_Crear_ResultadoFinanciera" class="control-label">Financiera</label>
+															<textarea id="txtPro_Crear_ResultadoFinanciera" type="text" class="form-control" rows="3"></textarea>
+								            			</div>
+							            			</div>
+							            			<div class="row col-md-12">
+							            				<div class="col-md-12 form-group">
+															<label for="txtPro_Crear_ResultadoTecnico" class="control-label">Técnico</label>
+															<textarea id="txtPro_Crear_ResultadoTecnico" type="text" class="form-control" rows="3"></textarea>
+								            			</div>
+							            			</div>
+							            			<div class="row col-md-12">
+							            				<div class="col-md-12 form-group">
+															<label for="txtPro_Crear_ResultadoEconomica" class="control-label">Económica</label>
+															<textarea id="txtPro_Crear_ResultadoEconomica" type="text" class="form-control" rows="3"></textarea>
+								            			</div>
+							            			</div>
+
+							            			<div class="row col-md-12">
+							            				<div class="col-md-12 form-group">
+															<label for="txtPro_Crear_ResultadoEconomica" class="control-label">Observaciones</label>
+															<textarea id="txtPro_Crear_ResultadoEconomica" type="text" class="form-control" rows="4"></textarea>
+								            			</div>
+							            			</div>
+							            		</div>
+							            	</div>
+							            </div>
+							        </div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</content>
+	<fixedScripts>
+		<script src="../assets/vendor/jquery/jquery.js"></script>
+		<script src="../js/plugins.js"></script>
+		<script src="../js/abriModulo.js"></script>
+		<script src="../js/funciones.js"></script>
+	</fixedScripts>
+	<footer>
+		<!-- Core  -->
+		<!--<script src="../assets/vendor/jquery/jquery.js"></script>-->
+		<script src="../assets/vendor/bootstrap/bootstrap.js"></script>
+		<!--<script src="../assets/vendor/animsition/jquery.animsition.js"></script>-->
+		<script src="../assets/vendor/asscroll/jquery-asScroll.js"></script>
+		<script src="../assets/vendor/mousewheel/jquery.mousewheel.js"></script>
+		<script src="../assets/vendor/asscrollable/jquery.asScrollable.all.js"></script>
+		<script src="../assets/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
+
+		<!-- Plugins -->
+		<script src="../assets/vendor/switchery/switchery.min.js"></script>
+		<script src="../assets/vendor/intro-js/intro.js"></script>
+		<script src="../assets/vendor/screenfull/screenfull.js"></script>
+		<script src="../assets/vendor/slidepanel/jquery-slidePanel.js"></script>
+
+		<!-- Scripts -->
+		<script src="../assets/js/core.js"></script>
+		<script src="../assets/js/site.js"></script>
+
+		<script src="../assets/js/sections/menu.js"></script>
+		<script src="../assets/js/sections/menubar.js"></script>
+		<script src="../assets/js/sections/gridmenu.js"></script>
+		<script src="../assets/js/sections/sidebar.js"></script>
+
+		<script src="../assets/js/configs/config-colors.js"></script>
+		<script src="../assets/js/configs/config-tour.js"></script>
+
+		<script src="../assets/js/components/asscrollable.js"></script>
+		<!--<script src="../assets/js/components/animsition.js"></script>-->
+		<script src="../assets/js/components/slidepanel.js"></script>-->
+		<script src="../assets/js/components/switchery.js"></script>
+
+		<script src="../assets/vendor/alertify-js/alertify.js"></script>
+		<script src="../assets/js/components/alertify-js.js"></script>
+
+		<customscripts>
+			<script src="../assets/vendor/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+		</customscripts>
+
+	</footer>
+</body>
+</html>

@@ -33,7 +33,6 @@
 		<link rel="stylesheet" href="../assets/fonts/brand-icons/brand-icons.min.css">
 		<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
 
-
 		<!--[if lt IE 9]>
 		<script src="../assets/vendor/html5shiv/html5shiv.min.js"></script>
 		<![endif]-->
@@ -54,7 +53,9 @@
 		<link rel="stylesheet" href="../assets/vendor/alertify-js/alertify.css">
 		<link rel="stylesheet" href="../assets/examples/css/advanced/alertify.css"> 
 	</fixedHead>
-	<customCss></customCss>
+	<customCss>
+		<link rel='stylesheet' href='../assets/vendor/bootstrap-datepicker/bootstrap-datepicker.css'>
+	</customCss>
 </head>
 <body>
 	<header></header>
@@ -74,7 +75,15 @@
 									<div class="row">	
 										<div class="col-md-6 form-group">
 											<label for="txtOp_Crear_Cliente" class="control-label">Cliente</label>
-											<input type="text" id="txtOp_Crear_Cliente" class="form-control guardar" required>
+											<div class="input-group input-group-file">
+							                    <input type="text" id="txtOp_Crear_Cliente" class="form-control guardar" required>
+							                    <span class="input-group-btn">
+							                     	<span class="btn btn-primary">
+							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
+							                        	
+							                      	</span>
+							                    </span>
+							                </div>
 										</div>
 										<div class="col-md-6 form-group">
 											<label for="txtOp_Crear_Proceso" class="control-label">Numero de Proceso:</label>
@@ -100,27 +109,60 @@
 									<div class="row">	
 										<div class="col-md-6 form-group">
 											<label for="txtOp_Crear_idArea" class="control-label">Area</label>
-											<select id="txtOp_Crear_idArea" class="form-control guardar" data-plugin="select2"></select>
+											<div class="input-group input-group-file">
+							                    <select id="txtOp_Crear_idArea" class="form-control guardar" data-plugin="select2"></select>
+							                    <span class="input-group-btn">
+							                     	<span class="btn btn-primary">
+							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
+							                        	
+							                      	</span>
+							                    </span>
+							                </div>											
 										</div>
 										<div class="col-md-6 form-group">
 											<label for="txtOp_Crear_idPais" class="control-label">Pais</label>
-											<select id="txtOp_Crear_idPais" class="form-control guardar" data-plugin="select2">	
-												<option value="8099761">Sin Definir</option>										
-											</select>
+											<div class="input-group input-group-file">
+												<select id="txtOp_Crear_idPais" class="form-control guardar" data-plugin="select2">	
+													<option value="8099761">Sin Definir</option>										
+												</select>
+							                    <span class="input-group-btn">
+							                     	<span class="btn btn-primary">
+							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
+							                        	
+							                      	</span>
+							                    </span>
+							                </div>
+
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-6 form-group">
 											<label for="txtOp_Crear_idDepartamento" class="control-label">Departamento</label>
-											<select id="txtOp_Crear_idDepartamento" class="form-control guardar" data-plugin="select2">	
-												<option value="8099761">Sin Definir</option>										
-											</select>
+											<div class="input-group input-group-file">
+												<select id="txtOp_Crear_idDepartamento" class="form-control guardar" data-plugin="select2">	
+													<option value="8099761">Sin Definir</option>										
+												</select>
+							                    <span class="input-group-btn">
+							                     	<span class="btn btn-primary">
+							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
+							                        	
+							                      	</span>
+							                    </span>
+							                </div>
 										</div>
 										<div class="col-md-6 form-group">
 											<label for="txtOp_Crear_idCiudad" class="control-label">Ciudad</label>
-											<select id="txtOp_Crear_idCiudad" class="form-control guardar" data-plugin="select2">	
-												<option value="8099761">Sin Definir</option>										
-											</select>
+											<div class="input-group input-group-file">
+												<select id="txtOp_Crear_idCiudad" class="form-control guardar" data-plugin="select2">	
+													<option value="8099761">Sin Definir</option>										
+												</select>
+							                    <span class="input-group-btn">
+							                     	<span class="btn btn-primary">
+							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
+							                        	
+							                      	</span>
+							                    </span>
+							                </div>
 										</div>
 									</div>
 									<div class="row">
@@ -167,7 +209,7 @@
 								              		<div class="col-md-6 form-group">
 														<label for="txtOp_Crear_Fecha_Apertura" class="control-label">Apertura</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtOp_Crear_Fecha_Apertura" type="text" class="form-control" placeholder="Apertura">
+										                    <input id="txtOp_Crear_Fecha_Apertura" type="text" class="form-control datepicker" placeholder="Apertura">
 										                    <span class="input-group-addon">
 										                      <span class="icon wb-calendar" aria-hidden="true"></span>
 										                    </span>
@@ -196,7 +238,7 @@
 													<div class="col-md-6 form-group">
 														<label for="txtOp_Crear_Fecha_PlazoCompraPliego" class="control-label">Plazo compra pliego</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtOp_Crear_Fecha_PlazoCompraPliego" type="text" class="form-control datepicker datepicker" placeholder="Plazo compra pliego">
+										                    <input id="txtOp_Crear_Fecha_PlazoCompraPliego" type="text" class="form-control datepicker" placeholder="Plazo compra pliego">
 										                    <span class="input-group-addon">
 										                      <span class="icon wb-calendar" aria-hidden="true"></span>
 										                    </span>
@@ -216,7 +258,7 @@
 													<div class="col-md-6 form-group">
 														<label for="txtOp_Crear_Fecha_Cierre" class="control-label">Cierre</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtOp_Crear_Fecha_Cierre" type="text" class="form-control datepicker datepicker" placeholder="Cierre">
+										                    <input id="txtOp_Crear_Fecha_Cierre" type="text" class="form-control datepicker" placeholder="Cierre">
 										                    <span class="input-group-addon">
 										                      <span class="icon wb-calendar" aria-hidden="true"></span>
 										                    </span>
@@ -244,89 +286,174 @@
 							            			</thead>
 							            			<tbody>
 							            				<tr>
-							            					<td>Patrimonio</td>
-							            					<td><input type="text" class="form-control"></td>
-							            					<td>
-							            						<div class="col-xs-2 green-600">
-							            							<span class="icon wb-check"></span>
-							            						</div>
-							            						<div class="col-xs-10">
-							            							<span class="counter-number">9</span>
-							            						</div>
-							            					</td>
-							            					<td>
-							            						<div class="col-xs-2">
-							            							<span class="icon wb-minus"></span>
-							            						</div>
-							            						<div class="col-xs-10">
-							            							<span class="counter-number">9</span>
-							            						</div>
-							            					</td>
-							            					<td>
-							            						<div class="col-xs-2 red-600">
-							            							<span class="icon wb-close"></span>
-							            						</div>
-							            						<div class="col-xs-10">
-							            							<span class="counter-number">9</span>
-							            						</div>
-							            					</td>
-							            				</tr>
-							            				<tr>
 							            					<td>Capital de Trabajo</td>
-							            					<td><input type="text" class="form-control"></td>
+							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos"></td>
 							            					<td>
-							            						<div class="col-xs-2 green-600">
-							            							<span class="icon wb-check"></span>
+							            						<div class="col-xs-2">
+							            							<span class="icon" data-valor="14154422450"></span>
 							            						</div>
 							            						<div class="col-xs-10">
-							            							<span class="counter-number">9</span>
+							            							<span class="counter-number">$14.154.422.450</span>
 							            						</div>
 							            					</td>
 							            					<td>
 							            						<div class="col-xs-2">
-							            							<span class="icon wb-minus"></span>
+							            							<span class="icon" data-valor="13811914532"></span>
 							            						</div>
 							            						<div class="col-xs-10">
-							            							<span class="counter-number">9</span>
+							            							<span class="counter-number">$13.811.914.532</span>
 							            						</div>
 							            					</td>
 							            					<td>
-							            						<div class="col-xs-2 red-600">
-							            							<span class="icon wb-close"></span>
+							            						<div class="col-xs-2">
+							            							<span class="icon" data-valor="1372084919"></span>
 							            						</div>
 							            						<div class="col-xs-10">
-							            							<span class="counter-number">9</span>
+							            							<span class="counter-number">$1.372.084.919</span>
 							            						</div>
 							            					</td>
 							            				</tr>
 							            				<tr>
 							            					<td>Liquidez</td>
-							            					<td><input type="text" class="form-control"></td>
+							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos"></td>
 							            					<td>
-							            						<div class="col-xs-2 green-600">
-							            							<span class="icon wb-check"></span>
+							            						<div class="col-xs-2">
+							            							<span class="icon" data-valor="1.66"></span>
 							            						</div>
 							            						<div class="col-xs-10">
-							            							<span class="counter-number">9</span>
+							            							<span class="counter-number">1.66</span>
 							            						</div>
 							            					</td>
 							            					<td>
 							            						<div class="col-xs-2">
-							            							<span class="icon wb-minus"></span>
+							            							<span class="icon" data-valor="1.99"></span>
 							            						</div>
 							            						<div class="col-xs-10">
-							            							<span class="counter-number">9</span>
+							            							<span class="counter-number">1.99</span>
 							            						</div>
 							            					</td>
 							            					<td>
-							            						<div class="col-xs-2 red-600">
-							            							<span class="icon wb-close"></span>
+							            						<div class="col-xs-2">
+							            							<span class="icon" data-valor="2.21"></span>
 							            						</div>
 							            						<div class="col-xs-10">
-							            							<span class="counter-number">9</span>
+							            							<span class="counter-number">2.21</span>
 							            						</div>
 							            					</td>
 							            				</tr>
+							            				<tr>
+							            					<td>Endeudamiento</td>
+							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos"></td>
+							            					<td>
+							            						<div class="col-xs-2">
+							            							<span class="icon" data-valor="0.59"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">0.59</span>
+							            						</div>
+							            					</td>
+							            					<td>
+							            						<div class="col-xs-2">
+							            							<span class="icon" data-valor="0.65"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">0.65</span>
+							            						</div>
+							            					</td>
+							            					<td>
+							            						<div class="col-xs-2">
+							            							<span class="icon" data-valor="0.49"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">0.49</span>
+							            						</div>
+							            					</td>
+							            				</tr>
+							            				<tr>
+							            					<td>Razón de cobertura de Intereses</td>
+							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos"></td>
+							            					<td>
+							            						<div class="col-xs-2">
+							            							<span class="icon" data-valor="-2.87"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">-2.87</span>
+							            						</div>
+							            					</td>
+							            					<td>
+							            						<div class="col-xs-2">
+							            							<span class="icon" data-valor="19.7"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">19.70</span>
+							            						</div>
+							            					</td>
+							            					<td>
+							            						<div class="col-xs-2">
+							            							<span class="icon" data-valor="51213.38"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">51213.38</span>
+							            						</div>
+							            					</td>
+							            				</tr>
+							            				<tr>
+							            					<td>Rentabilidad del Patrimonio</td>
+							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos"></td>
+							            					<td>
+							            						<div class="col-xs-2">
+							            							<span class="icon" data-valor="-0.066"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">-0.066</span>
+							            						</div>
+							            					</td>
+							            					<td>
+							            						<div class="col-xs-2">
+							            							<span class="icon" data-valor="0.43"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">0.43</span>
+							            						</div>
+							            					</td>
+							            					<td>
+							            						<div class="col-xs-2">
+							            							<span class="icon" data-valor="0.30"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">0.30</span>
+							            						</div>
+							            					</td>
+							            				</tr>
+							            				<tr>
+							            					<td>Rentabilidad del Activo</td>
+							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos"></td>
+							            					<td>
+							            						<div class="col-xs-2">
+							            							<span class="icon" data-valor="-0.027"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">-0.027</span>
+							            						</div>
+							            					</td>
+							            					<td>
+							            						<div class="col-xs-2">
+							            							<span class="icon" data-valor="0.15"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">0.15</span>
+							            						</div>
+							            					</td>
+							            					<td>
+							            						<div class="col-xs-2">
+							            							<span class="icon" data-valor="0.15"></span>
+							            						</div>
+							            						<div class="col-xs-10">
+							            							<span class="counter-number">0.15</span>
+							            						</div>
+							            					</td>
+							            				</tr>
+
 							            			</tbody>
 							            		</table>
 							            		<div class="row">
@@ -344,53 +471,19 @@
 
 							            		<div class="col-md-12">
 							            			<h4>Personal Solicitado
-							            				<button type="button" class="btn btn-icon btn-warning pull-right"><i class="icon wb-plus-circle" aria-hidden="true"></i> Agregar Perfil</button>
+							            				<button id="btnOportunidades_AgregarPerfil" type="button" class="btn btn-icon btn-warning pull-right"><i class="icon wb-plus-circle" aria-hidden="true"></i> Agregar Perfil</button>
 							            			</h4>
 							            		</div>
-
-							            		<div>
-							            			<div class="col-sm-6">
+							            		<br><br>
+	
+							            		<div id="cntOportunidades_Perfiles">
+							            			<div id="cntOportunidades_Perfiles_PrimeraFila" class="col-sm-6">
 											          <div class="panel panel-bordered panel-dark">
 											            <div class="panel-heading">
 											            <h3 class="panel-title"> 
-								            				<button type="button" class="btn btn-icon btn-danger btn-round pull-right"><i class="icon wb-close" aria-hidden="true"></i></button>
-											            </h3>
-											            </div>
-											            <div class="panel-body">
-											            	<div class="col-xs-4 form-group">
-																<label for="txtOp_Crear_ExperienciaHabilitante" class="control-label">Cantidad</label>
-																<input type="number" class="form-control">
-									            			</div>
-									            			<div class="col-xs-8 form-group">
-																<label for="txtOp_Crear_ExperienciaHabilitante" class="control-label">Cargo</label>
-																<input type="text" class="form-control">
-									            			</div>
-									            			<div class="col-xs-12">
-									            				<h6>Habilitante</h6>
-									            				<div class="col-xs-6 form-group">
-									            					<textarea id="" rows="2" class="form-control" placeholder="Estudios"></textarea>
-									            				</div>
-									            				<div class="col-xs-6 form-group">
-									            					<textarea id="" rows="2" class="form-control" placeholder="Experiencia"></textarea>
-									            				</div>
-									            			</div>
-									            			<div class="col-xs-12">
-									            				<br><h6>Adicional</h6>
-									            				<div class="col-xs-6 form-group">
-									            					<textarea id="" rows="2" class="form-control" placeholder="Estudios"></textarea>
-									            				</div>
-									            				<div class="col-xs-6">
-									            					<textarea id="" rows="2" class="form-control" placeholder="Experiencia"></textarea>
-									            				</div>
-									            			</div>
-											            </div>
-											          </div>
-											        </div>
-											        <div class="col-sm-6">
-											          <div class="panel panel-bordered panel-dark">
-											            <div class="panel-heading">
-											            <h3 class="panel-title"> 
-								            				<button type="button" class="btn btn-icon btn-danger btn-round pull-right"><i class="icon wb-close" aria-hidden="true"></i></button>
+								            				<button type="button" class="btn btn-icon btn-danger btn-round pull-right btnOportunidades_Perfiles_Borrar">
+								            					<i class="icon wb-close" aria-hidden="true"></i>
+								            				</button>
 											            </h3>
 											            </div>
 											            <div class="panel-body">
@@ -462,9 +555,9 @@
 								            			<div class="col-sm-12 form-group">
 															<label for="txtOp_Crear_ExperienciaHabilitante" class="control-label">Link  del Proceso</label>
 															<div class="input-group input-group-file">
-											                    <input type="text" class="form-control" placeholder="Link del Proceso">
+											                    <input id="txtOportunidades_Link" type="text" class="form-control" placeholder="Link del Proceso">
 											                    <span class="input-group-btn">
-											                     	<span class="btn btn-primary btn-file">
+											                     	<span id="btnOportunidades_AbrirLink" class="btn btn-primary btn-file">
 											                        	<i class="icon wb-upload" aria-hidden="true"></i>
 											                        	Abrir
 											                      	</span>
@@ -485,7 +578,6 @@
 																<option>El presupuesto es muy bajo, no se presenta</option>
 																<option>No hay transparencia, no se presenta</option>
 															</select>
-														</div>
 														</div>
 								            		</div>
 							            		</div>
@@ -543,6 +635,10 @@
 
 		<script src="../assets/vendor/alertify-js/alertify.js"></script>
 		<script src="../assets/js/components/alertify-js.js"></script>
+
+		<customscripts>
+			<script src="../assets/vendor/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+		</customscripts>
 
 	</footer>
 </body>
