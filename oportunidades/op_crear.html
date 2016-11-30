@@ -75,31 +75,27 @@
 									<input type="hidden" id="txtOp_Crear_idOportunidad" class="guardar">
 									<div class="row">	
 										<div class="col-md-6 form-group">
-											<label for="txtOp_Crear_Cliente" class="control-label">Cliente</label>
+											<label for="txtOp_Crear_Proceso" class="control-label">Numero de Proceso:</label>
+											<input type="text" id="txtOp_Crear_Proceso" class="form-control guardar" required>
+										</div>
+										<div class="col-md-6 form-group">
+											<label for="txtOp_Crear_Cliente" class="control-label" data-plugin="select2">Cliente</label>
 											<div class="input-group input-group-file">
-							                    <select id="txtOp_Crear_Cliente" class="form-control guardar" data-plugin="select2" required>
-							                    	<option value="1">1</option>
-							                    	<option value="2">2</option>
-							                    	<option value="3">3</option>
+							                    <select id="txtOp_Crear_Cliente" class="form-control guardar" required>
+							                    	<option value=""></option>
 							                    </select>
-							                    <span class="input-group-btn">
+							                    <span id="btnOp_Crear_AgregarCliente" class="input-group-btn">
 							                     	<span class="btn btn-primary">
 							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
-							                        	
 							                      	</span>
 							                    </span>
 							                </div>
-										</div>
-										<button id="elBoton" class="btn btn-inverse">pr</button>
-										<div class="col-md-6 form-group">
-											<label for="txtOp_Crear_Proceso" class="control-label">Numero de Proceso:</label>
-											<input type="text" id="txtOp_Crear_Proceso" class="form-control guardar">
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-sm-12 form-group">
 											<label for="txtOp_Crear_Objeto" class="control-label">Objeto del Proceso</label>
-											<textarea id="txtOp_Crear_Objeto" class="form-control guardar" rows="3"></textarea>
+											<textarea id="txtOp_Crear_Objeto" class="form-control guardar" rows="3" required></textarea>
 										</div>
 									</div>
 									<div class="row">
@@ -116,8 +112,8 @@
 										<div class="col-md-6 form-group">
 											<label for="txtOp_Crear_idArea" class="control-label">Area</label>
 											<div class="input-group input-group-file">
-							                    <select id="txtOp_Crear_idArea" class="form-control guardar" data-plugin="select2"></select>
-							                    <span class="input-group-btn">
+							                    <select id="txtOp_Crear_idArea" class="form-control guardar" data-plugin="select2" required></select>
+							                    <span id="btnOp_Crear_AgregarArea" class="input-group-btn">
 							                     	<span class="btn btn-primary">
 							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
 							                        	
@@ -126,43 +122,12 @@
 							                </div>											
 										</div>
 										<div class="col-md-6 form-group">
-											<label for="txtOp_Crear_idPais" class="control-label">Pais</label>
-											<div class="input-group input-group-file">
-												<select id="txtOp_Crear_idPais" class="form-control guardar" data-plugin="select2">	
-													<option value="8099761">Sin Definir</option>										
-												</select>
-							                    <span class="input-group-btn">
-							                     	<span class="btn btn-primary">
-							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
-							                        	
-							                      	</span>
-							                    </span>
-							                </div>
-
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-6 form-group">
-											<label for="txtOp_Crear_idDepartamento" class="control-label">Departamento</label>
-											<div class="input-group input-group-file">
-												<select id="txtOp_Crear_idDepartamento" class="form-control guardar" data-plugin="select2">	
-													<option value="8099761">Sin Definir</option>										
-												</select>
-							                    <span class="input-group-btn">
-							                     	<span class="btn btn-primary">
-							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
-							                        	
-							                      	</span>
-							                    </span>
-							                </div>
-										</div>
-										<div class="col-md-6 form-group">
 											<label for="txtOp_Crear_idCiudad" class="control-label">Ciudad</label>
 											<div class="input-group input-group-file">
-												<select id="txtOp_Crear_idCiudad" class="form-control guardar" data-plugin="select2">	
-													<option value="8099761">Sin Definir</option>										
+												<select id="txtOp_Crear_idCiudad" class="form-control guardar" data-plugin="select2" required>	
+													<option value=""></option>										
 												</select>
-							                    <span class="input-group-btn">
+							                    <span id="btnOp_Crear_AgregarCiudad" class="input-group-btn">
 							                     	<span class="btn btn-primary">
 							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
 							                        	
@@ -174,7 +139,7 @@
 									<div class="row">
 										<div class="col-md-6 form-group">
 											<label for="txtOp_Crear_ExpresionDeInteres" class="control-label">Expresion de Interés</label>
-											<select id="txtOp_Crear_ExpresionDeInteres" class="form-control guardar" data-plugin="select2">	
+											<select id="txtOp_Crear_ExpresionDeInteres" class="form-control guardar">	
 												<option value="No">No se require</option>										
 												<option value="Si">Es necesaria</option>										
 											</select>
@@ -204,7 +169,7 @@
 													<div class="col-md-6 form-group">
 														<label for="txtOp_Crear_Fecha_ObservacionesPrepliego" class="control-label">Observaciones Prepliego</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtOp_Crear_Fecha_ObservacionesPrepliego" type="text" class="form-control datepicker" placeholder="Observaciones Prepliego">
+										                    <input id="txtOp_Crear_Fecha_ObservacionesPrepliego" type="text" class="form-control datepicker guardar" placeholder="Observaciones Prepliego">
 										                    <span class="input-group-addon">
 										                      <span class="icon wb-calendar" aria-hidden="true"></span>
 										                    </span>
@@ -215,7 +180,7 @@
 								              		<div class="col-md-6 form-group">
 														<label for="txtOp_Crear_Fecha_Apertura" class="control-label">Apertura</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtOp_Crear_Fecha_Apertura" type="text" class="form-control datepicker" placeholder="Apertura">
+										                    <input id="txtOp_Crear_Fecha_Apertura" type="text" class="form-control datepicker guardar" placeholder="Apertura">
 										                    <span class="input-group-addon">
 										                      <span class="icon wb-calendar" aria-hidden="true"></span>
 										                    </span>
@@ -224,7 +189,7 @@
 													<div class="col-md-6 form-group">
 														<label for="txtOp_Crear_Fecha_Audiencia" class="control-label">Visita y/o Audiencia</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtOp_Crear_Fecha_Audiencia" type="text" class="form-control datepicker" placeholder="Visita y/o Audiencia">
+										                    <input id="txtOp_Crear_Fecha_Audiencia" type="text" class="form-control datepicker guardar" placeholder="Visita y/o Audiencia">
 										                    <span class="input-group-addon">
 										                      <span class="icon wb-calendar" aria-hidden="true"></span>
 										                    </span>
@@ -235,7 +200,7 @@
 								              		<div class="col-md-6 form-group">
 														<label for="txtOp_Crear_Fecha_ObservacionesPliego" class="control-label">Observaciones al Pliego</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtOp_Crear_Fecha_ObservacionesPliego" type="text" class="form-control datepicker" placeholder="Observaciones al Pliego">
+										                    <input id="txtOp_Crear_Fecha_ObservacionesPliego" type="text" class="form-control datepicker guardar" placeholder="Observaciones al Pliego">
 										                    <span class="input-group-addon">
 										                      <span class="icon wb-calendar" aria-hidden="true"></span>
 										                    </span>
@@ -244,7 +209,7 @@
 													<div class="col-md-6 form-group">
 														<label for="txtOp_Crear_Fecha_PlazoCompraPliego" class="control-label">Plazo compra pliego</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtOp_Crear_Fecha_PlazoCompraPliego" type="text" class="form-control datepicker" placeholder="Plazo compra pliego">
+										                    <input id="txtOp_Crear_Fecha_PlazoCompraPliego" type="text" class="form-control datepicker guardar" placeholder="Plazo compra pliego">
 										                    <span class="input-group-addon">
 										                      <span class="icon wb-calendar" aria-hidden="true"></span>
 										                    </span>
@@ -255,7 +220,7 @@
 								              		<div class="col-md-6 form-group">
 														<label for="txtOp_Crear_Fecha_Observaciones_Pliego" class="control-label">Valor Pliego</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtOp_Crear_Fecha_ValorPliego" type="text" class="form-control datepicker" placeholder="Valor Pliego">
+										                    <input id="txtOp_Crear_Fecha_ValorPliego" type="text" class="form-control datepicker guardar" placeholder="Valor Pliego">
 										                    <span class="input-group-addon">
 										                      <span class="icon wb-calendar" aria-hidden="true"></span>
 										                    </span>
@@ -264,7 +229,7 @@
 													<div class="col-md-6 form-group">
 														<label for="txtOp_Crear_Fecha_Cierre" class="control-label">Cierre</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtOp_Crear_Fecha_Cierre" type="text" class="form-control datepicker" placeholder="Cierre">
+										                    <input id="txtOp_Crear_Fecha_Cierre" type="text" class="form-control datepicker guardar" placeholder="Cierre">
 										                    <span class="input-group-addon">
 										                      <span class="icon wb-calendar" aria-hidden="true"></span>
 										                    </span>
@@ -293,7 +258,7 @@
 							            			<tbody>
 							            				<tr>
 							            					<td>Capital de Trabajo</td>
-							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos"></td>
+							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos" data-condicion=">="></td>
 							            					<td>
 							            						<div class="col-xs-2">
 							            							<span class="icon" data-valor="14154422450"></span>
@@ -321,7 +286,7 @@
 							            				</tr>
 							            				<tr>
 							            					<td>Liquidez</td>
-							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos"></td>
+							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos" data-condicion=">="></td>
 							            					<td>
 							            						<div class="col-xs-2">
 							            							<span class="icon" data-valor="1.66"></span>
@@ -349,7 +314,7 @@
 							            				</tr>
 							            				<tr>
 							            					<td>Endeudamiento</td>
-							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos"></td>
+							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos" data-condicion="<="></td>
 							            					<td>
 							            						<div class="col-xs-2">
 							            							<span class="icon" data-valor="0.59"></span>
@@ -377,7 +342,7 @@
 							            				</tr>
 							            				<tr>
 							            					<td>Razón de cobertura de Intereses</td>
-							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos"></td>
+							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos" data-condicion=">="></td>
 							            					<td>
 							            						<div class="col-xs-2">
 							            							<span class="icon" data-valor="-2.87"></span>
@@ -405,7 +370,7 @@
 							            				</tr>
 							            				<tr>
 							            					<td>Rentabilidad del Patrimonio</td>
-							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos"></td>
+							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos" data-condicion=">="></td>
 							            					<td>
 							            						<div class="col-xs-2">
 							            							<span class="icon" data-valor="-0.066"></span>
@@ -433,7 +398,7 @@
 							            				</tr>
 							            				<tr>
 							            					<td>Rentabilidad del Activo</td>
-							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos"></td>
+							            					<td><input type="text" class="form-control txtOpotunidad_Requisitos" data-condicion=">="></td>
 							            					<td>
 							            						<div class="col-xs-2">
 							            							<span class="icon" data-valor="-0.027"></span>
@@ -487,7 +452,7 @@
 											          <div class="panel panel-bordered panel-dark">
 											            <div class="panel-heading">
 											            <h3 class="panel-title"> 
-								            				<button type="button" class="btn btn-icon btn-danger btn-round pull-right btnOportunidades_Perfiles_Borrar">
+								            				<button type="button" class="btn btn-icon btn-danger btn-round pull-right btnOportunidades_Perfiles_Borrar hide">
 								            					<i class="icon wb-close" aria-hidden="true"></i>
 								            				</button>
 											            </h3>
@@ -576,13 +541,14 @@
 								            			<div class="col-sm-12 form-group">
 															<label for="txtOp_Crear_ExperienciaHabilitante" class="control-label"><strong>Resultado Final</strong></label>
 															<select id="txtOp_Crear_ExperienciaHabilitante" class="form-control guardar" placeholder="Criterios de Desempate" rows="3">
-																<option>Se presenta propuesta solo WSP</option>
-																<option>Se presenta propuesta en Consorcio</option>
-																<option>No se cumple la experiencia, No se presenta</option>
-																<option>No se cumple indicadores financieros, no se presenta</option>
-																<option>No se tiene el personal solicitado, no se presenta</option>
-																<option>El presupuesto es muy bajo, no se presenta</option>
-																<option>No hay transparencia, no se presenta</option>
+																<option value="1">En trámite</option>
+																<option value="2">Se presenta propuesta solo WSP</option>
+																<option value="3">Se presenta propuesta en Consorcio</option>
+																<option value="4">No se cumple la experiencia, No se presenta</option>
+																<option value="5">No se cumple indicadores financieros, no se presenta</option>
+																<option value="6">No se tiene el personal solicitado, no se presenta</option>
+																<option value="7">El presupuesto es muy bajo, no se presenta</option>
+																<option value="8">No hay transparencia, no se presenta</option>
 															</select>
 														</div>
 								            		</div>
@@ -590,6 +556,11 @@
 							            	</div>
 							            </div>
 							        </div>
+							        <div class="text-right" style="position: fixed; bottom: 40px; right: 20px; z-index:1000;">
+							        	<button type="button" class="btn btn-danger margin-right-20" id="btnOp_Crear_Nueva"><i class="icon wb-add-file"></i>Nueva</button>
+							        	<button type="button" class="btn btn-primary margin-right-20" id="btnOp_Crear_CompartirProceso"><i class="icon fa-send"></i>Enviar por Correo</button>
+					                  <button type="submit" class="btn btn-success" id="validateButton2"><i class="icon fa-floppy-o"></i>Guardar</button>
+					                </div>
 								</form>
 							</div>
 						</div>

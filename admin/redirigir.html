@@ -1,0 +1,35 @@
+<html>
+  <body>
+    <script></script>
+    <script>
+      var pagina = $_GET('enlace');
+      console.log(pagina);
+      if (pagina != undefined)
+      {
+        localStorage.setItem("wsp_simv3_enlace", JSON.stringify({enlace : "", parametro : "", hash : pagina}));  
+      } else
+      {
+        window.location.replace("../admin/home.html");
+      }
+
+      function $_GET(param)
+      {
+        var url = document.URL;
+        url = String(url.match(/\?+.+/));
+        url = url.replace("?", "");
+        url = url.split("&");
+
+        x = 0;
+        while (x < url.length)
+        {
+          p = url[x].split("=");
+          if (p[0] == param)
+          {
+            return decodeURIComponent(p[1]);
+          }
+          x++;
+        }
+      }
+    </script>
+  </body>
+</html>

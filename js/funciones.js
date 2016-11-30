@@ -7,6 +7,11 @@ $(document).ready(function() {
 function functiones()
 {
   Usuario = JSON.parse(localStorage.getItem('wsp_simv3'));
+
+  if (Usuario == null || Usuario === undefined)
+  {
+    cerrarSesion();
+  }
 }
 
 function cargarModulo(vinculo, titulo, callback)
@@ -82,7 +87,7 @@ function Mensaje(Titulo, Mensaje)
     alertify.success(Mensaje);
   } else if (Titulo == "Hey")
   {
-    alertify.warning(Mensaje);
+    alertify.success(Mensaje);
   } else
   {
     alertify.message(Mensaje);
@@ -155,7 +160,7 @@ function controlarPermisos()
 {
   if (Permisos == null)
   {
-    $.post('server/php/proyectos/cargarRestricciones.php', {Perfil: Usuario.idPerfil}, function(data, textStatus, xhr) 
+    $.post('../server/php/scripts/cargarRestricciones.php', {Perfil: Usuario.idPerfil}, function(data, textStatus, xhr) 
     {
       Permisos = data;
       aplicarRestricciones();
@@ -487,7 +492,7 @@ function modalCrearArea(callbackOk, callbackError, callbackUpdate)
       {
         $.post('../server/php/scripts/modals/crearArea.php', 
         {
-          Nombre : $("#txtCrearCliente_Nombre").val(),
+          Nombre : $("#txtCrearArea_Nombre").val(),
           Usuario : Usuario.id
         }, function(data, textStatus, xhr) 
         {
@@ -497,7 +502,7 @@ function modalCrearArea(callbackOk, callbackError, callbackUpdate)
             callbackError();
           } else
           {
-            $("#cntCrearCliente").modal("hide");
+            $("#cntCrearArea").modal("hide");
             if (data['id'] >= 0)
             {
               callbackOk();
@@ -519,3 +524,259 @@ function modalCrearArea(callbackOk, callbackError, callbackUpdate)
   $("#cntCrearArea").modal("show");
 }
 
+function modalCrearCiudad(callbackOk, callbackError, callbackUpdate)
+{
+  if (callbackOk === undefined)   {    callbackOk = function(){};  }
+  if (callbackError === undefined)   {    callbackError = function(){};  }
+  if (callbackUpdate === undefined)   {    callbackUpdate = function(){};  }
+
+  if ($("#cntCrearArea").length == 0)
+  {
+    var tds = "";
+    tds += '<div class="modal fade" id="cntCrearCiudad" aria-hidden="false" aria-labelledby="cntCrearCiudad_Label" role="dialog" tabindex="-1">';
+        tds += '<div class="modal-dialog">';
+          tds += '<form id="frmModalCrearCiudad" class="modal-content">';
+            tds += '<div class="modal-header">';
+              tds += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
+                tds += '<span aria-hidden="true">×</span>';
+              tds += '</button>';
+              tds += '<h4 class="modal-title" id="cntCrearCiudad_Label">Crear Ciudad</h4>';
+            tds += '</div>';
+            tds += '<div class="modal-body">';
+              tds += '<div class="row">';
+                tds += '<div class="col-sm-12 form-group">';
+                  tds += '<label for="txtModal_CrearCiudad_Pais" class="control-label">Pais</label>';
+                  tds += '<div class="input-group input-group-file">';
+                    tds += '<select id="txtModal_CrearCiudad_Pais" class="form-control" required>  ';
+                      tds += '<option value=""></option>';
+                    tds += '</select>';
+                    tds += '<span class="input-group-btn">';
+                      tds += '<span class="btn btn-primary">';
+                          tds += '<i class="icon wb-plus-circle" aria-hidden="true"></i>';
+                        tds += '</span>';
+                    tds += '</span>';
+                  tds += '</div>';
+                tds += '</div>';
+                tds += '<div class="col-sm-12 form-group">';
+                  tds += '<label for="txtModal_CrearCiudad_Departamento" class="control-label">Departamento</label>';
+                  tds += '<div class="input-group input-group-file">';
+                    tds += '<select id="txtModal_CrearCiudad_Departamento" class="form-control" required>';
+                      tds += '<option value=""></option>';
+                    tds += '</select>';
+                    tds += '<span class="input-group-btn">';
+                      tds += '<span class="btn btn-primary">';
+                          tds += '<i class="icon wb-plus-circle" aria-hidden="true"></i>';
+                        tds += '</span>';
+                    tds += '</span>';
+                  tds += '</div>';
+                tds += '</div>';
+                tds += '<div class="col-sm-12 form-group">';
+                  tds += '<label for="txtModal_CrearCiudad_Ciudad" class="control-label">Ciudad</label>';
+                  tds += '<input type="text" id="txtModal_CrearCiudad_Ciudad" class="form-control" required>';
+                tds += '</div>';
+                tds += '<div class="col-sm-12 pull-right">';
+                  tds += '<button class="btn btn-success btn-outline" type="submit">Crear</button>';
+                  tds += '<button class="btn btn-danger btn-outline margin-left-20" data-dismiss="modal" type="button">Cancelar</button>';
+                tds += '</div>';
+              tds += '</div>';
+            tds += '</div>';
+          tds += '</form>';
+        tds += '</div>';
+      tds += '</div>';
+    
+    $("body").append(tds);
+
+    $("#frmModalCrearCiudad").on("submit", function(evento)
+    {
+      evento.preventDefault();
+      if ($("#txtCrearArea_Nombre").val() == "")
+      {
+        Mensaje("Error", "No es posible crear un Area sin Nombre");
+      } else
+      {
+        $.post('../server/php/scripts/modals/crearArea.php', 
+        {
+          Nombre : $("#txtCrearCliente_Nombre").val(),
+          Usuario : Usuario.id
+        }, function(data, textStatus, xhr) 
+        {
+          if (data['Error'] != "")
+          {
+            Mensaje("Error", data['Error']);
+            callbackError();
+          } else
+          {
+            $("#cntCrearCiudad").modal("hide");
+            if (data['id'] >= 0)
+            {
+              callbackOk();
+              Mensaje("Ok", "El Area ha sido ingresada");
+            } else
+            {
+              callbackUpdate();                
+            }
+          }
+        }, "json").fail(function()
+        {
+          Mensaje("Error", "No hay conexión con el servidor");
+        });        
+      }
+    });
+  }
+
+  $("#txtCrearArea_Nombre").val("");
+  $("#cntCrearCiudad").modal("show");
+}
+
+function modalCompartirProceso(proceso, idProceso, callbackOk, callbackError, callbackUpdate)
+{
+  if (callbackOk === undefined)   {    callbackOk = function(){};  }
+  if (callbackError === undefined)   {    callbackError = function(){};  }
+  if (callbackUpdate === undefined)   {    callbackUpdate = function(){};  }
+
+  if ($("#cntCompartirProceso").length == 0)
+  {
+    var tds = "";
+    tds += '<div class="modal fade" id="cntCompartirProceso" aria-hidden="false" aria-labelledby="cntCompartirProceso_Label" role="dialog" tabindex="-1">';
+        tds += '<div class="modal-dialog">';
+          tds += '<div class="modal-content">';
+            tds += '<div class="modal-header">';
+              tds += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
+                tds += '<span aria-hidden="true">×</span>';
+              tds += '</button>';
+              tds += '<h4 class="modal-title" id="cntCompartiProceso_Label">Compartir ' + proceso + '</h4>';
+            tds += '</div>';
+            tds += '<div class="modal-body">';
+              tds += '<div class="row">';
+                tds += '<form id="frmModal_CompartirProceso_AgregarCorreo">';
+                  tds += '<div class="col-md-12 form-group">';
+                    tds += '<label for="txtModal_CompartiProceso_Correo" class="control-label">Dirección a Agregar</label>';
+                    tds += '<div class="input-group input-group-file">';
+                        tds += '<input type="email" id="txtModal_CompartiProceso_Correo" class="form-control" required>';
+                        tds += '<span id="btnModal_CompartiProceso_Correo" class="input-group-btn">';
+                          tds += '<span class="btn btn-success">';
+                              tds += '<i class="icon fa-user-plus" aria-hidden="true"></i>';
+                              tds += ' Agregar';
+                            tds += '</span>';
+                        tds += '</span>';
+                    tds += '</div>';
+                  tds += '</div>';
+                tds += '</form>';
+              tds += '</div>';
+              tds += '<div class="row">';
+                tds += '<ul id="cntModal_CompartirProceso_Correos" class="list-group list-group-full">'
+                tds += '</ul>'
+              tds += '</div>';
+              tds += '<div class="row">';
+                tds += '<div class="col-sm-12 pull-right">';
+                  tds += '<button class="btn btn-success btn-outline" data-dismiss="modal" type="button">Enviar</button>';
+                  tds += '<button class="btn btn-danger btn-outline margin-left-20" data-dismiss="modal" type="button">Cancelar</button>';
+                tds += '</div>';
+              tds += '</div>';
+            tds += '</div>';
+          tds += '</div>';
+        tds += '</div>';
+      tds += '</div>';
+    
+    $("body").append(tds);
+
+    $("#btnModal_CompartiProceso_Correo").on("click", function(evento)
+    {
+      evento.preventDefault();
+      $("#frmModal_CompartirProceso_AgregarCorreo").trigger('submit');
+    });
+
+    $(document).delegate('.btnModal_CompartiProceso_QuitarCorreo', 'click', function(event) 
+    {
+      $(this).parent("div").parent("div").parent("li").remove();
+    });
+
+    $("#frmModal_CompartirProceso_AgregarCorreo").on("submit", function(evento)
+    {
+      evento.preventDefault();
+      var valor = $("#txtModal_CompartiProceso_Correo").val();
+      if (valor == "")
+      {
+        Mensaje("Error", "No es posible Agregar un Remitente vacío");
+      } else
+      {
+        expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if ( expr.test(valor) )
+        {
+          var objRepetidos = $(".media-heading:contains('" + valor + "')");
+          if ($(objRepetidos).length > 0)
+          {
+            Mensaje("Error", "El correo ya está en la lista de remitentes")
+          } else
+          {
+            var tds = "" ;
+            tds += '<li class="list-group-item">';
+              tds += '<div class="media">';
+                tds += '<div class="media-left text-center">';
+                    tds += '<i class="icon wb-user margin-left-10 font-size-20"></i>';
+                tds += '</div>';
+                tds += '<div class="media-body">';
+                  tds += '<h4 class="media-heading">' + valor + '</h4>';
+                tds += '</div>';
+                tds += '<div class="media-right">';
+                  tds += '<a class="btnModal_CompartiProceso_QuitarCorreo" href="javascript:void(0)">';
+                    tds += '<i class="icon wb-close">';
+                  tds += '</a>';
+                tds += '</div>';
+              tds += '</div>';
+            tds += '</li>';
+
+            $("#cntModal_CompartirProceso_Correos").append(tds);
+            $("#txtModal_CompartiProceso_Correo").val("");
+          }
+        } else {
+          Mensaje("Error", "Debe ingresar una dirección de correo válida"); 
+        }
+      }
+    });
+
+    $("#frmModalCrearArea").on("submit", function(evento)
+    {
+      evento.preventDefault();
+      if ($("#txtCrearArea_Nombre").val() == "")
+      {
+        Mensaje("Error", "No es posible crear un Area sin Nombre");
+      } else
+      {
+        $.post('../server/php/scripts/modals/crearArea.php', 
+        {
+          Nombre : $("#txtCrearCliente_Nombre").val(),
+          Usuario : Usuario.id
+        }, function(data, textStatus, xhr) 
+        {
+          if (data['Error'] != "")
+          {
+            Mensaje("Error", data['Error']);
+            callbackError();
+          } else
+          {
+            $("#cntCompartirProceso").modal("hide");
+            if (data['id'] >= 0)
+            {
+              callbackOk();
+              Mensaje("Ok", "El Area ha sido ingresada");
+            } else
+            {
+              callbackUpdate();                
+            }
+          }
+        }, "json").fail(function()
+        {
+          Mensaje("Error", "No hay conexión con el servidor");
+        });        
+      }
+    });
+  } else
+  {
+    $("#cntCompartiProceso_Label").text("Compartir " + proceso);
+    $("#cntModal_CompartirProceso_Correos li").remove();
+  }
+
+  $("#txtCrearArea_Nombre").val("");
+  $("#cntCompartirProceso").modal("show");
+}

@@ -7,17 +7,17 @@
    $usuario = addslashes($_POST['usuario']);
 
    $idCliente = $datos->idCliente;
-   $Nombre = $datos->Nombre;
-   $NIT = $datos->NIT;
-   $idNaturaleza = $datos->idNaturaleza;
-   $Direccion = $datos->Direccion;
-   $Telefono = $datos->Telefono;
-   $sitioWeb = $datos->sitioWeb;
-   $Actividades = $datos->Actividades;
-   $idPais = $datos->idPais;
-   $idCiudad = $datos->idCiudad;
-   $Mision = $datos->Mision;
-   $Vision = $datos->Vision;
+   $Nombre = addslashes($datos->Nombre);
+   $NIT = addslashes($datos->NIT);
+   $idNaturaleza = addslashes($datos->idNaturaleza);
+   $Direccion = addslashes($datos->Direccion);
+   $Telefono = addslashes($datos->Telefono);
+   $sitioWeb = addslashes($datos->sitioWeb);
+   $Actividades = addslashes($datos->Actividades);
+   $idPais = addslashes($datos->idPais);
+   $idCiudad = addslashes($datos->idCiudad);
+   $Mision = addslashes($datos->Mision);
+   $Vision = addslashes($datos->Vision);
    
    $usuario;
    

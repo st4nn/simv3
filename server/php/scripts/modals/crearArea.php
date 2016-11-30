@@ -4,7 +4,6 @@
    $link = Conectar();
 
    $Nombre = addslashes($_POST['Nombre']);
-   $Nit = addslashes($_POST['Nit']);
    $usuario = addslashes($_POST['Usuario']);
 
    

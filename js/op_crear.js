@@ -12,7 +12,7 @@ function op_crear()
 		});
 
 	$('#txtOp_Crear_Cliente').iniciarSelectRemoto("cargarClientes");
-	$("#txtOp_Crear_idArea").iniciarSelectRemoto("cargarAreas");
+	$("#txtOp_Crear_idArea").iniciarSelectRemoto("cargarAreas", 350, 1);
 	$("#txtOp_Crear_idCiudad").iniciarSelectRemoto("cargarCiudades");
 
 	$(document).delegate('.txtOpotunidad_Requisitos', 'change', function(event) 
@@ -77,8 +77,43 @@ function op_crear()
 	});
 
 	$("#btnOp_Crear_AgregarCliente").on("click", function(evento)
-		{
-			evento.preventDefault();
-			modalCrearCliente();
-		});
+	{
+		evento.preventDefault();
+		modalCrearCliente();
+	});
+
+	$("#btnOp_Crear_AgregarArea").on("click", function(evento)
+	{
+		evento.preventDefault();
+		modalCrearArea();
+	});
+
+	$("#btnOp_Crear_AgregarCiudad").on("click", function(evento)
+	{
+		evento.preventDefault();
+		modalCrearCiudad();
+	});
+
+	$("#btnOp_Crear_Nueva").on("click", function(evento)
+	{
+		evento.preventDefault();
+		alertify.set({"labels" : {"ok" : "Si, continuar", "cancel" : "No, Volver"}});
+		alertify.confirm("Se perderan los datos que no haya guardar, ¿está seguro de continuar?.",
+		  function(ev){
+		  	if (ev)
+		  	{
+				$("#frmOp_Crear")[0].reset();
+				$("[data-plugin=select2]").val("");
+				$("[data-plugin=select2]").trigger("change");
+		  	} 		  
+		  });
+	});
+
+	$("#btnOp_Crear_CompartirProceso").on("click", function(evento)
+	{
+		evento.preventDefault();
+		modalCompartirProceso("Oportunidad");
+	});
+
+	
 }

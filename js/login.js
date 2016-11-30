@@ -29,7 +29,7 @@ function ready_login()
   {
     objUser.cDate = cDate;
     localStorage.setItem("wsp_simv3", JSON.stringify(objUser));    
-    window.location.replace("admin/home.html");
+    window.location.replace("admin/redirigir.html");
   } else
   {
     delete localStorage.wsp_simv3;    
@@ -53,7 +53,7 @@ function frmLogin_submit(event)
       if (data != 0)
       {
         localStorage.setItem("wsp_simv3", JSON.stringify(data));  
-        window.location.replace("admin/home.html");
+        window.location.replace("admin/redirigir.html");
       } else
       {
         $(".alert").html("<strong>Error!</strong> Acceso denegado.");
