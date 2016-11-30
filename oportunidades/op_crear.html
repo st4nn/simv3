@@ -55,6 +55,7 @@
 	</fixedHead>
 	<customCss>
 		<link rel='stylesheet' href='../assets/vendor/bootstrap-datepicker/bootstrap-datepicker.css'>
+		<link rel='stylesheet' href='../assets/vendor/select2/select2.css'>
 	</customCss>
 </head>
 <body>
@@ -76,7 +77,11 @@
 										<div class="col-md-6 form-group">
 											<label for="txtOp_Crear_Cliente" class="control-label">Cliente</label>
 											<div class="input-group input-group-file">
-							                    <input type="text" id="txtOp_Crear_Cliente" class="form-control guardar" required>
+							                    <select id="txtOp_Crear_Cliente" class="form-control guardar" data-plugin="select2" required>
+							                    	<option value="1">1</option>
+							                    	<option value="2">2</option>
+							                    	<option value="3">3</option>
+							                    </select>
 							                    <span class="input-group-btn">
 							                     	<span class="btn btn-primary">
 							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
@@ -85,6 +90,7 @@
 							                    </span>
 							                </div>
 										</div>
+										<button id="elBoton" class="btn btn-inverse">pr</button>
 										<div class="col-md-6 form-group">
 											<label for="txtOp_Crear_Proceso" class="control-label">Numero de Proceso:</label>
 											<input type="text" id="txtOp_Crear_Proceso" class="form-control guardar">
@@ -638,6 +644,7 @@
 
 		<customscripts>
 			<script src="../assets/vendor/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+			<script src="../assets/vendor/select2/select2.min.js"></script>			
 		</customscripts>
 
 	</footer>

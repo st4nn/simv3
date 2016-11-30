@@ -11,6 +11,36 @@ function op_crear()
 		    todayHighlight: true
 		});
 
+	$('#txtOp_Crear_Cliente').select2({
+	  	ajax: {
+		    url: "../server/php/scripts/select2/cargarClientes.php",
+		    dataType: 'json',
+		    delay: 300,
+		    data: function (params) {
+		      return {
+		        q: params.term, // search term
+		        page: params.page
+		      };
+		    },
+		    processResults: function (data, params) {
+		      return {
+		        results: data.items
+		      };
+		    },
+		    cache: true
+	  	},
+	  	escapeMarkup: function (markup) { return markup; }, 
+	  	minimumInputLength: 3,
+		templateResult: function(dato) { return dato.name; 	},
+		templateSelection : function(dato) 	{ return dato.name;		}
+	});
+
+	$("#elBoton").click(function(event) 
+	{
+		event.preventDefault();
+		alert($("#txtOp_Crear_Cliente").val());
+	});
+
 	$(document).delegate('.txtOpotunidad_Requisitos', 'change', function(event) 
 	{
 		var contenedor = $(this).parent("td").parent("tr");

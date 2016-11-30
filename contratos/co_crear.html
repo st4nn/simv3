@@ -7,7 +7,7 @@
 	<meta name="description" content="bootstrap admin template">
 	<meta name="author" content="">
 
-  	<title>Propuesta | S.I.M.</title>
+  	<title>Contratos | S.I.M.</title>
 
 	<link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
   	<link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -56,6 +56,7 @@
 	<customCss>
 		<link rel='stylesheet' href='../assets/vendor/bootstrap-datepicker/bootstrap-datepicker.css'>
 		<link rel='stylesheet' href='../assets/vendor/select2/select2.css'>
+		<link rel="stylesheet" href="../assets/vendor/switchery/switchery.css">
 	</customCss>
 </head>
 <body>
@@ -70,14 +71,14 @@
 					<div class="widget-content">
 						<div class="padding-top-30 padding-30">
 							<div class="row">
-								<h2 id="lblCl_Crear_Tipo">Crear Propuesta</h2>
-								<form class="form-group" id="frmPro_Crear">
-									<input type="hidden" id="txtPro_Crear_idOportunidad" class="guardar">
+								<h2 id="lblCl_Crear_Tipo">Crear Contrato</h2>
+								<form class="form-group" id="frmCo_Crear">
+									<input type="hidden" id="txtCo_Crear_idOportunidad" class="guardar">
 									<div class="row">	
 										<div class="col-md-6 form-group">
-											<label for="txtPro_Crear_Cliente" class="control-label">Cliente</label>
+											<label for="txtCo_Crear_Cliente" class="control-label">Cliente</label>
 											<div class="input-group input-group-file">
-							                    <input type="text" id="txtPro_Crear_Cliente" class="form-control guardar" required>
+							                    <input type="text" id="txtCo_Crear_Cliente" class="form-control guardar" required>
 							                    <span class="input-group-btn">
 							                     	<span class="btn btn-primary">
 							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
@@ -87,31 +88,21 @@
 							                </div>
 										</div>
 										<div class="col-md-6 form-group">
-											<label for="txtPro_Crear_Proceso" class="control-label">Numero de Proceso:</label>
-											<input type="text" id="txtPro_Crear_Proceso" class="form-control guardar">
+											<label for="txtCo_Crear_Proceso" class="control-label">Numero de Contrato:</label>
+											<input type="text" id="txtCo_Crear_Contrato" class="form-control guardar">
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-sm-12 form-group">
-											<label for="txtPro_Crear_Objeto" class="control-label">Objeto del Proceso</label>
-											<textarea id="txtPro_Crear_Objeto" class="form-control guardar" rows="3"></textarea>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-6 form-group">
-											<label for="txtPro_Crear_ValorOfera" class="control-label">Valor de la Oferta</label>
-											<input id="txtPro_Crear_ValorOfera" class="form-control guardar">
-										</div>
-										<div class="col-md-6 form-group">
-											<label for="txtPro_Crear_Plazo" class="control-label">Plazo <strong>(En Meses)</strong></label>
-											<input type="number" id="txtPro_Crear_Plazo" class="form-control guardar">
+											<label for="txtCo_Crear_Objeto" class="control-label">Objeto del Proyecto</label>
+											<textarea id="txtCo_Crear_Objeto" class="form-control guardar" rows="3"></textarea>
 										</div>
 									</div>
 									<div class="row">	
 										<div class="col-md-6 form-group">
-											<label for="txtPro_Crear_idArea" class="control-label">Area</label>
+											<label for="txtCo_Crear_idArea" class="control-label">Area</label>
 											<div class="input-group input-group-file">
-							                    <select id="txtPro_Crear_idArea" class="form-control guardar" data-plugin="select2"></select>
+							                    <select id="txtCo_Crear_idArea" class="form-control guardar" data-plugin="select2"></select>
 							                    <span class="input-group-btn">
 							                     	<span class="btn btn-primary">
 							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
@@ -121,9 +112,9 @@
 							                </div>											
 										</div>
 										<div class="col-md-6 form-group">
-											<label for="txtPro_Crear_idPais" class="control-label">Pais</label>
+											<label for="txtCo_Crear_idPais" class="control-label">Pais</label>
 											<div class="input-group input-group-file">
-												<select id="txtPro_Crear_idPais" class="form-control guardar" data-plugin="select2">	
+												<select id="txtCo_Crear_idPais" class="form-control guardar" data-plugin="select2">	
 													<option value="8099761">Sin Definir</option>										
 												</select>
 							                    <span class="input-group-btn">
@@ -138,9 +129,9 @@
 									</div>
 									<div class="row">
 										<div class="col-md-6 form-group">
-											<label for="txtPro_Crear_idDepartamento" class="control-label">Departamento</label>
+											<label for="txtCo_Crear_idDepartamento" class="control-label">Departamento</label>
 											<div class="input-group input-group-file">
-												<select id="txtPro_Crear_idDepartamento" class="form-control guardar" data-plugin="select2">	
+												<select id="txtCo_Crear_idDepartamento" class="form-control guardar" data-plugin="select2">	
 													<option value="8099761">Sin Definir</option>										
 												</select>
 							                    <span class="input-group-btn">
@@ -152,9 +143,9 @@
 							                </div>
 										</div>
 										<div class="col-md-6 form-group">
-											<label for="txtPro_Crear_idCiudad" class="control-label">Ciudad</label>
+											<label for="txtCo_Crear_idCiudad" class="control-label">Ciudad</label>
 											<div class="input-group input-group-file">
-												<select id="txtPro_Crear_idCiudad" class="form-control guardar" data-plugin="select2">	
+												<select id="txtCo_Crear_idCiudad" class="form-control guardar" data-plugin="select2">	
 													<option value="8099761">Sin Definir</option>										
 												</select>
 							                    <span class="input-group-btn">
@@ -168,12 +159,63 @@
 									</div>
 									<div class="row">
 										<div class="col-md-6 form-group">
-											<label for="txtPro_Crear_ResponsableTecnico" class="control-label">Responsable Técnico</label>
-											<input type="number" id="txtPro_Crear_ResponsableTecnico" class="form-control guardar">
+											<label for="txtCo_Crear_Estado" class="control-label">Estado del Contrato</label>
+											<div class="input-group input-group-file">
+												<select type="number" id="txtCo_Crear_Estado" class="form-control guardar">
+													<option value="En legalización">En legalización</option>
+													<option value="En Ejecución">En Ejecución</option>
+													<option value="Suspendido">Suspendido</option>
+													<option value="Terminado">Terminado</option>
+													<option value="En Liquidación">En Liquidación</option>
+													<option value="Liquidado">Liquidado</option>
+												</select>
+												<span class="input-group-btn">
+							                     	<span class="btn btn-primary">
+							                        	<i class="icon fa-refresh" aria-hidden="true"></i>
+							                        	Actualizar
+							                      	</span>
+							                    </span>
+											</div>
 										</div>
 										<div class="col-md-6 form-group">
-											<label for="txtPro_Crear_ResponsableComercial" class="control-label">Responsable Comercial</label>
-											<input type="number" id="txtPro_Crear_ResponsableComercial" class="form-control guardar">
+											<label for="txtCo_Crear_TipoDeTrabajo" class="control-label">Tipo de Trabajo</label>
+											<select id="txtCo_Crear_TipoDeTrabajo" class="form-control select2 guardar">
+												<option value="Asesoria">Asesoria</option>
+												<option value="Estudios y/o Diseños">Estudios y/o Diseños</option>
+												<option value="Interventoría">Interventoría</option>
+												<option value="Gerencia de Proyecto">Gerencia de Proyecto</option>
+												<option value="Consultoría">Consultoría</option>
+												<option value="Suministro">Suministro</option>
+												<option value="Operación">Operación</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-6 form-group">
+											<label for="txtCo_Crear_Estado" class="control-label">Especialidad(es)</label>
+											<select type="number" id="txtCo_Crear_Estado" multiple class="form-control select2 guardar">
+												<option value="Acueductos y Alcantarillados">Acueductos y Alcantarillados</option>
+												<option value="Plantas de Tratamiento">Plantas de Tratamiento</option>
+												<option value="Centrales Hidroelectricas">Centrales Hidroelectricas</option>
+												<option value="Servicios Ambientales">Servicios Ambientales</option>
+												<option value="Estudios de Impacto Ambiental">Estudios de Impacto Ambiental</option>
+												<option value="Subestaciones">Subestaciones</option>
+												<option value="Lineas">Lineas</option>
+												<option value="Distribucción">Distribucción</option>
+												<option value="Suministro">Suministro</option>
+												<option value="Redes">Redes</option>
+												<option value="Riego">Riego</option>
+												<option value="Urbanismo">Urbanismo</option>
+												<option value="Edificios Escolares">Edificios Escolares</option>
+												<option value="Vias">Vias</option>
+												<option value="Puentes">Puentes</option>
+												<option value="Minas">Minas</option>
+											</select>
+										</div>
+										<div class="col-md-6 form-group">
+											<label for="txtCo_Crear_DirectorDeProyecto" class="control-label">Director de Proyecto:</label>
+											<input type="text" id="txtCo_Crear_DirectorDeProyecto" class="form-control guardar">
 										</div>
 									</div>
 
@@ -185,18 +227,18 @@
 							            	<div class="panel-body">
 								              	<div class="row">
 								              		<div class="col-md-6 form-group">
-														<label for="txtPro_Crear_Fecha_Apertura" class="control-label">Apertura</label>
+														<label for="txtCo_Crear_Fecha_Adjudicacion" class="control-label">Adjudicación</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtPro_Crear_Fecha_Apertura" type="text" class="form-control datepicker" placeholder="Apertura">
+										                    <input id="txtCo_Crear_Fecha_Adjudicacion" type="text" class="form-control datepicker" placeholder="Adjudicación">
 										                    <span class="input-group-addon">
 										                      <span class="icon wb-calendar" aria-hidden="true"></span>
 										                    </span>
 										                </div>
 													</div>
 													<div class="col-md-6 form-group">
-														<label for="txtPro_Crear_Fecha_Audiencia" class="control-label">Visita y/o Audiencia</label>
+														<label for="txtCo_Crear_Fecha_Suscripcion" class="control-label">Suscripción</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtPro_Crear_Fecha_Audiencia" type="text" class="form-control datepicker" placeholder="Visita y/o Audiencia">
+										                    <input id="txtCo_Crear_Fecha_Suscripcion" type="text" class="form-control datepicker" placeholder="Suscripción">
 										                    <span class="input-group-addon">
 										                      <span class="icon wb-calendar" aria-hidden="true"></span>
 										                    </span>
@@ -205,18 +247,18 @@
 								              	</div>
 								              	<div class="row">
 								              		<div class="col-md-6 form-group">
-														<label for="txtPro_Crear_Fecha_ObservacionesPliego" class="control-label">Observaciones al Pliego</label>
+														<label for="txtCo_Crear_Fecha_Inicio" class="control-label">Inicio</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtPro_Crear_Fecha_ObservacionesPliego" type="text" class="form-control datepicker" placeholder="Observaciones al Pliego">
+										                    <input id="txtCo_Crear_Fecha_Inicio" type="text" class="form-control datepicker" placeholder="Inicio">
 										                    <span class="input-group-addon">
 										                      <span class="icon wb-calendar" aria-hidden="true"></span>
 										                    </span>
 										                </div>
 													</div>
 													<div class="col-md-6 form-group">
-														<label for="txtPro_Crear_Fecha_Cierre" class="control-label">Cierre</label>
+														<label for="txtCo_Crear_Fecha_Terminacion" class="control-label">Terminación</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtPro_Crear_Fecha_Cierre" type="text" class="form-control datepicker" placeholder="Cierre">
+										                    <input id="txtCo_Crear_Fecha_Terminacion" type="text" class="form-control datepicker" placeholder="Terminación">
 										                    <span class="input-group-addon">
 										                      <span class="icon wb-calendar" aria-hidden="true"></span>
 										                    </span>
@@ -225,18 +267,18 @@
 								              	</div>
 								              	<div class="row">
 								              		<div class="col-md-6 form-group">
-														<label for="txtPro_Crear_Fecha_Observaciones_InformeEvaluacion" class="control-label">Informe Evaluación</label>
+														<label for="txtCo_Crear_Fecha_Liquidacion" class="control-label">Liquidación</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtPro_Crear_Fecha_Observaciones_InformeEvaluacion" type="text" class="form-control datepicker" placeholder="Informe Evaluación">
+										                    <input id="txtCo_Crear_Fecha_Liquidacion" type="text" class="form-control datepicker" placeholder="Liquidación">
 										                    <span class="input-group-addon">
 										                      <span class="icon wb-calendar" aria-hidden="true"></span>
 										                    </span>
 										                </div>
 													</div>
 													<div class="col-md-6 form-group">
-														<label for="txtPro_Crear_Fecha_Adjudicacion" class="control-label">Adjudicación</label>
+														<label for="txtCo_Crear_Fecha_Certificado" class="control-label">Certificado</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtPro_Crear_Fecha_Adjudicacion" type="text" class="form-control datepicker" placeholder="Adjudicación">
+										                    <input id="txtCo_Crear_Fecha_Certificado" type="text" class="form-control datepicker" placeholder="Certificado">
 										                    <span class="input-group-addon">
 										                      <span class="icon wb-calendar" aria-hidden="true"></span>
 										                    </span>
@@ -254,8 +296,8 @@
 							            	<div class="panel-body">
 							            		<div class="row">
 							            			<div class="col-sm-12 form-group">
-														<label for="txtPro_Crear_Empresa" class="control-label">Empresa del Grupo</label>
-														<select id="txtPro_Crear_Empresa" class="form-control guardar" data-plugin="select2">	
+														<label for="txtCo_Crear_Empresa" class="control-label">Empresa del Grupo</label>
+														<select id="txtCo_Crear_Empresa" class="form-control guardar" data-plugin="select2">	
 															<option value="1">WSP Colombia</option>
 															<option value="2">Parsons</option>
 															<option value="3">WSP Servicios</option>
@@ -266,16 +308,16 @@
 							            		</div>
 							            		<div class="row">
 							            			<div class="col-sm-6 form-group">
-														<label for="txtPro_Crear_Consorcio" class="control-label">Consorcio</label>
-														<select id="txtPro_Crear_Consorcio" class="form-control guardar" placeholder="Consorcio">
+														<label for="txtCo_Crear_Consorcio" class="control-label">Consorcio</label>
+														<select id="txtCo_Crear_Consorcio" class="form-control guardar" placeholder="Consorcio">
 															<option value="No">NO</option>
 															<option value="Si">SI</option>
 														</select>
 													</div>
 													<div class="col-sm-6 form-group">
-														<label for="txtPro_Crear_PorcentajeParticipacion" class="control-label">Porcentaje de Participación WSP</label>
+														<label for="txtCo_Crear_PorcentajeParticipacion" class="control-label">Porcentaje de Participación WSP</label>
 														<div class="input-group input-group-icon">
-										                    <input id="txtPro_Crear_PorcentajeParticipacion" type="number" class="form-control" placeholder="Porcentaje de Participación" value="100" readonly="true">
+										                    <input id="txtCo_Crear_PorcentajeParticipacion" type="number" class="form-control" placeholder="Porcentaje de Participación" value="100" readonly="true">
 										                    <span class="input-group-addon">
 										                      <span class="icon" aria-hidden="true">%</span>
 										                    </span>
@@ -311,54 +353,102 @@
 														</div>
 							            			</div>
 											    </div>
-											    <div class="col-md-12">
-							            			<h4>Resultados</h4>
-							            			<div class="row col-md-12">
-							            				<div class="col-md-6 form-group">
-															<label for="txtPro_Crear_PuntajeTotal" class="control-label">Puntaje Total</label>
-															<input id="txtPro_Crear_PuntajeTotal" type="text" class="form-control">
-								            			</div>
-								            			<div class="col-md-6 form-group">
-															<label for="txtPro_Crear_Final" class="control-label">Final</label>
-															<select id="txtPro_Crear_Final" class="form-control">
-																<option value="Habilitados">Habilitados</option>
-																<option value="No habilitados">No habilitados</option>
-																<option value="Habil">Habil</option>
-																<option value="No habil">No habil</option>
-																<option value="Adjudicada a WSP y/o Consorcio">Adjudicada a WSP y/o Consorcio</option>
-																<option value="Declarado Desierto">Declarado Desierto</option>
-															</select>
-								            			</div>
-							            			</div>
-							            			<div class="row col-md-12">
-							            				<div class="col-md-12 form-group">
-															<label for="txtPro_Crear_ResultadoFinanciera" class="control-label">Financiera</label>
-															<textarea id="txtPro_Crear_ResultadoFinanciera" type="text" class="form-control" rows="3"></textarea>
-								            			</div>
-							            			</div>
-							            			<div class="row col-md-12">
-							            				<div class="col-md-12 form-group">
-															<label for="txtPro_Crear_ResultadoTecnico" class="control-label">Técnico</label>
-															<textarea id="txtPro_Crear_ResultadoTecnico" type="text" class="form-control" rows="3"></textarea>
-								            			</div>
-							            			</div>
-							            			<div class="row col-md-12">
-							            				<div class="col-md-12 form-group">
-															<label for="txtPro_Crear_ResultadoEconomica" class="control-label">Económica</label>
-															<textarea id="txtPro_Crear_ResultadoEconomica" type="text" class="form-control" rows="3"></textarea>
-								            			</div>
-							            			</div>
-
-							            			<div class="row col-md-12">
-							            				<div class="col-md-12 form-group">
-															<label for="txtPro_Crear_ResultadoEconomica" class="control-label">Observaciones</label>
-															<textarea id="txtPro_Crear_ResultadoEconomica" type="text" class="form-control" rows="4"></textarea>
-								            			</div>
-							            			</div>
-							            		</div>
 							            	</div>
 							            </div>
 							        </div>
+							        <div class="col-md-12">	
+										<div class="panel panel-bordered">
+          									<div class="panel-heading">
+              									<h3 class="panel-title">Documentos</h3>
+							            	</div>
+							            	<div class="panel-body">
+								              	<div class="row">
+								              		<div class="col-md-6">
+									                  <div class="pull-left margin-right-20">
+									                    <input type="checkbox" data-plugin="switchery">
+									                  </div>
+									                  <label class="padding-top-3" for="inputBasicOff">Resolución</label>
+									                </div>
+									                <div class="col-md-6">
+									                  <div class="pull-left margin-right-20">
+									                    <input type="checkbox" data-plugin="switchery">
+									                  </div>
+									                  <label class="padding-top-3" for="inputBasicOff">Contrato</label>
+									                </div>
+								              	</div>
+								              	<div class="row">
+								              		<div class="col-md-6">
+									                  <div class="pull-left margin-right-20">
+									                    <input type="checkbox" data-plugin="switchery">
+									                  </div>
+									                  <label class="padding-top-3" for="inputBasicOff">Polizas</label>
+									                </div>
+									                <div class="col-md-6">
+									                  <div class="pull-left margin-right-20">
+									                    <input type="checkbox" data-plugin="switchery">
+									                  </div>
+									                  <label class="padding-top-3" for="inputBasicOff">Acta de Inicio</label>
+									                </div>
+								              	</div>
+								              	<div class="row">
+								              		<div class="col-md-6">
+									                  <div class="pull-left margin-right-20">
+									                    <input type="checkbox" data-plugin="switchery">
+									                  </div>
+									                  <label class="padding-top-3" for="inputBasicOff">Modificaciones y/o Adiciones</label>
+									                </div>
+									                <div class="col-md-6">
+									                  <div class="pull-left margin-right-20">
+									                    <input type="checkbox" data-plugin="switchery">
+									                  </div>
+									                  <label class="padding-top-3" for="inputBasicOff">Polizas</label>
+									                </div>
+								              	</div>
+								              	<div class="row">
+								              		<div class="col-md-6">
+									                  <div class="pull-left margin-right-20">
+									                    <input type="checkbox" data-plugin="switchery">
+									                  </div>
+									                  <label class="padding-top-3" for="inputBasicOff">Acta Terminación</label>
+									                </div>
+									                <div class="col-md-6">
+									                  <div class="pull-left margin-right-20">
+									                    <input type="checkbox" data-plugin="switchery">
+									                  </div>
+									                  <label class="padding-top-3" for="inputBasicOff">Acta de Liquidación</label>
+									                </div>
+								              	</div>
+								              	<div class="row">
+								              		<div class="col-md-6">
+									                  <div class="pull-left margin-right-20">
+									                    <input type="checkbox" data-plugin="switchery">
+									                  </div>
+									                  <label class="padding-top-3" for="inputBasicOff">Certificación</label>
+									                </div>
+									                <div class="col-md-6">
+									                  <div class="pull-left margin-right-20">
+									                    <input type="checkbox" data-plugin="switchery">
+									                  </div>
+									                  <label class="padding-top-3" for="inputBasicOff">Acuerdo Consorcial</label>
+									                </div>
+								              	</div>
+								              	<div class="row">
+								              		<div class="col-md-6">
+									                  <div class="pull-left margin-right-20">
+									                    <input type="checkbox" data-plugin="switchery">
+									                  </div>
+									                  <label class="padding-top-3" for="inputBasicOff">Rut Consorcio</label>
+									                </div>
+									                <div class="col-md-6">
+									                  <div class="pull-left margin-right-20">
+									                    <input type="checkbox" data-plugin="switchery">
+									                  </div>
+									                  <label class="padding-top-3" for="inputBasicOff">Acuerdo Consorcial</label>
+									                </div>
+								              	</div>
+								            </div>
+								        </div>
+								    </div>
 								</form>
 							</div>
 						</div>
@@ -413,7 +503,8 @@
 
 		<customscripts>
 			<script src="../assets/vendor/bootstrap-datepicker/bootstrap-datepicker.js"></script>
-			<script src="../assets/vendor/select2/select2.min.js"></script>		
+			<script src="../assets/vendor/select2/select2.min.js"></script>
+			<script src="../assets/vendor/switchery/switchery.min.js"></script>			
 		</customscripts>
 
 	</footer>
