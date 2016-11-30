@@ -21,14 +21,27 @@ function abrirModulo()
             Site.run();
             
             var nomArchivo = location.href;
+            
             var arrNomArchivo = location.href.split("/");
             nomArchivo = arrNomArchivo[arrNomArchivo.length - 2] + "/" + arrNomArchivo[arrNomArchivo.length - 1];
+            var lnkMenu = $("a[href='..\/" + arrNomArchivo[arrNomArchivo.length - 2] + "\/" + arrNomArchivo[arrNomArchivo.length - 1] + "");
+
+            var tmpNomArchivo = arrNomArchivo[arrNomArchivo.length - 1];
             arrNomArchivo = nomArchivo.split("?");
             nomArchivo = arrNomArchivo[0];
             arrNomArchivo = nomArchivo.split("#");
             nomArchivo = arrNomArchivo[0];
             //abrirModulo_cargarPlugins(nomArchivo);
+            //
+            if ($(lnkMenu != undefined))
+            {
+              $(lnkMenu).parent("li").addClass('active');
+              $(lnkMenu).parent("li").parent('ul').parent('li').addClass('active open');
+              //$(lnkMenu).addClass('open');
+            }
             
+            
+            console.log(tmpNomArchivo);
             if (modulos[nomArchivo] != undefined )
             {
               $("#lblNomModulo").text(modulos[nomArchivo].titulo);
