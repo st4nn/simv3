@@ -8,6 +8,9 @@ function abrirModulo()
   $.ajaxSetup({
     cache: true
   });
+
+  desplegarCargando();
+  
   $("body > header").abrirModulo_cargarArchivos("../admin/header.html", function()
     {
       $("#lblCerrarSesion").on("click", cerrarSesion);
@@ -37,11 +40,9 @@ function abrirModulo()
             {
               $(lnkMenu).parent("li").addClass('active');
               $(lnkMenu).parent("li").parent('ul').parent('li').addClass('active open');
-              //$(lnkMenu).addClass('open');
             }
             
             
-            console.log(tmpNomArchivo);
             if (modulos[nomArchivo] != undefined )
             {
               $("#lblNomModulo").text(modulos[nomArchivo].titulo);
@@ -134,5 +135,29 @@ function abrirModulo_CargarScriptPropio()
   $.getScript("../js/" + nomArchivo.replace(".html", ".js"), function(ev)
     {
       controlarPermisos();
+      $("#cntCargando").modal("hide");
     });
+}
+
+function desplegarCargando()
+{
+  if ($("#cntCargando").length == 0)
+  {
+    var tds = "";
+    tds += '<div class="modal fade modal-fill-in" id="cntCargando" aria-hidden="false" aria-labelledby="cntCargando" role="dialog" tabindex="-1" style="background: rgba(0,0,0, 0.3);">';
+      tds += '<div class="modal-dialog">';
+        tds += '<div class="modal-content">';
+          tds += '<div class="animsition vertical-align text-center" data-animsition-in="fade-in" data-animsition-out="fade-out">';
+            tds += '<div class="vertical-align-middle">';
+              tds += '<i class="icon fa-circle-o-notch icon-spin font-size-80 blue-700"></i>';
+            tds += '</div>';
+          tds += '</div>';
+        tds += '</div>';
+      tds += '</div>';
+    tds += '</div>';
+
+    $("body").append(tds);
+  }
+
+  $("#cntCargando").modal("show");
 }
