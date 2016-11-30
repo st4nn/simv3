@@ -11,38 +11,13 @@ function op_crear()
 		    todayHighlight: true
 		});
 
-	$('#txtOp_Crear_Cliente').select2({
-	  	ajax: {
-		    url: "../server/php/scripts/select2/cargarClientes.php",
-		    dataType: 'json',
-		    delay: 300,
-		    data: function (params) {
-		      return {
-		        q: params.term, // search term
-		        page: params.page
-		      };
-		    },
-		    processResults: function (data, params) {
-		      return {
-		        results: data.items
-		      };
-		    },
-		    cache: true
-	  	},
-	  	escapeMarkup: function (markup) { return markup; }, 
-	  	minimumInputLength: 3,
-		templateResult: function(dato) { return dato.name; 	},
-		templateSelection : function(dato) 	{ return dato.name;		}
-	});
-
-	$("#elBoton").click(function(event) 
-	{
-		event.preventDefault();
-		alert($("#txtOp_Crear_Cliente").val());
-	});
+	$('#txtOp_Crear_Cliente').iniciarSelectRemoto("cargarClientes");
+	$("#txtOp_Crear_idArea").iniciarSelectRemoto("cargarAreas");
+	$("#txtOp_Crear_idCiudad").iniciarSelectRemoto("cargarCiudades");
 
 	$(document).delegate('.txtOpotunidad_Requisitos', 'change', function(event) 
 	{
+		var obj = this;
 		var contenedor = $(this).parent("td").parent("tr");
 		var comparadores = $(contenedor).find("[data-valor]");
 		var valor = "";
@@ -62,7 +37,9 @@ function op_crear()
 				$(val).addClass('wb-minus');
 			} else
 			{
-				if (valor >= ingresado)
+				var condicion = $(obj).attr("data-condicion");
+
+				if (eval(valor + " " + condicion + " " + ingresado))
 				{
 					$(val).addClass('wb-check');
 					$(val).addClass('green-600');
@@ -93,4 +70,15 @@ function op_crear()
 		evento.preventDefault();
 		$(this).parent("h3").parent("div").parent("div").remove();
 	});
+
+	$("#btnOp_Crear_AgregarCliente").on("click", function(evento)
+	{
+		evento.preventDefault();
+	});
+
+	$("#btnOp_Crear_AgregarCliente").on("click", function(evento)
+		{
+			evento.preventDefault();
+			modalCrearCliente();
+		});
 }

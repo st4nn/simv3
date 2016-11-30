@@ -77,9 +77,15 @@ function Mensaje(Titulo, Mensaje)
   if (Titulo == "Error")
   {
     alertify.error(Mensaje);
-  } else
+  } else if (Titulo == "Ok")
   {
     alertify.success(Mensaje);
+  } else if (Titulo == "Hey")
+  {
+    alertify.warning(Mensaje);
+  } else
+  {
+    alertify.message(Mensaje);
   }
 }
 function cargadorDeArchivos()
@@ -306,4 +312,131 @@ function abrirURL(url)
 {
   var win = window.open(url, "_blank", "directories=no, location=no, menubar=no, resizable=yes, scrollbars=yes, statusbar=no, tittlebar=no");
   win.focus();
+}
+
+$.fn.iniciarSelectRemoto = function(script, delay, minimo)
+{
+  if (script != "" && script != undefined && script != null)
+  {
+    delay = delay || 300;
+    minimo = minimo || 3;
+
+    $(this).select2({
+        ajax: {
+          url: "../server/php/scripts/select2/" + script + ".php",
+          dataType: 'json',
+          delay: delay,
+          data: function (params) {
+            return {
+              q: params.term, // search term
+              page: params.page
+            };
+          },
+          processResults: function (data, params) {
+            return {
+              results: data.items
+            };
+          },
+          cache: true
+        },
+        escapeMarkup: function (markup) { return markup; }, 
+        minimumInputLength: minimo,
+      templateResult: function(dato) { return dato.name;  },
+      templateSelection : function(dato)  { return dato.name;   }
+    });
+  }
+}
+
+//*
+//============Plugins de la Aplicación ============================
+//*
+
+function modalCrearCliente(callbackOk, callbackError, callbackUpdate)
+{
+  if (callbackOk === undefined)   {    callbackOk = function(){};  }
+  if (callbackError === undefined)   {    callbackError = function(){};  }
+  if (callbackUpdate === undefined)   {    callbackUpdate = function(){};  }
+
+  if ($("#cntCrearCliente").length == 0)
+  {
+    var tds = "";
+    tds += '<div class="modal fade" id="cntCrearCliente" aria-hidden="false" aria-labelledby="cntCrearCliente_Label" role="dialog" tabindex="-1">';
+        tds += '<div class="modal-dialog">';
+          tds += '<form id="frmModalCrearCliente" class="modal-content">';
+            tds += '<div class="modal-header">';
+              tds += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
+                tds += '<span aria-hidden="true">×</span>';
+              tds += '</button>';
+              tds += '<h4 class="modal-title" id="cntCrearCliente_Label">Crear Cliente</h4>';
+            tds += '</div>';
+            tds += '<div class="modal-body">';
+              tds += '<div class="row">';
+                tds += '<div class="col-sm-12 form-group">';
+                  tds += '<label for="txtCrearCliente_Nombre" class="form-label">Nombre</label>';
+                  tds += '<input id="txtCrearCliente_Nombre" type="text" class="form-control" placeholder="Nombre" required>';
+                tds += '</div>';
+                tds += '<div class="col-sm-12 form-group">';
+                  tds += '<label for="txtCrearCliente_Nit" class="form-label">Nit</label>';
+                  tds += '<input id="txtCrearCliente_Nit" type="text" class="form-control" placeholder="Nit" required>';
+                tds += '</div>';
+                tds += '<div class="col-sm-12 pull-right">';
+                  tds += '<button class="btn btn-success btn-outline" type="submit">Crear</button>';
+                  tds += '<button class="btn btn-danger btn-outline margin-left-20" data-dismiss="modal" type="button">Cancelar</button>';
+                tds += '</div>';
+              tds += '</div>';
+            tds += '</div>';
+          tds += '</form>';
+        tds += '</div>';
+      tds += '</div>';
+    
+    $("body").append(tds);
+
+    $("#frmModalCrearCliente").on("submit", function(evento)
+    {
+      evento.preventDefault();
+      if ($("#txtCrearCliente_Nombre").val() == "")
+      {
+        Mensaje("Error", "No es posible crear una empresa sin Nombre");
+      } else
+      {
+        if ($("#txtCrearCliente_Nit").val() == "")
+        {
+          Mensaje("Error", "No es posible crear una empresa sin Identificación");
+        } else
+        {
+          $.post('../server/php/scripts/modals/crearCliente.php', 
+          {
+            Nombre : $("#txtCrearCliente_Nombre").val(),
+            Nit : $("#txtCrearCliente_Nit").val(),
+            Usuario : Usuario.id
+          }, function(data, textStatus, xhr) 
+          {
+            if (data['Error'] != "")
+            {
+              Mensaje("Error", data['Error']);
+              callbackError();
+            } else
+            {
+              $("#cntCrearCliente").modal("hide");
+              if (data['id'] >= 0)
+              {
+                callbackOk();
+                Mensaje("Ok", "El cliente ha sido ingresado");
+              } else
+              {
+                callbackUpdate();                
+              }
+            }
+          }, "json").fail(function()
+          {
+            Mensaje("Error", "No hay conexión con el servidor");
+          });
+        }
+      }
+    });
+  }
+
+  $("#txtCrearCliente_Nombre").val("");
+  $("#txtCrearCliente_Nit").val("");
+  $("#cntCrearCliente").modal("show");
 }
