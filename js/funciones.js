@@ -440,3 +440,82 @@ function modalCrearCliente(callbackOk, callbackError, callbackUpdate)
   $("#txtCrearCliente_Nit").val("");
   $("#cntCrearCliente").modal("show");
 }
+
+function modalCrearArea(callbackOk, callbackError, callbackUpdate)
+{
+  if (callbackOk === undefined)   {    callbackOk = function(){};  }
+  if (callbackError === undefined)   {    callbackError = function(){};  }
+  if (callbackUpdate === undefined)   {    callbackUpdate = function(){};  }
+
+  if ($("#cntCrearArea").length == 0)
+  {
+    var tds = "";
+    tds += '<div class="modal fade" id="cntCrearArea" aria-hidden="false" aria-labelledby="cntCrearArea_Label" role="dialog" tabindex="-1">';
+        tds += '<div class="modal-dialog">';
+          tds += '<form id="frmModalCrearArea" class="modal-content">';
+            tds += '<div class="modal-header">';
+              tds += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
+                tds += '<span aria-hidden="true">×</span>';
+              tds += '</button>';
+              tds += '<h4 class="modal-title" id="cntCrearCliente_Label">Crear Area</h4>';
+            tds += '</div>';
+            tds += '<div class="modal-body">';
+              tds += '<div class="row">';
+                tds += '<div class="col-sm-12 form-group">';
+                  tds += '<label for="txtCrearArea_Nombre" class="form-label">Nombre</label>';
+                  tds += '<input id="txtCrearArea_Nombre" type="text" class="form-control" placeholder="Nombre" required>';
+                tds += '</div>';
+                tds += '<div class="col-sm-12 pull-right">';
+                  tds += '<button class="btn btn-success btn-outline" type="submit">Crear</button>';
+                  tds += '<button class="btn btn-danger btn-outline margin-left-20" data-dismiss="modal" type="button">Cancelar</button>';
+                tds += '</div>';
+              tds += '</div>';
+            tds += '</div>';
+          tds += '</form>';
+        tds += '</div>';
+      tds += '</div>';
+    
+    $("body").append(tds);
+
+    $("#frmModalCrearArea").on("submit", function(evento)
+    {
+      evento.preventDefault();
+      if ($("#txtCrearArea_Nombre").val() == "")
+      {
+        Mensaje("Error", "No es posible crear un Area sin Nombre");
+      } else
+      {
+        $.post('../server/php/scripts/modals/crearArea.php', 
+        {
+          Nombre : $("#txtCrearCliente_Nombre").val(),
+          Usuario : Usuario.id
+        }, function(data, textStatus, xhr) 
+        {
+          if (data['Error'] != "")
+          {
+            Mensaje("Error", data['Error']);
+            callbackError();
+          } else
+          {
+            $("#cntCrearCliente").modal("hide");
+            if (data['id'] >= 0)
+            {
+              callbackOk();
+              Mensaje("Ok", "El Area ha sido ingresada");
+            } else
+            {
+              callbackUpdate();                
+            }
+          }
+        }, "json").fail(function()
+        {
+          Mensaje("Error", "No hay conexión con el servidor");
+        });        
+      }
+    });
+  }
+
+  $("#txtCrearArea_Nombre").val("");
+  $("#cntCrearArea").modal("show");
+}
+
