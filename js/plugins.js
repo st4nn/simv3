@@ -4,6 +4,7 @@ var modulos =
 	"clientes/cl_home.html" : {titulo : "Clientes", nick : "cl_Home"},
 	"clientes/cl_Crear.html" : {titulo : "Clientes", nick : "cl_Crear"},
 	"clientes/informacionEstructural.html" : {titulo : "Información Estructural del Cliente", nick : "cl_InformacionEstructural"},
+	"clientes/timeline.html" : {titulo : "Acciones con el Cliente", nick : "cl_timeline"},
 	"oportunidades/op_crear.html" : {titulo : "Oportunidad de Negocios", nick : "op_crear"},
 	"propuestas/pro_crear.html" : {titulo : "Propuesta", nick : "pro_crear"},
 	"contratos/co_crear.html" : {titulo : "Contratos", nick : "co_crear"}
@@ -14,6 +15,7 @@ var arrPlugins =
 	cl_Home : ["datatable"],
 	cl_Crear : ["select2"],
 	cl_InformacionEstructural : ["jointjs"],
+	cl_timeline : ["select2"],
 	op_crear : ["select2", "datepicker"],
 	pro_crear : ["select2", "datepicker"],
 	co_crear : ["select2", "datepicker"]

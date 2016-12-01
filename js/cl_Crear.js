@@ -22,6 +22,13 @@ function cl_Crear()
 			ev.preventDefault();
 			window.location.replace("informacionEstructural.html");
 		});
+
+	$("#btn_Cl_Crear_Acciones").on("click", function(ev)
+		{
+			ev.preventDefault();
+			window.location.replace("timeline.html");
+		});
+
 	$("#txtCl_Crear_idPais").on("change", txtCl_Crear_idPais_Change); 
 
 	
