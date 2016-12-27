@@ -16,31 +16,33 @@
 
    $id = "NULL";
 
-   if (array_key_exists("idOportunidad", $datos))
+   if (array_key_exists("idPropuesta", $datos))
    {
-      if ($datos->idOportunidad > 0 AND $datos->idOportunidad <> "")
+      if ($datos->idPropuesta > 0 AND $datos->idPropuesta <> "")
       {
-         $id = $datos->idOportunidad;
+         $id = $datos->idPropuesta;
       }
    } 
 
    date_default_timezone_set('America/Bogota');
    $fecha = date('Y-m-d h:i:s');
 
-   $sql = "INSERT INTO oportunidades(id, Prefijo, NumeroDeProceso, Cliente, Objeto, Presupuesto, Plazo, idArea, idCiudad, ExpresionInteres, Propuesta, Link, Estado, Usuario, fechaCargue) VALUES 
+   $sql = "INSERT INTO propuestas(id, Prefijo, NumeroDeProceso, Cliente, Objeto, Presupuesto, Plazo, idArea, idCiudad, Link, Estado, idEmpresa, Consorcio, Porcentaje, NombreConsorcio, Usuario, fechaCargue) VALUES 
          ('" . $id . "', 
          '" . $datos->Prefijo . "', 
-         '" . $datos->NumeroDeProceso . "', 
+         '" . $datos->Proceso . "', 
          '" . $datos->Cliente . "', 
          '" . $datos->Objeto . "', 
-         '" . $datos->Presupuesto . "', 
+         '" . $datos->ValorOferta . "', 
          '" . $datos->Plazo . "', 
          '" . $datos->idArea . "', 
          '" . $datos->idCiudad . "', 
-         '" . $datos->ExpresionInteres . "', 
-         '" . $datos->Propuesta . "', 
          '" . $datos->Link . "', 
-         '" . $datos->ResultadoFinal . "', 
+         '" . $datos->Final . "', 
+         '" . $datos->Empresa . "', 
+         '" . $datos->Consorcio . "', 
+         '" . $datos->PorcentajeParticipacion . "', 
+         '" . $datos->NombreConsorcio . "', 
          '" . $usuario . "', 
          '" . $fecha . "')
          ON DUPLICATE KEY UPDATE
@@ -52,10 +54,12 @@
             Plazo = VALUES(Plazo),
             idArea = VALUES(idArea),
             idCiudad = VALUES(idCiudad),
-            ExpresionInteres = VALUES(ExpresionInteres),
-            Propuesta = VALUES(Propuesta),
             Link = VALUES(Link),
             Estado = VALUES(Estado),
+            idEmpresa = VALUES(idEmpresa),
+            Consorcio = VALUES(Consorcio),
+            Porcentaje = VALUES(Porcentaje),
+            NombreConsorcio = VALUES(NombreConsorcio),
             Usuario = VALUES(Usuario),
             fechaCargue = VALUES(fechaCargue);";
             
@@ -67,142 +71,97 @@
          $id = $link->insert_id;
       }
 
-      if ($datos->CompraPliego == 'No')
-      {
-         $datos->Fecha_PlazoCompraPliego = '';
-         $datos->Fecha_ValorPliego = '';
-      }
-
-      $sql = "INSERT INTO op_fechas(id, Publicacion, obsPrepliego, Apertura, Visita, obsPliego, requiereCompraPliego, plazoCompra, valorPliego, Cierre) VALUES 
+      $sql = "INSERT INTO pro_fechas(idPropuesta, Apertura, Visita, Observaciones, Cierre, Informe, Adjudicacion) VALUES 
       (
          '" . $id . "', 
-         '" . $datos->Fecha_Publicacion . "', 
-         '" . $datos->Fecha_ObservacionesPrepliego . "', 
          '" . $datos->Fecha_Apertura . "', 
          '" . $datos->Fecha_Audiencia . "', 
          '" . $datos->Fecha_ObservacionesPliego . "', 
-         '" . $datos->CompraPliego . "', 
-         '" . $datos->Fecha_PlazoCompraPliego . "', 
-         '" . $datos->Fecha_ValorPliego . "', 
-         '" . $datos->Fecha_Cierre . "'
+         '" . $datos->Fecha_Cierre . "', 
+         '" . $datos->Fecha_InformeEvaluacion . "', 
+         '" . $datos->Fecha_Adjudicacion . "'
       )
       ON DUPLICATE KEY UPDATE
-         Publicacion = VALUES(Publicacion),
-         obsPrepliego = VALUES(obsPrepliego),
          Apertura = VALUES(Apertura),
          Visita = VALUES(Visita),
-         obsPliego = VALUES(obsPliego),
-         requiereCompraPliego = VALUES(requiereCompraPliego),
-         plazoCompra = VALUES(plazoCompra),
-         valorPliego = VALUES(valorPliego),
-         Cierre = VALUES(Cierre)";
+         Observaciones = VALUES(Observaciones),
+         Cierre = VALUES(Cierre),
+         Informe = VALUES(Informe),
+         Adjudicacion = VALUES(Adjudicacion)";
 
       $link->query(utf8_decode($sql));
 
       if ( $link->error == "")
       {
-         $sql = "INSERT INTO op_formaEvaluacion(id, Tecnica, Financiera, Economica, industriaNacional, criteriosDesempate, resultadoPreEvaluacion) VALUES 
+         $sql = "INSERT INTO pro_resultados(idPropuesta, Puntaje, Financiera, Tecnico, Economica, Observaciones) VALUES 
             (
                '" . $id . "', 
-               '" . $datos->Evaluacion_Tecnica . "', 
-               '" . $datos->Evaluacion_Financiera . "', 
-               '" . $datos->Evaluacion_Economica . "', 
-               '" . $datos->Evaluacion_IndustriaNacional . "', 
-               '" . $datos->Evaluacion_CriteriosDesempate . "', 
-               '" . $datos->ResultadoPreEvaluacion . "'
+               '" . $datos->PuntajeTotal . "', 
+               '" . $datos->ResultadoFinanciera . "', 
+               '" . $datos->ResultadoTecnico . "', 
+               '" . $datos->ResultadoEconomica . "', 
+               '" . $datos->Observaciones . "'
             )
          ON DUPLICATE KEY UPDATE 
-            Tecnica = VALUES(Tecnica),
+            Puntaje = VALUES(Puntaje),
             Financiera = VALUES(Financiera),
+            Tecnico = VALUES(Tecnico),
             Economica = VALUES(Economica),
-            industriaNacional = VALUES(industriaNacional),
-            criteriosDesempate = VALUES(criteriosDesempate),
-            resultadoPreEvaluacion = VALUES(resultadoPreEvaluacion);";
+            Observaciones = VALUES(Observaciones);";
 
          $link->query(utf8_decode($sql));
 
          if ( $link->error == "")
          {
-            $sql = "INSERT INTO op_requisitos(id, capitalDeTrabajo, Liquidez, Endeudamiento, coberturaIntereses, rentabilidadPatrimonio, rentabilidadActivo, experienciaHabilitante, experienciaEspecifica) VALUES 
-               (
-                  '" . $id . "', 
-                  '" . $datos->Req_CapitalDeTrabajo . "', 
-                  '" . $datos->Req_Liquidez . "', 
-                  '" . $datos->Req_Endeudamiento . "', 
-                  '" . $datos->Req_CoberturaIntereses . "', 
-                  '" . $datos->Req_RentabilidadPatrimonio . "', 
-                  '" . $datos->Req_RentabilidadActivo . "',
-                  '" . $datos->ExperienciaHabilitante . "',
-                  '" . $datos->ExperienciaEspecifica . "'
-               )
-            ON DUPLICATE KEY UPDATE 
-               capitalDeTrabajo = VALUES(capitalDeTrabajo),
-               Liquidez = VALUES(Liquidez),
-               Endeudamiento = VALUES(Endeudamiento),
-               coberturaIntereses = VALUES(coberturaIntereses),
-               rentabilidadPatrimonio = VALUES(rentabilidadPatrimonio),
-               rentabilidadActivo = VALUES(rentabilidadActivo),
-               experienciaHabilitante = VALUES(experienciaHabilitante),
-               experienciaEspecifica = VALUES(experienciaEspecifica)";
-
+            $sql = "DELETE FROM pro_consorcio WHERE idPropuesta = '$id'";
             $link->query(utf8_decode($sql));
 
-            if ( $link->error == "")
+            if ($datos->Consorcio == 'No')
             {
-               $sql = "DELETE FROM op_personal WHERE idOportunidad = '$id'";
-               $link->query(utf8_decode($sql));
-
-               if ($datos->Perfiles == 0)
-               {
-                  
-               } else
-               {
-                  $values = "";
-                  foreach ($datos->Perfiles as $key => $value) 
-                  {
-                     $values .= '(' . $id . ', \'' . $value->Cantidad . '\', \'' . $value->Cargo . '\', \'' . $value->Hab_Estudios . '\', \'' . $value->Hab_Experiencia . '\', \'' . $value->Adi_Estudios . '\', \'' . $value->Adi_Experiencia . '\'), ';
-                  }
-                  $values = substr($values, 0, -2);
-
-                  $sql = 'INSERT INTO op_personal(idOportunidad, Cantidad, Cargo, habilitanteEstudios, habilitanteExperiencia, adicionalEstudios, adicionalExperiencia) VALUES ' . $values . ';';
-                  $link->query(utf8_decode($sql));
-
-                  if ( $link->error <> "")
-                  {
-                     echo $link->error;
-                  } 
-               }
-
-               $sql = 'DELETE FROM op_responsables WHERE idOportunidad = \'' . $id. '\'';
-               $link->query(utf8_decode($sql));
-
-               if ($datos->Responsables == 0) 
-               {
-
-               } else
-               {
-                  $values = '';
-                  $Responsables = explode(', ', $datos->Responsables);
-                  foreach ($Responsables as $key => $value) 
-                  {
-                     $values .= "($id, $value), ";
-                  }
-                  $values = substr($values, 0, -2);
-
-                  $sql = 'INSERT INTO op_responsables(idOportunidad, idUsuario) VALUES ' . $values . ';';
-                  $link->query(utf8_decode($sql));
-
-                  if ( $link->error <> "")
-                  {
-                     echo $link->error;
-                  }
-               }
                
-               echo $id;
             } else
             {
-               echo $link->error;
-            }   
+               $values = "";
+               foreach ($datos->Consorciados as $key => $value) 
+               {
+                  $values .= '(' . $id . ', \'' . $value->Nombre . '\', \'' . $value->Porcentaje . '\'), ';
+               }
+               $values = substr($values, 0, -2);
+
+               $sql = 'INSERT INTO pro_consorcio(idPropuesta, Consorciado, Porcentaje) VALUES  ' . $values . ';';
+               $link->query(utf8_decode($sql));
+
+               if ( $link->error <> "")
+               {
+                  echo $link->error;
+               } 
+            }
+
+            $sql = 'DELETE FROM pro_responsables WHERE idPropuesta = \'' . $id. '\'';
+            $link->query(utf8_decode($sql));
+
+            if (sizeof($datos->Responsables) == 0) 
+            {
+
+            } else
+            {
+               $values = '';
+               foreach ($datos->Responsables as $key => $value) 
+               {
+                  $values .= "($id, " . $value->id . ", '" . $value->Tipo . "'), ";
+               }
+               $values = substr($values, 0, -2);
+
+               $sql = 'INSERT INTO pro_responsables(idPropuesta, idUsuario, Tipo) VALUES ' . $values . ';';
+               $link->query(utf8_decode($sql));
+
+               if ( $link->error <> "")
+               {
+                  echo $link->error;
+               }
+            }
+            
+            echo $id;
          } else
          {
             echo $link->error;

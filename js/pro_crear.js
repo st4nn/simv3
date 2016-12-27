@@ -151,9 +151,9 @@ function pro_crear()
 
 			datos.Responsables = objResponsable;
 
-			console.log(datos);
+			datos = JSON.stringify(datos);
 
-			/*$.post('../server/php/scripts/crearOportunidad.php', {Usuario : Usuario.id, datos : datos}, function(data, textStatus, xhr) 
+			$.post('../server/php/scripts/crearPropuesta.php', {Usuario : Usuario.id, datos : datos}, function(data, textStatus, xhr) 
 			{
 				if (isNaN(data))
 				{
@@ -163,7 +163,7 @@ function pro_crear()
 					Mensaje("Hey", "Los datos han sido ingresados");
 					$("#txtOp_Crear_idOportunidad").val(data);
 				}
-			});*/
+			});
 		});
 	});
 }
