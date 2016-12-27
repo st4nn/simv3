@@ -26,8 +26,8 @@
 			  <link rel="stylesheet" href="../assets/vendor/slidepanel/slidePanel.css">
 			  <link rel="stylesheet" href="../assets/vendor/flag-icon-css/flag-icon.css">
 
-			  <!-- Page -->
-			  <link rel="stylesheet" href="../assets/examples/css/pages/login.css">
+			  <!-- Plugins For This Page -->
+			  <link rel="stylesheet" href="../assets/examples/css/advanced/masonry.css">
 
 			  <!-- Fonts -->
 			  <link rel="stylesheet" href="../assets/fonts/web-icons/web-icons.min.css">
@@ -58,44 +58,122 @@
 		<link rel='stylesheet' href='../assets/examples/css/charts/chartjs.css'>
 	</customCss>
 </head>
-<body
->	<header></header>
+<body>	
+	<header></header>
 	<sidebar></sidebar>
 	<content>
-		<div class="page container-fluid">
-    		<h1><small>Bienvenido: </small><span id="lblHome_Usuario"></span></h1>
-			<div class="col-md-6">
-	    		<div class="col-md-12">
-	    			<div class="panel">
-	    				<div class="panel-title">Consolidado De Propuestas Y Oportunidades</div>
-	    				<div class="panel-body text-right">
-	    					<table id="tblHome_Oportunidades" class="table">
-	    						<thead>
-	    							<tr>
-	    								<th>Sector</th>
-	    								<th>Propuestas</th>
-	    								<th>Oportuniddes</th>
-	    							</tr>
-	    						</thead>
-	    						<tbody class="table-hover">
+		<div class="page">
+			<div class="page-content">
+	    		<h1><small>Bienvenido: </small><span id="lblHome_Usuario"></span></h1>
 
-	    						</tbody>
-	    					</table>
-	    				</div>
+	    		<div id="cntHome" class="">
+	    			<div class="col-md-6">
+		    			<div class="panel panel-bordered panel-info">
+		    				<div class="panel-heading">
+		    					<div class="panel-title">Consolidado De Propuestas Y Oportunidades</div>
+		    				</div>
+		    				<div class="panel-body">
+		    					<table id="tblHome_Oportunidades" class="table col-md-12">
+		    						<thead>
+		    							<tr>
+		    								<th>Sector</th>
+		    								<th>Propuestas</th>
+		    								<th>Oportunidades</th>
+		    							</tr>
+		    						</thead>
+		    						<tbody class="table-hover">
+
+		    						</tbody>
+		    					</table>
+		    				</div>
+		    			</div>			    	
 	    			</div>
-	    		</div>
-		    	
-	    	</div>
+    			
+	    			<div class="col-md-6">
+		    			<div class="panel panel-bordered panel-info">
+		    				<div class="panel-heading">
+		    					<div class="panel-title">Oportunidades</div>
+		    				</div>
+		    				<div class="panel-body">
+								<canvas id="canvas" class="height-200 col-md-12"></canvas>
+		    				</div>
+		    			</div>
+			    	</div>
+    			
+			    	<div class="col-md-6">
+    					<div class="panel panel-bordered panel-info">
+    						<div class="panel-heading">
+		    					<div class="panel-title">Propuestas</div>
+		    				</div>
+		    				<div class="panel-body">
+								<canvas id="canvas2" class="height-200 col-md-12"></canvas>
+		    				</div>
+		    			</div>
+			    	</div>
+	    			
+			    	<div class="col-md-6">
+		    			<div class="panel panel-bordered panel-info">
+		    				<div class="panel-heading">
+		    					<div class="panel-actions">
+					                <div class="input-search input-group-sm">
+					                  <button type="submit" class="input-search-btn blue-grey-600">
+					                    <i class="icon wb-search" aria-hidden="true"></i>
+					                  </button>
+					                  <input type="text" class="form-control" name="" placeholder="Buscar...">
+					                </div>
+					            </div>
+					            <h3 class="panel-title">Trazabilidad</h3>
+		    				</div>
+		    				<div class="panel-body">
+								<ul class="list-group">
+				                    <li class="list-group-item">
+				                      <div class="media">
+				                        <div class="media-left">
+				                          <a class="avatar" href="javascript:void(0)">
+				                            <img class="img-responsive" src="../../assets/portraits/2.jpg"
+				                            alt="...">
+				                          </a>
+				                        </div>
+				                        <div class="media-body">
+				                          <h4 class="media-heading">Ida Fleming
+				                            <span>posted an updated</span>
+				                          </h4>
+				                          <small>active 14 minutes ago</small>
+				                          <div class="profile-brief">“Check if it can be corrected with overflow : hidden”</div>
+				                        </div>
+				                      </div>
+				                    </li>
 
-    		<div class="col-md-6">
-    			<div class="panel">
-    				<div class="panel-title">Ejecución</div>
-    				<div class="panel-body">
-						<canvas id="canvas" class="height-300 col-md-12"></canvas>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
+				                    <li class="list-group-item">
+				                      <div class="media">
+				                        <div class="media-left">
+				                          <a class="avatar" href="javascript:void(0)">
+				                            <img class="img-responsive" src="../../assets/portraits/3.jpg"
+				                            alt="...">
+				                          </a>
+				                        </div>
+				                        <div class="media-body">
+				                          <h4 class="media-heading">Julius
+				                            <span>uploaded 4 photos</span>
+				                          </h4>
+				                          <small>active 14 minutes ago</small>
+				                          <div class="profile-brief">
+				                            <img class="profile-uploaded" src="../../assets/photos/placeholder.png" alt="...">
+				                            <img class="profile-uploaded" src="../../assets/photos/placeholder.png" alt="...">
+				                            <img class="profile-uploaded" src="../../assets/photos/placeholder.png" alt="...">
+				                            <img class="profile-uploaded" src="../../assets/photos/placeholder.png" alt="...">
+				                          </div>
+				                        </div>
+				                      </div>
+				                    </li>
+				                </ul>
+	                  			<a class="btn btn-block btn-default profile-readMore" href="javascript:void(0)" role="button">Ver Más</a>
+		    				</div>
+		    			</div>
+			    	</div>
+	    		</div>
+	    	</div>
+		</div>
 	</content>
 	<fixedScripts>
 		<script src="../assets/vendor/jquery/jquery.js"></script>
@@ -126,6 +204,8 @@
 		  <script src="../assets/vendor/screenfull/screenfull.js"></script>
 		  <script src="../assets/vendor/slidepanel/jquery-slidePanel.js"></script>
 
+		  <script src="../assets/vendor/masonry/masonry.pkgd.min.js"></script>
+
 		  <!-- Scripts -->
 		  <script src="../assets/js/core.js"></script>
 		  <script src="../assets/js/site.js"></script>
@@ -148,6 +228,8 @@
 
 		<customscripts>
 			<script src="../assets/vendor/chart-js/Chart.js"></script>
+			 <script src="../assets/js/components/masonry.js"></script>
+			 <script src="../assets/js/components/asscrollable.js"></script>
 		</customscripts>
 		
 	</footer>

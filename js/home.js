@@ -42,6 +42,10 @@ function home()
 
                     $("#tblHome_Oportunidades tbody").append(tds);
 
+                    /*$('#cntHome').masonry({
+					  itemSelector: '.masonry-item'
+					});
+
                      /*
                      $(".lnkOportunidades").on("click", function(evento)
                     {
@@ -108,6 +112,7 @@ function home()
 		  	};
 
   	var ctx = document.getElementById("canvas").getContext("2d");
+  	var ctx2 = document.getElementById("canvas2").getContext("2d");
 
   	//var chart = new Chart(ctx).HorizontalBar(barChartData, {
 	var objRGB = "";
@@ -124,6 +129,11 @@ function home()
   		//console.log(barChartData.datasets);
   		
 	var chart = new Chart(ctx).Bar(barChartData, {
+			responsive: true,
+    	barShowStroke: true
+		});
+
+	chart = new Chart(ctx2).Bar(barChartData, {
 			responsive: true,
     	barShowStroke: true
 		});

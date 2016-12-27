@@ -11,9 +11,18 @@ function op_crear()
 		    todayHighlight: true
 		});
 
+	$("#txtOp_Crear_Prefijo").val(obtenerPrefijo());
+
 	$('#txtOp_Crear_Cliente').iniciarSelectRemoto("cargarClientes");
 	$("#txtOp_Crear_idArea").iniciarSelectRemoto("cargarAreas", 350, 1);
 	$("#txtOp_Crear_idCiudad").iniciarSelectRemoto("cargarCiudades");
+
+	$('#txtOp_Crear_Responsable').iniciarSelectRemoto("cargarUsuarios");
+
+	$('#txtOp_Crear_Responsable').on('select2:select', function (evt) {
+	  
+	});
+
 
 	$(document).delegate('.txtOpotunidad_Requisitos', 'change', function(event) 
 	{
@@ -52,29 +61,72 @@ function op_crear()
 		});
 	});
 
+	
+
 	$("#btnOportunidades_AbrirLink").on("click", function(evento)
 	{
-		abrirURL($("#txtOportunidades_Link").val());
+		abrirURL($("#txtOp_Crear_Link").val());
 	});
 
 	$("#btnOportunidades_AgregarPerfil").on("click", function(evento)
 	{
 		evento.preventDefault();
-		var modulo = $("#cntOportunidades_Perfiles_PrimeraFila").html();
-		modulo = modulo.replace("btnOportunidades_Perfiles_Borrar hide", "btnOportunidades_Perfiles_Borrar");
-		$("#cntOportunidades_Perfiles").append('<div class="col-sm-6">' + modulo + '</div>');
+		var modulo = '';
+		modulo += '<div class="col-sm-6 col-md-4">';
+		  modulo += '<div class="panel panel-bordered panel-dark">';
+		    modulo += '<div class="panel-heading">';
+		        modulo += '<div class="panel-heading">';
+		          modulo += '<h3 class="panel-title"></h3>';
+		          modulo += '<div class="panel-actions">';
+					modulo += '<button type="button" class="btn btn-icon btn-danger btn-round pull-right btnOportunidades_Perfiles_Borrar">';
+						modulo += '<i class="icon wb-close" aria-hidden="true"></i>';
+					modulo += '</button>';
+		          modulo += '</div>';
+		        modulo += '</div>';
+		    modulo += '</div>';
+		    modulo += '<div class="panel-body cntOportunidades_Perfiles_Perfil">';
+		    	modulo += '<div class="row">';
+		        	modulo += '<div class="col-sm-4">';
+		        		modulo += '<div class=" form-group">';
+							modulo += '<label for="" class="control-label">Cantidad</label>';
+							modulo += '<input type="number" placeholder="Cantidad" class="form-control">';
+		        		modulo += '</div>';
+					modulo += '</div>';
+					modulo += '<div class="col-sm-8 form-group">';
+						modulo += '<label for="" class="control-label">Cargo</label>';
+						modulo += '<input type="text" placeholder="Cargo" class="form-control">';
+					modulo += '</div>';
+		    	modulo += '</div>';
+		    	modulo += '<div class="row">';
+					modulo += '<h5>Habilitante</h5>';
+					modulo += '<div class="col-sm-6 form-group">';
+						modulo += '<textarea id="" rows="2" class="form-control" placeholder="Estudios"></textarea>';
+					modulo += '</div>';
+					modulo += '<div class="col-sm-6 form-group">';
+						modulo += '<textarea id="" rows="2" class="form-control" placeholder="Estudios"></textarea>';
+					modulo += '</div>';
+				modulo += '</div>';
+				modulo += '<div class="row">';
+					modulo += '<h5>Adicional</h5>';
+					modulo += '<div class="col-sm-6 form-group">';
+						modulo += '<textarea id="" rows="2" class="form-control" placeholder="Estudios"></textarea>';
+					modulo += '</div>';
+					modulo += '<div class="col-sm-6">';
+						modulo += '<textarea id="" rows="2" class="form-control" placeholder="Experiencia"></textarea>';
+					modulo += '</div>';
+				modulo += '</div>';
+		    modulo += '</div>';
+		  modulo += '</div>';
+		modulo += '</div>';
+		$("#cntOportunidades_Perfiles").append(modulo);
 	});
 
 	$(document).delegate('.btnOportunidades_Perfiles_Borrar', 'click', function(evento) 
 	{
 		evento.preventDefault();
-		$(this).parent("h3").parent("div").parent("div").remove();
+		$(this).parent("div").parent("div").parent("div").parent("div").parent("div").remove();
 	});
 
-	$("#btnOp_Crear_AgregarCliente").on("click", function(evento)
-	{
-		evento.preventDefault();
-	});
 
 	$("#btnOp_Crear_AgregarCliente").on("click", function(evento)
 	{
@@ -109,11 +161,90 @@ function op_crear()
 		  });
 	});
 
+	$("#txtOp_Crear_AgregarResponsable").on('keyup', function (e, ev) 
+	{
+		ev.preventDefault();
+	    if (e.keyCode == 13) 
+	    {
+	        alert("Diste enter");
+	    }
+	});
+
 	$("#btnOp_Crear_CompartirProceso").on("click", function(evento)
 	{
 		evento.preventDefault();
 		modalCompartirProceso("Oportunidad");
 	});
 
-	
+	$("#chkOp_Crear_CompraPliego").on("change", function()
+	{
+		if ($(this).is(":checked"))
+		{
+			$("#cntOp_CompraPliego").slideDown();
+			$("#txtOp_Crear_CompraPliego").val("Si");
+		} else
+		{
+			$("#cntOp_CompraPliego").slideUp();
+			$("#txtOp_Crear_CompraPliego").val("No");
+		}
+	});
+
+	$("#btnOp_Crear_Adjunto").on("click", function(evento)
+	{
+		evento.preventDefault();
+		$("#txtOp_Archivos_Archivo").trigger('click');
+	});
+
+	$("#frmOp_Crear").on("submit", function(evento)
+	{
+		evento.preventDefault();
+		
+		$("#frmOp_Crear").generarDatosEnvio("txtOp_Crear_", function(datos)
+		{
+			datos = $.parseJSON(datos);
+
+			objPerfiles = $(".cntOportunidades_Perfiles_Perfil");
+			if (objPerfiles.length == 0)
+			{
+				datos.Perfiles = 0;
+			} else
+			{
+				var idx = 0;
+				var objPerfil = [];
+				var txtPerfiles = {};
+				$.each(objPerfiles, function(index2, val2) 
+				{
+					objPerfil[idx] = {};
+					txtPerfiles = $(val2).find(".form-control");
+					objPerfil[idx].Cantidad = $(txtPerfiles[0]).val();
+					objPerfil[idx].Cargo = $(txtPerfiles[1]).val();
+					objPerfil[idx].Hab_Estudios = $(txtPerfiles[2]).val();
+					objPerfil[idx].Hab_Experiencia = $(txtPerfiles[3]).val();
+					objPerfil[idx].Adi_Estudios = $(txtPerfiles[4]).val();
+					objPerfil[idx].Adi_Experiencia = $(txtPerfiles[5]).val();
+					
+					idx++;
+				});
+
+				datos.Perfiles = objPerfil;
+			}
+			datos = JSON.stringify(datos);
+			
+			$.post('../server/php/scripts/crearOportunidad.php', {Usuario : Usuario.id, datos : datos}, function(data, textStatus, xhr) 
+			{
+				if (isNaN(data))
+				{
+					Mensaje("Error", data);
+				} else
+				{
+					Mensaje("Hey", "Los datos han sido ingresados");
+					$("#txtOp_Crear_idOportunidad").val(data);
+					alert(data);
+				}
+			});
+		});
+	});
+
+
 }
+
