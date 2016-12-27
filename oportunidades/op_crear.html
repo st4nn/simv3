@@ -455,21 +455,9 @@
 							<h3 class="panel-title">Responsables</h3>
 		            	</div>
 		            	<div class="panel-body">
-			                
-						<div class="col-md-12 form-group">
-							<label for="txtOp_Crear_Responsable" class="control-label" data-plugin="select2">Responsable a Agregar</label>
-							<div class="input-group input-group-file">
-			                    <input type="text" class="form-control" id="inputTokenfieldTypeahead" value="" placeholder="Ingrese el Nombre del Responsable" />
-			                    <span id="" class="input-group-btn">
-							      	<button type="button" class="btn btn-success">
-							          <i class="icon fa-user-plus" aria-hidden="true"></i>
-							    	</button>
-							    </span>
-			                </div>
-						</div>
-			              
-			                <ul id="cntOp_Crear_Responsables" class="list-group list-group-full">
-			                </ul>
+							<div id="cntOp_Crear_Responsables">
+								
+							</div>							
 		            	</div>
 		            </div>
 
@@ -546,8 +534,14 @@
 		            </div>
 		        </div>
 
-		        <div id="cntOp_Archivos" class="col-sm-4">
-		        	
+		        <div class="col-sm-4">
+		        	<div class="panel panel-primary panel-bordered">
+				        <div class="panel-heading">
+				            <h4 class="panel-title">Archivos</h4>
+				        </div>
+				        <div id="cntOp_Archivos" class="panel-body form-horizontal">
+				        </div>
+				    </div>		        	
 		        </div>
 
 		        <div class="col-sm-12">
@@ -601,8 +595,8 @@
 			<div class="text-right" style="position: fixed; bottom: 40px; right: 20px; z-index:1000;">
 				<button type="button" class="btn btn-info btn-floating tooltip-info" data-toggle="tooltip" data-placement="top" data-original-title="Agregar Archivo" id="btnOp_Crear_Adjunto"><i class="icon wb-attach-file"></i></button>
 	        	<button type="button" class="btn btn-danger btn-floating tooltip-danger" data-toggle="tooltip" data-placement="top" data-original-title="Nueva" id="btnOp_Crear_Nueva"><i class="icon wb-add-file"></i></button>
-	        	<button type="button" class="btn btn-primary btn-floating tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="Compartir" id="btnOp_Crear_CompartirProceso"><i class="icon fa-send"></i></button>
-              	<button type="submit" class="btn btn-success btn-floating tooltip-success" data-toggle="tooltip" data-placement="top" data-original-title="Guardar" id="validateButton2"><i class="icon fa-floppy-o"></i></button>
+	        	<!--<button type="button" class="btn btn-primary btn-floating tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="Compartir" id="btnOp_Crear_CompartirProceso"><i class="icon fa-send"></i></button>-->
+              	<button type="submit" class="btn btn-success btn-floating tooltip-success" data-toggle="tooltip" data-placement="top" data-original-title="Guardar" id="btnOp_Crear_Guardar"><i class="icon fa-floppy-o"></i></button>
             </div>
 		</form>
 	</div>
@@ -651,7 +645,7 @@
 
 		<script src="../assets/vendor/alertify-js/alertify.js"></script>
 		<script src="../assets/js/components/alertify-js.js"></script>
-|
+
 		<customscripts>
 			<script src="../assets/js/components/masonry.js"></script>
 			<script src="../assets/vendor/bootstrap-tokenfield/bootstrap-tokenfield.min.js"></script>
@@ -663,79 +657,5 @@
 		</customscripts>
 
 	</footer>
-	<script>
-			var elJson = [
-					  {
-					    "id": "1961",
-					    "name": "West Side Story",
-					    "tokens": [
-					      "West",
-					      "Side",
-					      "Story"
-					    ]
-					  },
-					  {
-					    "id": "1962",
-					    "name": "Lawrence of Arabia",
-					    "tokens": [
-					      "Lawrence",
-					      "of",
-					      "Arabia"
-					    ]
-					  },
-					  {
-					    "id": "1963",
-					    "name": "Tom Jones",
-					    "tokens": [
-					      "Tom",
-					      "Jones"
-					    ]
-					  }
-					];
-
-					//elJson = ['valor1', 'valor2', 'valor3'];
-
-		    var bestPictures = new Bloodhound({
-		    	datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-    			queryTokenizer: Bloodhound.tokenizers.whitespace,
-
-				  remote: {
-				    url: '../server/php/scripts/select2/cargarUsuarios.php',
-				     q : 'algo',
-				    wildcard: '%QUERY'
-				  }
-				});
-
-    			/*
-    			
-    			prefetch : elJson,
-				  remote: {
-				    url: '../server/php/scripts/select2/cargarUsuarios.php',
-				    wildcard: '%QUERY'
-				  }
-				});
-
-				*/
-
-		    
-
-
-
-				$('#inputTokenfieldTypeahead').typeahead(null, {
-				  name: 'bestPictures',
-				  display: 'name',
-				  source: bestPictures,
-				  templates: {
-				    empty: [
-				      '<div class="empty-message">',
-				        'unable to find any Best Picture winners that match the current query',
-				      '</div>'
-				    ].join('\n'),
-				    suggestion: Handlebars.compile('<div><strong>{{name}}</strong> – {{id}}</div>')
-				  }
-				});
-			
-			$("#cntOp_Archivos").iniciarObjArchivos({Prefijo : $("#txtOp_Crear_Prefijo"), Proceso: "Oportunidades", Usuario: 1});
-	</script>
 </body>
 </html>

@@ -793,30 +793,22 @@ $.fn.iniciarObjArchivos = function(parametros)
 {
   var idObj = $(this).attr("id").replace("cnt", "");
   var tds = "";
-  tds += '<div class="panel panel-bordered">';
-        tds += '<div class="panel-heading">';
-            tds += '<h4 class="panel-title">Archivos</h4>';
-        tds += '</div>';
-        tds += '<div class="panel-body form-horizontal">';
-            tds += '<div class="">';
-                tds += '<div id="cnt' + idObj + '_DivArchivo" class="col-md-12 form-group">';
-                  tds += '<div class="input-group input-group-file">';
-                    tds += '<span class="input-group-btn">';
-                        tds += '<span class="btn btn-success col-md-12 btn-file">';
-                          tds += '<i class="icon wb-upload" aria-hidden="true"></i>';
-                          tds += 'Agregar Archivos';
-                          tds += '<input id="txt' + idObj + '_Archivo" type="file" name="...">';
-                        tds += '</span>'; 
-                    tds += '</span>';
-                  tds += '</div>';
-                tds += '</div>';
-            tds += '</div>';
-            tds += '<div class="row">';
-                    tds += '<h4>Archivos Cargados</h4>';
-                tds += '<div class="margin-top-20">';
-                    tds += '<div id="cnt' + idObj + '_DivArchivo_Listado" class="list-group-dividered list-group-full">';
-                    tds += '</div>';
-                tds += '</div>';
+  
+    tds += '<div id="cnt' + idObj + '_DivArchivo" class="col-md-12 form-group">';
+      tds += '<div class="input-group input-group-file">';
+        tds += '<span class="input-group-btn">';
+            tds += '<span class="btn btn-success col-md-12 btn-file">';
+              tds += '<i class="icon wb-upload" aria-hidden="true"></i>';
+              tds += 'Agregar Archivos';
+              tds += '<input id="txt' + idObj + '_Archivo" type="file" name="...">';
+            tds += '</span>'; 
+        tds += '</span>';
+      tds += '</div>';
+    tds += '</div>';
+    tds += '<div class="row">';
+            tds += '<h4>Archivos Cargados</h4>';
+        tds += '<div class="margin-top-20">';
+            tds += '<div id="cnt' + idObj + '_DivArchivo_Listado" class="list-group-dividered list-group-full">';
             tds += '</div>';
         tds += '</div>';
     tds += '</div>';
@@ -879,13 +871,16 @@ $.fn.iniciarObjArchivos = function(parametros)
             data.append(key, value);
         });
 
-        parametros.Prefijo = $(parametros.Prefijo).val();
+        parametros.Prefijo = $(parametros.objPrefijo).val();
 
         if (parametros != undefined && parametros != null)
         {
           $.each(parametros, function(index, val) 
           {
-            data.append(index, val);
+            if (index != 'objPrefijo')
+            {
+              data.append(index, val);
+            }
           });
         }
 
@@ -942,4 +937,87 @@ $.fn.iniciarObjArchivos = function(parametros)
           });
       });
     }
+}
+
+$.fn.iniciarResponsables = function(parametros)
+{
+  var idObj = $(this).attr("id").replace("cnt", "");
+  var tds = ""
+  tds += '<div class="col-md-12 form-group">';
+    tds += '<label for="txt' + idObj + '_Responsable" class="control-label" data-plugin="select2">Responsable a Agregar</label>';
+    tds += '<div class="input-group input-group-file">';
+      tds += '<input type="text" class="form-control" id="txt' + idObj + '_Responsable" value="" placeholder="Ingrese el Nombre del Responsable" />';
+      tds += '<span id="" class="input-group-btn">';
+          tds += '<button type="button" class="btn btn-success">';
+            tds += '<i class="icon fa-user-plus" aria-hidden="true"></i>';
+          tds += '</button>';
+      tds += '</span>';
+    tds += '</div>';
+    tds += '<div class="row">';
+      tds += '<ul id="cnt' + idObj + '_Correos" class="list-group list-group-full">';
+      tds += '</ul>';
+    tds += '</div>';
+  tds += '</div>';
+
+  $(this).append(tds);
+
+  var jsonUsuarios = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+
+      remote: {
+        url: '../server/php/scripts/select2/cargarUsuarios.php?q=%QUERY',
+         q : 'algo',
+        wildcard: '%QUERY'
+      }
+    });
+
+    $('#txt' + idObj + '_Responsable').typeahead(null, {
+      name: 'Usuarios',
+      display: 'name',
+      source: jsonUsuarios,
+      templates: {
+        empty: [
+          '<div class="empty-message">',
+            'No se ha encontrado usuarios que coincidad con el texto',
+          '</div>'
+        ].join('\n'),
+        suggestion: Handlebars.compile('<div><strong>{{name}}</strong> – ({{mail}})</div>')
+      }
+    });
+
+    $(document).delegate('.btnResponsables_Quitar', 'click', function(event) 
+    {
+      event.preventDefault();
+      $(this).parent('div').parent('div').parent('li').remove();
+    });
+    
+
+    $('#txt' + idObj + '_Responsable').bind('typeahead:select', function(ev, suggestion) {
+      var obj = $('#cnt' + idObj + '_Correos').find('.list-group-item[idUsuario=' + suggestion.id + ']');
+      if (obj.length == 0)
+      {
+        var tds = "";
+          tds += '<li class="list-group-item" idUsuario="' + suggestion.id + '">';
+            tds += '<div class="media">';
+              tds += '<div class="media-left text-center">';
+                  tds += '<i class="icon wb-user margin-left-10 font-size-20"></i>';
+              tds += '</div>';
+              tds += '<div class="media-body">';
+                tds += '<h4 class="media-heading">' + suggestion.name + '</h4>';
+                tds += '<small>' + suggestion.mail + '</small>';
+              tds += '</div>';
+              tds += '<div class="media-right">';
+                tds += '<a class="btnResponsables_Quitar" href="javascript:void(0)">';
+                  tds += '<i class="icon wb-close">';
+                tds += '</a>';
+              tds += '</div>';
+            tds += '</div>';
+          tds += '</li>';
+
+        $('#cnt' + idObj + '_Correos').append(tds);
+      }
+
+      $('#txt' + idObj + '_Responsable').typeahead('val', '');
+    });
 }

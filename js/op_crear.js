@@ -17,11 +17,11 @@ function op_crear()
 	$("#txtOp_Crear_idArea").iniciarSelectRemoto("cargarAreas", 350, 1);
 	$("#txtOp_Crear_idCiudad").iniciarSelectRemoto("cargarCiudades");
 
-	$('#txtOp_Crear_Responsable').iniciarSelectRemoto("cargarUsuarios");
+	/*$('#txtOp_Crear_Responsable').iniciarSelectRemoto("cargarUsuarios");
 
 	$('#txtOp_Crear_Responsable').on('select2:select', function (evt) {
 	  
-	});
+	});*/
 
 
 	$(document).delegate('.txtOpotunidad_Requisitos', 'change', function(event) 
@@ -60,8 +60,6 @@ function op_crear()
 			}
 		});
 	});
-
-	
 
 	$("#btnOportunidades_AbrirLink").on("click", function(evento)
 	{
@@ -157,6 +155,9 @@ function op_crear()
 				$("#frmOp_Crear")[0].reset();
 				$("[data-plugin=select2]").val("");
 				$("[data-plugin=select2]").trigger("change");
+				$("#cntOportunidades_Perfiles div").remove();
+				$("#cntOp_Crear_Responsables_Correos li").remove();
+				$("#cntOp_Archivos_DivArchivo_Listado li").remove();
 		  	} 		  
 		  });
 	});
@@ -228,6 +229,23 @@ function op_crear()
 
 				datos.Perfiles = objPerfil;
 			}
+
+			objResponsables = $("#cntOp_Crear_Responsables_Correos .list-group-item");
+
+			if (objResponsables.length == 0)
+			{
+				datos.Responsables = 0;
+			} else
+			{
+				datos.Responsables = '';
+				$.each(objResponsables, function(index, val) 
+				{
+					datos.Responsables += $(val).attr('idUsuario') + ', ';
+				});
+
+				datos.Responsables = datos.Responsables.substr(0, (datos.Responsables.length - 2));
+			}
+
 			datos = JSON.stringify(datos);
 			
 			$.post('../server/php/scripts/crearOportunidad.php', {Usuario : Usuario.id, datos : datos}, function(data, textStatus, xhr) 
@@ -239,12 +257,18 @@ function op_crear()
 				{
 					Mensaje("Hey", "Los datos han sido ingresados");
 					$("#txtOp_Crear_idOportunidad").val(data);
-					alert(data);
 				}
 			});
 		});
 	});
 
+	$("#cntOp_Archivos").iniciarObjArchivos({objPrefijo : $("#txtOp_Crear_Prefijo"), Proceso: "Oportunidades", Usuario: Usuario.id});
 
+	$("#cntOp_Crear_Responsables").iniciarResponsables();
+
+	$("#btnOportunidades_ActualizarEstado").on("click", function(evento)
+	{
+		$("#btnOp_Crear_Guardar").trigger('click');
+	});
 }
 
