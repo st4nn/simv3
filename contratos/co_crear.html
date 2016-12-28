@@ -26,6 +26,9 @@
 		<link rel="stylesheet" href="../assets/vendor/flag-icon-css/flag-icon.css">
 
 		<!-- Page -->
+		<link rel="stylesheet" href="../assets/vendor/bootstrap-tokenfield/bootstrap-tokenfield.css">
+		<link rel="stylesheet" href="../assets/examples/css/advanced/masonry.css">
+		<link rel="stylesheet" href="../assets/vendor/typeahead-js/typeahead.css">
 
 		<!-- Fonts -->
 		<link rel="stylesheet" href="../assets/fonts/web-icons/web-icons.min.css">
@@ -64,400 +67,405 @@
 	<sidebar></sidebar>
 	<content>
 <div class="page">
-	<div class="page-content padding-30 container-fluid">
-		<div class="row" data-plugin="matchHeight" data-by-row="true">
-			<div class="col-xlg-12 col-md-12">
-				<div class="widget widget-shadow widget-responsive" id="widgetLineareaColor">
-					<div class="widget-content">
-						<div class="padding-top-30 padding-30">
-							<div class="row">
-								<h2 id="lblCl_Crear_Tipo">Crear Contrato</h2>
-								<form class="form-group" id="frmCo_Crear">
-									<input type="hidden" id="txtCo_Crear_idOportunidad" class="guardar">
-									<div class="row">	
-										<div class="col-md-6 form-group">
-											<label for="txtCo_Crear_Cliente" class="control-label">Cliente</label>
-											<div class="input-group input-group-file">
-							                    <input type="text" id="txtCo_Crear_Cliente" class="form-control guardar" required>
-							                    <span class="input-group-btn">
-							                     	<span class="btn btn-primary">
-							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
-							                        	
-							                      	</span>
-							                    </span>
-							                </div>
-										</div>
-										<div class="col-md-6 form-group">
-											<label for="txtCo_Crear_Proceso" class="control-label">Numero de Contrato:</label>
-											<input type="text" id="txtCo_Crear_Contrato" class="form-control guardar">
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-sm-12 form-group">
-											<label for="txtCo_Crear_Objeto" class="control-label">Objeto del Proyecto</label>
-											<textarea id="txtCo_Crear_Objeto" class="form-control guardar" rows="3"></textarea>
-										</div>
-									</div>
-									<div class="row">	
-										<div class="col-md-6 form-group">
-											<label for="txtCo_Crear_idArea" class="control-label">Area</label>
-											<div class="input-group input-group-file">
-							                    <select id="txtCo_Crear_idArea" class="form-control guardar" data-plugin="select2"></select>
-							                    <span class="input-group-btn">
-							                     	<span class="btn btn-primary">
-							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
-							                        	
-							                      	</span>
-							                    </span>
-							                </div>											
-										</div>
-										<div class="col-md-6 form-group">
-											<label for="txtCo_Crear_idPais" class="control-label">Pais</label>
-											<div class="input-group input-group-file">
-												<select id="txtCo_Crear_idPais" class="form-control guardar" data-plugin="select2">	
-													<option value="8099761">Sin Definir</option>										
-												</select>
-							                    <span class="input-group-btn">
-							                     	<span class="btn btn-primary">
-							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
-							                        	
-							                      	</span>
-							                    </span>
-							                </div>
+	<div class="page-content container-fluid">
+		<form id="frmOp_Crear">
+			<div class="row">
+				<div class="col-sm-8">
+					<div class="panel panel-primary panel-bordered">
+				        <div class="panel-heading">
+				          <h3 class="panel-title">Crear Contrato</h3>
+				        </div>
+				        <div class="panel-body">
+							<input type="hidden" id="txtCo_Crear_idOportunidad" class="guardar">
+							<input type="hidden" id="txtCo_Crear_Prefijo" class="guardar">
 
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-6 form-group">
-											<label for="txtCo_Crear_idDepartamento" class="control-label">Departamento</label>
-											<div class="input-group input-group-file">
-												<select id="txtCo_Crear_idDepartamento" class="form-control guardar" data-plugin="select2">	
-													<option value="8099761">Sin Definir</option>										
-												</select>
-							                    <span class="input-group-btn">
-							                     	<span class="btn btn-primary">
-							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
-							                        	
-							                      	</span>
-							                    </span>
-							                </div>
-										</div>
-										<div class="col-md-6 form-group">
-											<label for="txtCo_Crear_idCiudad" class="control-label">Ciudad</label>
-											<div class="input-group input-group-file">
-												<select id="txtCo_Crear_idCiudad" class="form-control guardar" data-plugin="select2">	
-													<option value="8099761">Sin Definir</option>										
-												</select>
-							                    <span class="input-group-btn">
-							                     	<span class="btn btn-primary">
-							                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
-							                        	
-							                      	</span>
-							                    </span>
-							                </div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-6 form-group">
-											<label for="txtCo_Crear_Estado" class="control-label">Estado del Contrato</label>
-											<div class="input-group input-group-file">
-												<select type="number" id="txtCo_Crear_Estado" class="form-control guardar">
-													<option value="En legalización">En legalización</option>
-													<option value="En Ejecución">En Ejecución</option>
-													<option value="Suspendido">Suspendido</option>
-													<option value="Terminado">Terminado</option>
-													<option value="En Liquidación">En Liquidación</option>
-													<option value="Liquidado">Liquidado</option>
-												</select>
-												<span class="input-group-btn">
-							                     	<span class="btn btn-primary">
-							                        	<i class="icon fa-refresh" aria-hidden="true"></i>
-							                        	Actualizar
-							                      	</span>
-							                    </span>
-											</div>
-										</div>
-										<div class="col-md-6 form-group">
-											<label for="txtCo_Crear_TipoDeTrabajo" class="control-label">Tipo de Trabajo</label>
-											<select id="txtCo_Crear_TipoDeTrabajo" class="form-control select2 guardar">
-												<option value="Asesoria">Asesoria</option>
-												<option value="Estudios y/o Diseños">Estudios y/o Diseños</option>
-												<option value="Interventoría">Interventoría</option>
-												<option value="Gerencia de Proyecto">Gerencia de Proyecto</option>
-												<option value="Consultoría">Consultoría</option>
-												<option value="Suministro">Suministro</option>
-												<option value="Operación">Operación</option>
-											</select>
-										</div>
-									</div>
+							<div class="col-md-6 form-group">
+								<label for="txtCo_Crear_Proceso" class="control-label">Numero de Contrato:</label>
+								<input type="text" id="txtCo_Crear_Contrato" class="form-control guardar">
+							</div>
 
-									<div class="row">
-										<div class="col-md-6 form-group">
-											<label for="txtCo_Crear_Estado" class="control-label">Especialidad(es)</label>
-											<select type="number" id="txtCo_Crear_Estado" multiple class="form-control select2 guardar">
-												<option value="Acueductos y Alcantarillados">Acueductos y Alcantarillados</option>
-												<option value="Plantas de Tratamiento">Plantas de Tratamiento</option>
-												<option value="Centrales Hidroelectricas">Centrales Hidroelectricas</option>
-												<option value="Servicios Ambientales">Servicios Ambientales</option>
-												<option value="Estudios de Impacto Ambiental">Estudios de Impacto Ambiental</option>
-												<option value="Subestaciones">Subestaciones</option>
-												<option value="Lineas">Lineas</option>
-												<option value="Distribucción">Distribucción</option>
-												<option value="Suministro">Suministro</option>
-												<option value="Redes">Redes</option>
-												<option value="Riego">Riego</option>
-												<option value="Urbanismo">Urbanismo</option>
-												<option value="Edificios Escolares">Edificios Escolares</option>
-												<option value="Vias">Vias</option>
-												<option value="Puentes">Puentes</option>
-												<option value="Minas">Minas</option>
-											</select>
-										</div>
-										<div class="col-md-6 form-group">
-											<label for="txtCo_Crear_DirectorDeProyecto" class="control-label">Director de Proyecto:</label>
-											<input type="text" id="txtCo_Crear_DirectorDeProyecto" class="form-control guardar">
-										</div>
-									</div>
+							<div class="col-md-6 form-group">
+								<label for="txtCo_Crear_Cliente" class="control-label" data-plugin="select2">Cliente</label>
+								<div class="input-group input-group-file">
+				                    <select id="txtCo_Crear_Cliente" class="form-control guardar" required>
+				                    	<option value=""></option>
+				                    </select>
+				                    <span id="btnCo_Crear_AgregarCliente" class="input-group-btn">
+				                     	<span class="btn btn-primary">
+				                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
+				                      	</span>
+				                    </span>
+				                </div>
+							</div>
 
-									<div class="col-md-12">	
-										<div class="panel panel-bordered">
-          									<div class="panel-heading">
-              									<h3 class="panel-title">Fechas Importantes</h3>
-							            	</div>
-							            	<div class="panel-body">
-								              	<div class="row">
-								              		<div class="col-md-6 form-group">
-														<label for="txtCo_Crear_Fecha_Adjudicacion" class="control-label">Adjudicación</label>
-														<div class="input-group input-group-icon">
-										                    <input id="txtCo_Crear_Fecha_Adjudicacion" type="text" class="form-control datepicker" placeholder="Adjudicación">
-										                    <span class="input-group-addon">
-										                      <span class="icon wb-calendar" aria-hidden="true"></span>
-										                    </span>
-										                </div>
-													</div>
-													<div class="col-md-6 form-group">
-														<label for="txtCo_Crear_Fecha_Suscripcion" class="control-label">Suscripción</label>
-														<div class="input-group input-group-icon">
-										                    <input id="txtCo_Crear_Fecha_Suscripcion" type="text" class="form-control datepicker" placeholder="Suscripción">
-										                    <span class="input-group-addon">
-										                      <span class="icon wb-calendar" aria-hidden="true"></span>
-										                    </span>
-										                </div>
-													</div>
-								              	</div>
-								              	<div class="row">
-								              		<div class="col-md-6 form-group">
-														<label for="txtCo_Crear_Fecha_Inicio" class="control-label">Inicio</label>
-														<div class="input-group input-group-icon">
-										                    <input id="txtCo_Crear_Fecha_Inicio" type="text" class="form-control datepicker" placeholder="Inicio">
-										                    <span class="input-group-addon">
-										                      <span class="icon wb-calendar" aria-hidden="true"></span>
-										                    </span>
-										                </div>
-													</div>
-													<div class="col-md-6 form-group">
-														<label for="txtCo_Crear_Fecha_Terminacion" class="control-label">Terminación</label>
-														<div class="input-group input-group-icon">
-										                    <input id="txtCo_Crear_Fecha_Terminacion" type="text" class="form-control datepicker" placeholder="Terminación">
-										                    <span class="input-group-addon">
-										                      <span class="icon wb-calendar" aria-hidden="true"></span>
-										                    </span>
-										                </div>
-													</div>
-								              	</div>
-								              	<div class="row">
-								              		<div class="col-md-6 form-group">
-														<label for="txtCo_Crear_Fecha_Liquidacion" class="control-label">Liquidación</label>
-														<div class="input-group input-group-icon">
-										                    <input id="txtCo_Crear_Fecha_Liquidacion" type="text" class="form-control datepicker" placeholder="Liquidación">
-										                    <span class="input-group-addon">
-										                      <span class="icon wb-calendar" aria-hidden="true"></span>
-										                    </span>
-										                </div>
-													</div>
-													<div class="col-md-6 form-group">
-														<label for="txtCo_Crear_Fecha_Certificado" class="control-label">Certificado</label>
-														<div class="input-group input-group-icon">
-										                    <input id="txtCo_Crear_Fecha_Certificado" type="text" class="form-control datepicker" placeholder="Certificado">
-										                    <span class="input-group-addon">
-										                      <span class="icon wb-calendar" aria-hidden="true"></span>
-										                    </span>
-										                </div>
-													</div>
-								              	</div>
-								            </div>
-							          	</div>
-									</div>
-									<div class="col-md-12">	
-										<div class="panel panel-bordered">
-          									<div class="panel-heading">
-              									<h3 class="panel-title">Presentación</h3>
-							            	</div>
-							            	<div class="panel-body">
-							            		<div class="row">
-							            			<div class="col-sm-12 form-group">
-														<label for="txtCo_Crear_Empresa" class="control-label">Empresa del Grupo</label>
-														<select id="txtCo_Crear_Empresa" class="form-control guardar" data-plugin="select2">	
-															<option value="1">WSP Colombia</option>
-															<option value="2">Parsons</option>
-															<option value="3">WSP Servicios</option>
-															<option value="4">WSP Canada Inc</option>
-															<option value="5">Tecnoambiental</option>
-														</select>
-													</div>
-							            		</div>
-							            		<div class="row">
-							            			<div class="col-sm-6 form-group">
-														<label for="txtCo_Crear_Consorcio" class="control-label">Consorcio</label>
-														<select id="txtCo_Crear_Consorcio" class="form-control guardar" placeholder="Consorcio">
-															<option value="No">NO</option>
-															<option value="Si">SI</option>
-														</select>
-													</div>
-													<div class="col-sm-6 form-group">
-														<label for="txtCo_Crear_PorcentajeParticipacion" class="control-label">Porcentaje de Participación WSP</label>
-														<div class="input-group input-group-icon">
-										                    <input id="txtCo_Crear_PorcentajeParticipacion" type="number" class="form-control" placeholder="Porcentaje de Participación" value="100" readonly="true">
-										                    <span class="input-group-addon">
-										                      <span class="icon" aria-hidden="true">%</span>
-										                    </span>
-										                </div>
-													</div>
+							<div class="col-sm-12 form-group">
+								<label for="txtCo_Crear_Objeto" class="control-label">Objeto del Proyecto</label>
+								<textarea id="txtCo_Crear_Objeto" class="form-control guardar" rows="3"></textarea>
+							</div>
 
-							            		</div>
+							<div class="col-md-6 form-group">
+								<label for="txtCo_Crear_idArea" class="control-label">Area</label>
+								<div class="input-group input-group-file">
+				                    <select id="txtCo_Crear_idArea" class="form-control guardar" data-plugin="select2"></select>
+				                    <span id="btnCo_Crear_AgregarArea" class="input-group-btn">
+				                     	<span class="btn btn-primary">
+				                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
+				                      	</span>
+				                    </span>
+				                </div>											
+							</div>
 
-							            		<div class="col-md-12">
-							            			<h4>Consorcio
-							            				<button id="btnPropuestas_AgregarConsorciado" type="button" class="btn btn-icon btn-warning pull-right"><i class="icon wb-plus-circle" aria-hidden="true"></i> Agregar Consorciado</button>
-							            			</h4>
-							            		</div>
-							            		<br><br>
-	
-							            		<div id="cntPropuestas_Consorcios">
-							            			<div id="cntPropuestas_Consorcios_PrimeraFila" class="col-sm-12">
-							            				<div class="col-md-5 form-group">
-															<label  class="control-label">Nombre Consorciado</label>
-										                    <input  type="text" class="form-control" placeholder="Nombre Consorciado">
-														</div>
-														<div class="col-md-5 form-group">
-															<label  class="control-label">Porcentaje de Participación</label>
-															<div class="input-group input-group-icon">
-											                    <input type="text" class="form-control" placeholder="Porcentaje de Participación">
-											                    <span class="input-group-addon">
-											                      <span class="icon" aria-hidden="true">%</span>
-											                    </span>
-											                </div>
-														</div>
-														<div class="col-md-2 btnQuitarFake hide">
-															<button class="btn btn-danger btn-block btnPorpuestas_Consorciado_Quitar"><i class="icon wb-trash"></i></button>
-														</div>
-							            			</div>
-											    </div>
-							            	</div>
-							            </div>
-							        </div>
-							        <div class="col-md-12">	
-										<div class="panel panel-bordered">
-          									<div class="panel-heading">
-              									<h3 class="panel-title">Documentos</h3>
-							            	</div>
-							            	<div class="panel-body">
-								              	<div class="row">
-								              		<div class="col-md-6">
-									                  <div class="pull-left margin-right-20">
-									                    <input type="checkbox" data-plugin="switchery">
-									                  </div>
-									                  <label class="padding-top-3" for="inputBasicOff">Resolución</label>
-									                </div>
-									                <div class="col-md-6">
-									                  <div class="pull-left margin-right-20">
-									                    <input type="checkbox" data-plugin="switchery">
-									                  </div>
-									                  <label class="padding-top-3" for="inputBasicOff">Contrato</label>
-									                </div>
-								              	</div>
-								              	<div class="row">
-								              		<div class="col-md-6">
-									                  <div class="pull-left margin-right-20">
-									                    <input type="checkbox" data-plugin="switchery">
-									                  </div>
-									                  <label class="padding-top-3" for="inputBasicOff">Polizas</label>
-									                </div>
-									                <div class="col-md-6">
-									                  <div class="pull-left margin-right-20">
-									                    <input type="checkbox" data-plugin="switchery">
-									                  </div>
-									                  <label class="padding-top-3" for="inputBasicOff">Acta de Inicio</label>
-									                </div>
-								              	</div>
-								              	<div class="row">
-								              		<div class="col-md-6">
-									                  <div class="pull-left margin-right-20">
-									                    <input type="checkbox" data-plugin="switchery">
-									                  </div>
-									                  <label class="padding-top-3" for="inputBasicOff">Modificaciones y/o Adiciones</label>
-									                </div>
-									                <div class="col-md-6">
-									                  <div class="pull-left margin-right-20">
-									                    <input type="checkbox" data-plugin="switchery">
-									                  </div>
-									                  <label class="padding-top-3" for="inputBasicOff">Polizas</label>
-									                </div>
-								              	</div>
-								              	<div class="row">
-								              		<div class="col-md-6">
-									                  <div class="pull-left margin-right-20">
-									                    <input type="checkbox" data-plugin="switchery">
-									                  </div>
-									                  <label class="padding-top-3" for="inputBasicOff">Acta Terminación</label>
-									                </div>
-									                <div class="col-md-6">
-									                  <div class="pull-left margin-right-20">
-									                    <input type="checkbox" data-plugin="switchery">
-									                  </div>
-									                  <label class="padding-top-3" for="inputBasicOff">Acta de Liquidación</label>
-									                </div>
-								              	</div>
-								              	<div class="row">
-								              		<div class="col-md-6">
-									                  <div class="pull-left margin-right-20">
-									                    <input type="checkbox" data-plugin="switchery">
-									                  </div>
-									                  <label class="padding-top-3" for="inputBasicOff">Certificación</label>
-									                </div>
-									                <div class="col-md-6">
-									                  <div class="pull-left margin-right-20">
-									                    <input type="checkbox" data-plugin="switchery">
-									                  </div>
-									                  <label class="padding-top-3" for="inputBasicOff">Acuerdo Consorcial</label>
-									                </div>
-								              	</div>
-								              	<div class="row">
-								              		<div class="col-md-6">
-									                  <div class="pull-left margin-right-20">
-									                    <input type="checkbox" data-plugin="switchery">
-									                  </div>
-									                  <label class="padding-top-3" for="inputBasicOff">Rut Consorcio</label>
-									                </div>
-									                <div class="col-md-6">
-									                  <div class="pull-left margin-right-20">
-									                    <input type="checkbox" data-plugin="switchery">
-									                  </div>
-									                  <label class="padding-top-3" for="inputBasicOff">Acuerdo Consorcial</label>
-									                </div>
-								              	</div>
-								            </div>
-								        </div>
-								    </div>
-								</form>
+							<div class="col-md-6 form-group">
+								<label for="txtCo_Crear_idCiudad" class="control-label">Ciudad</label>
+								<div class="input-group input-group-file">
+									<select id="txtCo_Crear_idCiudad" class="form-control guardar" data-plugin="select2">	
+										<option value="8099761">Sin Definir</option>										
+									</select>
+				                    <span id="btnCo_Crear_AgregarCiudad" class="input-group-btn">
+				                     	<span class="btn btn-primary">
+				                        	<i class="icon wb-plus-circle" aria-hidden="true"></i>
+				                        	
+				                      	</span>
+				                    </span>
+				                </div>
+							</div>
+
+							<div class="col-md-6 form-group">
+								<label for="txtCo_Crear_TipoDeTrabajo" class="control-label">Tipo de Trabajo</label>
+								<select id="txtCo_Crear_TipoDeTrabajo" class="form-control select2 guardar">
+									<option value="Asesoria">Asesoria</option>
+									<option value="Estudios y/o Diseños">Estudios y/o Diseños</option>
+									<option value="Interventoría">Interventoría</option>
+									<option value="Gerencia de Proyecto">Gerencia de Proyecto</option>
+									<option value="Consultoría">Consultoría</option>
+									<option value="Suministro">Suministro</option>
+									<option value="Operación">Operación</option>
+								</select>
+							</div>
+
+							<div class="col-md-6 form-group">
+								<label for="txtCo_Crear_Especialidad" class="control-label">Especialidad(es)</label>
+								<select type="number" id="txtCo_Crear_Especialidad" multiple class="form-control select2 guardar">
+									<option value="Acueductos y Alcantarillados">Acueductos y Alcantarillados</option>
+									<option value="Plantas de Tratamiento">Plantas de Tratamiento</option>
+									<option value="Centrales Hidroelectricas">Centrales Hidroelectricas</option>
+									<option value="Servicios Ambientales">Servicios Ambientales</option>
+									<option value="Estudios de Impacto Ambiental">Estudios de Impacto Ambiental</option>
+									<option value="Subestaciones">Subestaciones</option>
+									<option value="Lineas">Lineas</option>
+									<option value="Distribucción">Distribucción</option>
+									<option value="Suministro">Suministro</option>
+									<option value="Redes">Redes</option>
+									<option value="Riego">Riego</option>
+									<option value="Urbanismo">Urbanismo</option>
+									<option value="Edificios Escolares">Edificios Escolares</option>
+									<option value="Vias">Vias</option>
+									<option value="Puentes">Puentes</option>
+									<option value="Minas">Minas</option>
+								</select>
+							</div>
+
+							<div class="col-md-6 form-group">
+								<label for="txtCo_Crear_Estado" class="control-label">Estado del Contrato</label>
+								<div class="input-group input-group-file">
+									<select type="number" id="txtCo_Crear_Estado" class="form-control guardar">
+										<option value="En legalización">En legalización</option>
+										<option value="En Ejecución">En Ejecución</option>
+										<option value="Suspendido">Suspendido</option>
+										<option value="Terminado">Terminado</option>
+										<option value="En Liquidación">En Liquidación</option>
+										<option value="Liquidado">Liquidado</option>
+									</select>
+									<span class="input-group-btn">
+				                     	<span class="btn btn-primary">
+				                        	<i class="icon fa-refresh" aria-hidden="true"></i>
+				                        	Actualizar
+				                      	</span>
+				                    </span>
+								</div>
 							</div>
 						</div>
 					</div>
+
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="panel panel-primary panel-bordered">
+								<div class="panel-heading">
+									<h3 class="panel-title">Presentación</h3>
+				            	</div>
+				            	<div class="panel-body">
+				            		<div class="row">
+				            			<div class="col-sm-12 form-group">
+											<label for="txtCo_Crear_Empresa" class="control-label">Empresa del Grupo</label>
+											<select id="txtCo_Crear_Empresa" class="form-control guardar" data-plugin="select2">	
+												<option value="1">WSP Colombia</option>
+												<option value="2">Parsons</option>
+												<option value="3">WSP Servicios</option>
+												<option value="4">WSP Canada Inc</option>
+												<option value="5">Tecnoambiental</option>
+											</select>
+										</div>
+				            		</div>
+				            		<div class="row">
+				            			<div class="col-sm-6 form-group">
+											<label for="txtCo_Crear_Consorcio" class="control-label">Consorcio</label>
+											<select id="txtCo_Crear_Consorcio" class="form-control guardar" placeholder="Consorcio">
+												<option value="No">NO</option>
+												<option value="Si">SI</option>
+											</select>
+										</div>
+										<div class="col-sm-6 form-group">
+											<label for="txtCo_Crear_PorcentajeParticipacion" class="control-label">Porcentaje de Participación</label>
+											<div class="input-group input-group-icon">
+							                    <input id="txtCo_Crear_PorcentajeParticipacion" type="number" class="form-control text-right" placeholder="Porcentaje de Participación" value="100" readonly="true">
+							                    <span class="input-group-addon">
+							                      <span class="icon" aria-hidden="true">%</span>
+							                    </span>
+							                </div>
+										</div>
+				            		</div>
+				            	</div>
+				            </div>
+
+				            <div id="cntCo_Crear_Consorcio" class="panel panel-primary panel-bordered hide">
+								<div class="panel-heading">
+									<h3 class="panel-title">Consorcio</h3>
+									<div class="panel-actions">
+			            				<button id="btnPropuestas_AgregarConsorciado" type="button" class="btn btn-icon btn-warning pull-right"><i class="icon wb-plus-circle" aria-hidden="true"></i> Agregar Consorciado</button>
+									</div>
+				            	</div>
+				            	<div class="panel-body">
+				            		<div class="form-group">
+										<label  class="control-label">Nombre del Consorcio</label>
+					                    <input id="txtPro_Crear_NombreConsorcio" type="text" class="form-control guardar" placeholder="Nombre del Consorcio">
+									</div>
+									<div id="cntPropuestas_Consorcios">
+				            			<div id="cntPropuestas_Consorcios_PrimeraFila" class="row">
+				            				<div class="col-md-5 form-group">
+												<label  class="control-label">Nombre Consorciado</label>
+							                    <input  type="text" class="form-control" placeholder="Nombre Consorciado">
+											</div>
+											<div class="col-md-5 form-group">
+												<label  class="control-label">Porcentaje de Participación</label>
+												<div class="input-group input-group-icon">
+								                    <input type="text" class="form-control" placeholder="Porcentaje de Participación">
+								                    <span class="input-group-addon">
+								                      <span class="icon" aria-hidden="true">%</span>
+								                    </span>
+								                </div>
+											</div>
+											<div class="col-md-2 btnQuitarFake hide">
+												<div class="form-group">
+													<label  class="control-label"></label>
+													<button class="btn btn-danger btn-block btnPorpuestas_Consorciado_Quitar"><i class="icon wb-trash"></i></button>
+												</div>
+											</div>
+				            			</div>
+									</div>
+
+				            	</div>
+				            </div>
+						</div>
+
+						<div class="col-sm-6">
+							<div class="panel panel-primary panel-bordered">
+								<div class="panel-heading">
+									<h3 class="panel-title">Polizas</h3>
+				            	</div>
+				            	<div class="panel-body">
+				            	</div>
+				            </div>
+						</div>
+
+						<div class="col-sm-5">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="panel panel-primary panel-bordered">
+						<div class="panel-heading">
+							<h3 class="panel-title">Director de Proyecto</h3>
+		            	</div>
+		            	<div class="panel-body">
+							<div id="cntCo_Crear_DirectorProyecto">
+								
+							</div>							
+		            	</div>
+		            </div>
+
+		            <div class="panel panel-primary panel-bordered">
+						<div class="panel-heading">
+							<h3 class="panel-title">Fechas Importantes</h3>
+		            	</div>
+		            	<div class="panel-body">
+							<div class="col-md-6 form-group">
+								<label for="txtCo_Crear_Fecha_Adjudicacion" class="control-label">Adjudicación</label>
+								<div class="input-group input-group-icon">
+				                    <input id="txtCo_Crear_Fecha_Adjudicacion" type="text" class="form-control datepicker" placeholder="Adjudicación">
+				                    <span class="input-group-addon">
+				                      <span class="icon wb-calendar" aria-hidden="true"></span>
+				                    </span>
+				                </div>
+							</div>
+							<div class="col-md-6 form-group">
+								<label for="txtCo_Crear_Fecha_Suscripcion" class="control-label">Suscripción</label>
+								<div class="input-group input-group-icon">
+				                    <input id="txtCo_Crear_Fecha_Suscripcion" type="text" class="form-control datepicker" placeholder="Suscripción">
+				                    <span class="input-group-addon">
+				                      <span class="icon wb-calendar" aria-hidden="true"></span>
+				                    </span>
+				                </div>
+							</div>
+		              	
+		              		<div class="col-md-6 form-group">
+								<label for="txtCo_Crear_Fecha_Inicio" class="control-label">Inicio</label>
+								<div class="input-group input-group-icon">
+				                    <input id="txtCo_Crear_Fecha_Inicio" type="text" class="form-control datepicker" placeholder="Inicio">
+				                    <span class="input-group-addon">
+				                      <span class="icon wb-calendar" aria-hidden="true"></span>
+				                    </span>
+				                </div>
+							</div>
+							<div class="col-md-6 form-group">
+								<label for="txtCo_Crear_Fecha_Terminacion" class="control-label">Terminación</label>
+								<div class="input-group input-group-icon">
+				                    <input id="txtCo_Crear_Fecha_Terminacion" type="text" class="form-control datepicker" placeholder="Terminación">
+				                    <span class="input-group-addon">
+				                      <span class="icon wb-calendar" aria-hidden="true"></span>
+				                    </span>
+				                </div>
+							</div>
+		              	
+		              		<div class="col-md-6 form-group">
+								<label for="txtCo_Crear_Fecha_Liquidacion" class="control-label">Liquidación</label>
+								<div class="input-group input-group-icon">
+				                    <input id="txtCo_Crear_Fecha_Liquidacion" type="text" class="form-control datepicker" placeholder="Liquidación">
+				                    <span class="input-group-addon">
+				                      <span class="icon wb-calendar" aria-hidden="true"></span>
+				                    </span>
+				                </div>
+							</div>
+							<div class="col-md-6 form-group">
+								<label for="txtCo_Crear_Fecha_Certificado" class="control-label">Certificado</label>
+								<div class="input-group input-group-icon">
+				                    <input id="txtCo_Crear_Fecha_Certificado" type="text" class="form-control datepicker" placeholder="Certificado">
+				                    <span class="input-group-addon">
+				                      <span class="icon wb-calendar" aria-hidden="true"></span>
+				                    </span>
+				                </div>
+							</div>
+		            	</div>
+		            </div>
+
+		            <div class="panel panel-primary panel-bordered">
+				        <div class="panel-heading">
+				            <h4 class="panel-title">Archivos</h4>
+				        </div>
+				        <div id="cntCo_Archivos" class="panel-body form-horizontal">
+				        </div>
+				    </div>
+
+					<div class="panel panel-primary panel-bordered">
+						<div class="panel-heading">
+							<h3 class="panel-title">Documentos</h3>
+		            	</div>
+		            	<div class="panel-body">
+		              		<div class="col-sm-12">
+			                  <div class="pull-left margin-right-20">
+			                    <input type="checkbox" data-plugin="switchery">
+			                  </div>
+			                  <label class="padding-top-3" for="inputBasicOff">Resolución</label>
+			                </div>
+
+			                <div class="col-sm-12">
+			                  <div class="pull-left margin-right-20">
+			                    <input type="checkbox" data-plugin="switchery">
+			                  </div>
+			                  <label class="padding-top-3" for="inputBasicOff">Contrato</label>
+			                </div>
+		              	
+		              		<div class="col-sm-12">
+			                  <div class="pull-left margin-right-20">
+			                    <input type="checkbox" data-plugin="switchery">
+			                  </div>
+			                  <label class="padding-top-3" for="inputBasicOff">Polizas</label>
+			                </div>
+			                <div class="col-sm-12">
+			                  <div class="pull-left margin-right-20">
+			                    <input type="checkbox" data-plugin="switchery">
+			                  </div>
+			                  <label class="padding-top-3" for="inputBasicOff">Acta de Inicio</label>
+			                </div>
+		              	
+		              		<div class="col-sm-12">
+			                  <div class="pull-left margin-right-20">
+			                    <input type="checkbox" data-plugin="switchery">
+			                  </div>
+			                  <label class="padding-top-3" for="inputBasicOff">Modificaciones</label>
+			                </div>
+			                <div class="col-sm-12">
+			                  <div class="pull-left margin-right-20">
+			                    <input type="checkbox" data-plugin="switchery">
+			                  </div>
+			                  <label class="padding-top-3" for="inputBasicOff">Polizas</label>
+			                </div>
+		              	
+		              		<div class="col-sm-12">
+			                  <div class="pull-left margin-right-20">
+			                    <input type="checkbox" data-plugin="switchery">
+			                  </div>
+			                  <label class="padding-top-3" for="inputBasicOff">Acta Terminación</label>
+			                </div>
+			                <div class="col-sm-12">
+			                  <div class="pull-left margin-right-20">
+			                    <input type="checkbox" data-plugin="switchery">
+			                  </div>
+			                  <label class="padding-top-3" for="inputBasicOff">Acta de Liquidación</label>
+			                </div>
+		              	
+		              		<div class="col-sm-12">
+			                  <div class="pull-left margin-right-20">
+			                    <input type="checkbox" data-plugin="switchery">
+			                  </div>
+			                  <label class="padding-top-3" for="inputBasicOff">Certificación</label>
+			                </div>
+			                <div class="col-sm-12">
+			                  <div class="pull-left margin-right-20">
+			                    <input type="checkbox" data-plugin="switchery">
+			                  </div>
+			                  <label class="padding-top-3" for="inputBasicOff">Acuerdo Consorcial</label>
+			                </div>
+		              	
+		              		<div class="col-sm-12">
+			                  <div class="pull-left margin-right-20">
+			                    <input type="checkbox" data-plugin="switchery">
+			                  </div>
+			                  <label class="padding-top-3" for="inputBasicOff">Rut Consorcio</label>
+			                </div>
+			                <div class="col-sm-12">
+			                  <div class="pull-left margin-right-20">
+			                    <input type="checkbox" data-plugin="switchery">
+			                  </div>
+			                  <label class="padding-top-3" for="inputBasicOff">Acuerdo Consorcial</label>
+			                </div>
+		              	</div>
+		            </div>
+	
 				</div>
 			</div>
-		</div>
+
+			<div class="text-right" style="position: fixed; bottom: 40px; right: 20px; z-index:1000;">
+				<button type="button" class="btn btn-info btn-floating tooltip-info" data-toggle="tooltip" data-placement="top" data-original-title="Agregar Archivo" id="btnCo_Crear_Adjunto"><i class="icon wb-attach-file"></i></button>
+	        	<button type="button" class="btn btn-danger btn-floating tooltip-danger" data-toggle="tooltip" data-placement="top" data-original-title="Nueva" id="btnCo_Crear_Nueva"><i class="icon wb-add-file"></i></button>
+              	<button type="submit" class="btn btn-success btn-floating tooltip-success" data-toggle="tooltip" data-placement="top" data-original-title="Guardar" id="btnCo_Crear_Guardar"><i class="icon fa-floppy-o"></i></button>
+            </div>
+			
+		</form>
+
 	</div>
 </div>
+
 </content>
 	<fixedScripts>
 		<script src="../assets/vendor/jquery/jquery.js"></script>
@@ -502,6 +510,11 @@
 		<script src="../assets/js/components/alertify-js.js"></script>
 
 		<customscripts>
+			<script src="../assets/js/components/masonry.js"></script>
+			<script src="../assets/vendor/bootstrap-tokenfield/bootstrap-tokenfield.min.js"></script>
+			<script src="../assets/vendor/typeahead-js/handlebars.js"></script>
+			<script src="../assets/vendor/typeahead-js/bloodhound.min.js"></script>
+  			<script src="../assets/vendor/typeahead-js/typeahead.jquery.min.js"></script>
 			<script src="../assets/vendor/bootstrap-datepicker/bootstrap-datepicker.js"></script>
 			<script src="../assets/vendor/select2/select2.min.js"></script>
 			<script src="../assets/vendor/switchery/switchery.min.js"></script>			
