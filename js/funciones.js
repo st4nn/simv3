@@ -70,7 +70,13 @@ $.fn.generarDatosEnvio = function(restricciones, callback)
   {
     if ($(val).attr("id") != undefined)
     {
-     datos[$(val).attr("id").replace(restricciones, "")] = $(val).val();
+      if ($(val).attr("type") == 'checkbox')
+      {
+          datos[$(val).attr("id").replace(restricciones, "")] = $(val).is(':checked');
+      } else
+      {
+        datos[$(val).attr("id").replace(restricciones, "")] = $(val).val();
+      }
     }
   });
   datos = JSON.stringify(datos);  

@@ -371,85 +371,93 @@
 							<h3 class="panel-title">Documentos</h3>
 		            	</div>
 		            	<div class="panel-body">
-		              		<div class="col-sm-12">
-			                  <div class="pull-left margin-right-20">
-			                    <input type="checkbox" data-plugin="switchery">
-			                  </div>
-			                  <label class="padding-top-3" for="inputBasicOff">Resolución</label>
-			                </div>
-
-			                <div class="col-sm-12">
-			                  <div class="pull-left margin-right-20">
-			                    <input type="checkbox" data-plugin="switchery">
-			                  </div>
-			                  <label class="padding-top-3" for="inputBasicOff">Contrato</label>
-			                </div>
-		              	
-		              		<div class="col-sm-12">
-			                  <div class="pull-left margin-right-20">
-			                    <input type="checkbox" data-plugin="switchery">
-			                  </div>
-			                  <label class="padding-top-3" for="inputBasicOff">Polizas</label>
-			                </div>
-			                <div class="col-sm-12">
-			                  <div class="pull-left margin-right-20">
-			                    <input type="checkbox" data-plugin="switchery">
-			                  </div>
-			                  <label class="padding-top-3" for="inputBasicOff">Acta de Inicio</label>
-			                </div>
-		              	
-		              		<div class="col-sm-12">
-			                  <div class="pull-left margin-right-20">
-			                    <input type="checkbox" data-plugin="switchery">
-			                  </div>
-			                  <label class="padding-top-3" for="inputBasicOff">Modificaciones</label>
-			                </div>
-			                <div class="col-sm-12">
-			                  <div class="pull-left margin-right-20">
-			                    <input type="checkbox" data-plugin="switchery">
-			                  </div>
-			                  <label class="padding-top-3" for="inputBasicOff">Polizas</label>
-			                </div>
-		              	
-		              		<div class="col-sm-12">
-			                  <div class="pull-left margin-right-20">
-			                    <input type="checkbox" data-plugin="switchery">
-			                  </div>
-			                  <label class="padding-top-3" for="inputBasicOff">Acta Terminación</label>
-			                </div>
-			                <div class="col-sm-12">
-			                  <div class="pull-left margin-right-20">
-			                    <input type="checkbox" data-plugin="switchery">
-			                  </div>
-			                  <label class="padding-top-3" for="inputBasicOff">Acta de Liquidación</label>
-			                </div>
-		              	
-		              		<div class="col-sm-12">
-			                  <div class="pull-left margin-right-20">
-			                    <input type="checkbox" data-plugin="switchery">
-			                  </div>
-			                  <label class="padding-top-3" for="inputBasicOff">Certificación</label>
-			                </div>
-			                <div class="col-sm-12">
-			                  <div class="pull-left margin-right-20">
-			                    <input type="checkbox" data-plugin="switchery">
-			                  </div>
-			                  <label class="padding-top-3" for="inputBasicOff">Acuerdo Consorcial</label>
-			                </div>
-		              	
-		              		<div class="col-sm-12">
-			                  <div class="pull-left margin-right-20">
-			                    <input type="checkbox" data-plugin="switchery">
-			                  </div>
-			                  <label class="padding-top-3" for="inputBasicOff">Rut Consorcio</label>
-			                </div>
-			                <div class="col-sm-12">
-			                  <div class="pull-left margin-right-20">
-			                    <input type="checkbox" data-plugin="switchery">
-			                  </div>
-			                  <label class="padding-top-3" for="inputBasicOff">Acuerdo Consorcial</label>
-			                </div>
-		              	</div>
+		            		<div id="cntCo_Crear_Documentos" class="table-responsive">
+		            			<table class="col-sm-6">
+		            				<tr>
+		            					<td><input type="checkbox" data-plugin="switchery" id="txtCo_Crear_Documentos_Aplica_Resolucion" checked="true"></td>
+		            					<td><div class="checkbox-custom checkbox-primary margin-left-10">
+					                      <input type="checkbox" class="chkCo_Crear_Documento" id="txtCo_Crear_Documentos_Resolucion">
+					                      <label></label>
+					                    </div></td>
+					                    <td><label class="margin-left-10 padding-top-3" for="txtCo_Crear_Documentos_Resolucion">Resolución</label></td>
+		            				</tr>
+		            				<tr>
+		            					<td><input type="checkbox" data-plugin="switchery" id="txtCo_Crear_Documentos_Aplica_Contrato" checked="true" data-disabled="true"></td>
+		            					<td><div class="checkbox-custom checkbox-primary margin-left-10">
+					                      <input type="checkbox" class="chkCo_Crear_Documento" id="txtCo_Crear_Documentos_Contrato">
+					                      <label></label>
+					                    </div></td>
+					                    <td><label class="margin-left-10 padding-top-3" for="txtCo_Crear_Documentos_Contrato">Contrato</label></td>
+		            				</tr>
+		            				<tr>
+		            					<td><input type="checkbox" data-plugin="switchery" id="txtCo_Crear_Documentos_Aplica_Polizas" checked="true"></td>
+		            					<td><div class="checkbox-custom checkbox-primary margin-left-10">
+					                      <input type="checkbox" class="chkCo_Crear_Documento" id="txtCo_Crear_Documentos_Polizas">
+					                      <label></label>
+					                    </div></td>
+					                    <td><label class="margin-left-10 padding-top-3" for="inputBasicOff">Polizas</label></td>
+		            				</tr>
+		            				<tr>
+		            					<td><input type="checkbox" data-plugin="switchery" id="txtCo_Crear_Documentos_Aplica_ActaInicio" checked="true"></td>
+		            					<td><div class="checkbox-custom checkbox-primary margin-left-10">
+					                      <input type="checkbox" class="chkCo_Crear_Documento" id="txtCo_Crear_Documentos_ActaInicio">
+					                      <label></label>
+					                    </div></td>
+					                    <td><label class="margin-left-10 padding-top-3" for="inputBasicOff">Acta de Inicio</label></td>
+		            				</tr>
+		            				<tr>
+		            					<td><input type="checkbox" data-plugin="switchery" id="txtCo_Crear_Documentos_Aplica_Modificaciones" checked="true"></td>
+		            					<td><div class="checkbox-custom checkbox-primary margin-left-10">
+					                      <input type="checkbox" class="chkCo_Crear_Documento" id="txtCo_Crear_Documentos_Modificaciones">
+					                      <label></label>
+					                    </div></td>
+					                    <td><label class="margin-left-10 padding-top-3" for="inputBasicOff">Modificaciones</label></td>
+		            				</tr>
+		            			</table>
+		            			<table class="col-sm-6">
+		            				<tr>
+		            					<td><input type="checkbox" data-plugin="switchery" id="txtCo_Crear_Documentos_Aplica_ActaTerminacion" checked="true"></td>
+		            					<td><div class="checkbox-custom checkbox-primary margin-left-10">
+					                      <input type="checkbox" class="chkCo_Crear_Documento" id="txtCo_Crear_Documentos_ActaTerminacion">
+					                      <label></label>
+					                    </div></td>
+					                    <td><label class="margin-left-10 padding-top-3" for="inputBasicOff">Acta Terminación</label></td>
+		            				</tr>
+		            				<tr>
+		            					<td><input type="checkbox" data-plugin="switchery" id="txtCo_Crear_Documentos_Aplica_ActaLiquidacion" checked="true"></td>
+		            					<td><div class="checkbox-custom checkbox-primary margin-left-10">
+					                      <input type="checkbox" class="chkCo_Crear_Documento" id="txtCo_Crear_Documentos_ActaLiquidacion">
+					                      <label></label>
+					                    </div></td>
+					                    <td><label class="margin-left-10 padding-top-3" for="inputBasicOff">Acta de Liquidación</label></td>
+		            				</tr>
+		            				<tr>
+		            					<td><input type="checkbox" data-plugin="switchery" id="txtCo_Crear_Documentos_Aplica_Certificacion" checked="true" data-disabled="true"></td>
+		            					<td><div class="checkbox-custom checkbox-primary margin-left-10">
+					                      <input type="checkbox" class="chkCo_Crear_Documento" id="txtCo_Crear_Documentos_Certificacion">
+					                      <label></label>
+					                    </div></td>
+					                    <td><label class="margin-left-10 padding-top-3" for="inputBasicOff">Certificación</label></td>
+		            				</tr>
+		            				<tr>
+		            					<td><input type="checkbox" data-plugin="switchery" id="txtCo_Crear_Documentos_Aplica_AcuerdoConsorcial" checked="true"></td>
+		            					<td><div class="checkbox-custom checkbox-primary margin-left-10">
+					                      <input type="checkbox" class="chkCo_Crear_Documento" id="txtCo_Crear_Documentos_AcuerdoConsorcial">
+					                      <label></label>
+					                    </div></td>
+					                    <td><label class="margin-left-10 padding-top-3" for="inputBasicOff">Acuerdo Consorcial</label></td>
+		            				</tr>
+		            				<tr>
+		            					<td><input type="checkbox" data-plugin="switchery" id="txtCo_Crear_Documentos_Aplica_RutConsorcio" checked="true"></td>
+		            					<td><div class="checkbox-custom checkbox-primary margin-left-10">
+					                      <input type="checkbox" class="chkCo_Crear_Documento" id="txtCo_Crear_Documentos_RutConsorcio">
+					                      <label></label>
+					                    </div></td>
+					                    <td><label class="margin-left-10 padding-top-3" for="inputBasicOff">Rut Consorcio</label></td>
+		            				</tr>
+		            			</table>
+		            		</div>
+		            	</div>
 		            </div>
 	
 				</div>

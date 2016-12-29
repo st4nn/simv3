@@ -69,4 +69,18 @@ function co_crear()
 		modulo = modulo.replace(" btnQuitarFake hide", "");
 		$("#cntPropuestas_Consorcios").append('<div class="row">' + modulo + '</div>');
 	});
+
+	$("#cntCo_Crear_Documentos [data-plugin=switchery]").on("change", function()
+	{
+		var obj = $(this).parent('td').parent('tr').find('.chkCo_Crear_Documento');
+		console.log(obj);
+
+		if ($(this).is(':checked'))
+		{
+			$(obj).attr('disabled', false);
+		} else
+		{
+			$(obj).attr('disabled', true);
+		}
+	});
 }
