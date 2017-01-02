@@ -1,10 +1,34 @@
 <?php
 	include("../conectar.php"); 
+   include("../../../login/login.php"); 
+
    $link = Conectar();
 
    $usuario = addslashes($_POST['pUsuario']);
-   $clave = md5(addslashes($_POST['pClave']));
+   $clave = addslashes($_POST['pClave']);
    $Fecha = $_POST['pFecha'];
+
+   $usuario = explode("@", $usuario);
+   $usuario = $usuario[0];
+
+   $cUsuario = validarUsuario($usuario, $clave);
+   if ($cUsuario !== false)
+   {
+      $sql = "INSERT INTO Login(Usuario, Clave, Estado) VALUES ('$usuario', '" . md5(md5(md5($clave))) . "', 'Activo') ON DUPLICATE KEY UPDATE Usuario = VALUES(Usuario), Clave=VALUES(Clave), Estado=VALUES(Estado);";
+      $link->query(utf8_decode($sql));
+
+      $sql = "SELECT idLogin FROM Login WHERE Usuario = '$usuario';";
+      $result = $link->query($sql);
+      $fila =  $result->fetch_array(MYSQLI_ASSOC);
+
+
+      $idLogin = $fila['idLogin'];
+
+      $sql = "INSERT INTO DatosUsuarios (idLogin, Nombre, Correo) VALUES ($idLogin, '" . $cUsuario['Nombre'] . "', '" . $cUsuario['Correo'] . "') ON DUPLICATE KEY UPDATE Nombre = VALUES(Nombre), Correo=VALUES(Correo);";
+      $link->query(utf8_decode($sql));
+   }
+
+
    
    $sql = "SELECT 
                Login.idLogin AS 'idLogin',
@@ -17,51 +41,30 @@
                Empresa.Nombre AS 'Empresa',
                Datos.idPerfil AS 'idPerfil'
             FROM 
-               Login,
-               DatosUsuarios AS Datos,
-               empresas AS Empresa
+               Login AS Login
+               LEFT JOIN DatosUsuarios AS Datos ON Datos.idLogin = Login.idLogin
+               LEFT JOIN empresas AS Empresa ON Login.idEmpresa = Empresa.idEmpresa
             WHERE 
-               Datos.idLogin = Login.idLogin
-               AND Login.idEmpresa = Empresa.idEmpresa
-               AND Login.Usuario = '$usuario' 
-               AND Login.Clave = '" . md5(md5($clave)) . "';";
+               Login.Usuario = '$usuario' 
+               AND Login.Clave = '" . md5(md5(md5($clave))) . "';";
 
    $result = $link->query($sql);
 
    if ( $result->num_rows == 1)
    {
-      class User
+      $Resultado = array();
+      while ($row = mysqli_fetch_assoc($result))
       {
-         public $id;
-         public $username;
-         public $nombre;
-         public $email;
-         public $state;
-         public $cDate;
-         public $idUser;
-         public $Foto;
-         public $empresa;
-         public $idPerfil;
-         public $cargo;
+         foreach ($row as $key => $value) 
+         {
+            $Resultado[$key] = utf8_encode($value);
+         }
       }
-      
+         
+      $Resultado['cDate'] = $Fecha;
 
-         $row = $result->fetch_assoc();
-         $Users = new User();
-         $Users->id = utf8_encode($row['idLogin']);
-         $Users->username = utf8_encode($row['Usuario']);
-         $Users->nombre = utf8_encode($row['Nombre']);
-         $Users->email = utf8_encode($row['Correo']);
-         $Users->state = utf8_encode($row['Estado']);
-         $Users->cDate = $Fecha;
-         $Users->idUser = utf8_encode($row['idLogin']);
-         $Users->Foto = utf8_encode($row['Foto']);
-         $Users->empresa = utf8_encode($row['Empresa']);
-         $Users->idPerfil = utf8_encode($row['idPerfil']);
-         $Users->cargo = utf8_encode($row['Cargo']);
-
-         mysqli_free_result($result);  
-         echo json_encode($Users);
+      mysqli_free_result($result);  
+      echo json_encode($Resultado);
    } else
    {
       echo 0;

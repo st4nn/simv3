@@ -2,7 +2,7 @@ home();
 
 function home()
 {
-	$("#lblHome_Usuario").text(Usuario.nombre);
+	$("#lblHome_Usuario").text(Usuario.Nombre);
 
 	$.post('../server/php/scripts/cargarDatosInicio.php', {usuario : Usuario.id}, function(data2, textStatus, xhr) 
                 {
