@@ -1,0 +1,125 @@
+
+#navegarMenu
+{
+    width: 45%;
+}
+#navegarMenu a
+{
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+#navegarMenu li
+{
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    list-style: none;
+    padding: 0.5em;
+}
+#navegarMenu ul li
+{
+    background-color: #E9EAED;
+    margin: 0;
+}
+#navegarMenu li:hover
+{
+    background-color: #F7F7F8;
+}
+#navegarMenu ul li:hover
+{
+    background-color: #DCDCE0;
+}
+
+#navegarMenu ul
+{
+    display: none;
+}
+#navegarMenu a
+{
+    color: #22878e;
+    display: block;
+}
+
+.contenedorArbol
+{
+    height: 540px;
+    overflow: scroll;
+}
+#arbolArchivos
+{
+    background:white;
+    margin: 0;
+}
+#arbolArchivos div
+{
+    border: none;
+    display: inline-block;  
+    margin:0;
+    vertical-align: top;
+}
+#arbolArchivos>.alert 
+{
+    background-color: #fafafa;
+    border: none;
+    border-bottom-style: solid;
+    border-bottom-width: 0px;
+    box-shadow: 0px 2px 1px #90328d;
+    color: black;
+    font-size: 1.3em;
+    height: 3em;
+    margin: 0;
+    margin-bottom: 4px;
+    padding-top: 1em;
+}
+#arbolArchivos>.alert  span
+{
+    padding-left: 20%;
+}
+#cntArbol
+{
+    background-color: #eeeeee;
+    margin:0;
+}
+#cntNavegar_Archivos
+{
+    width: 80%;
+}
+#cntInfoAdministrativa_Arbol
+{
+    width: 600px;
+}
+#tblNavegar_Archivos img
+{
+    border-radius: 100%;
+    height: 28px;
+    margin: 0;
+    min-width: 28px;
+    width: 28px;
+}
+#tblNavegar_Archivos thead
+{
+  background-color: #fafafa;
+  color: #202020;
+}
+
+#cntInfoAdministrativa_Arbol .dd3-content
+{
+    color: #515151;
+    margin-left: 4px;
+    margin-top : 4px;
+    font-size: 13px;
+}
+#cntInfoAdministrativa_Arbol .dd3-content:before
+{
+    color: black;
+    font-weight: bold;
+}
+#cntInfoAdministrativa_Arbol .dd3-content:hover
+{
+  border-left-style: solid;
+  border-left-width: 2px;
+  margin-left: 0px;
+  cursor:pointer;
+  font-weight: bold;
+}
+

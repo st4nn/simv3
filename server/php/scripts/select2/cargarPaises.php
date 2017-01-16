@@ -16,12 +16,12 @@
    $Parametro = str_replace(" ", "%", $Parametro);
    
    $sql = "SELECT  
-            confpais.id,
-            confpais.Nombre AS name
+            confPais.id,
+            confPais.Nombre AS name
          FROM 
-            confpais
+            confPais
          WHERE 
-            confpais.Nombre LIKE '%$Parametro%'
+            confPais.Nombre LIKE '%$Parametro%'
          LIMIT 0, 50;";
 
    $result = $link->query($sql);

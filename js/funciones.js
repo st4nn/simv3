@@ -11,6 +11,12 @@ function functiones()
   if (Usuario == null || Usuario === undefined)
   {
     cerrarSesion();
+  } else
+  {
+    if (Usuario.idArea == 0)
+    {
+      window.location.replace("../admin/registrar.html");      
+    }
   }
 }
 

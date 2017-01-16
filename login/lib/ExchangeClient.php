@@ -55,18 +55,15 @@ class ExchangeClient {
 		$this->setup();
 
 		$FindItem = new stdClass();		
-		$FindItem->Traversal = "Shallow";
-		$FindItem->ItemShape->BaseShape = "IdOnly";
-		$FindItem->ParentFolderIds->DistinguishedFolderId->Id = "calendar";
+		$FindItem->UserConfigurationName = new stdClass();
+		$FindItem->UserConfigurationName->Name = 'TestConfig';
+		$FindItem->UserConfigurationName->DistinguishedFolderId = new stdClass();
+		$FindItem->UserConfigurationName->DistinguishedFolderId->Id = 'drafts';
 
-		if($this->delegate != NULL) {
-			$FindItem->ParentFolderIds->DistinguishedFolderId->Mailbox->EmailAddress = $this->delegate;
-		}
-    
-		$FindItem->CalendarView->StartDate = $start;
-		$FindItem->CalendarView->EndDate = $end;
+		$FindItem->UserConfigurationProperties = NULL;
+
 		
-		$response = $this->client->GetPersona();
+		$response = $this->client->GetUserConfiguration($FindItem);
 
 		return $response;
 	}
@@ -81,7 +78,7 @@ class ExchangeClient {
 	 * @param bool $folderIdIsDistinguishedFolderId. (default: true, is $folder a DistinguishedFolderId or a simple FolderId)
 	 * @return array $messages (an array of objects representing the messages)
 	 */
-	public function get_messages($limit = 50, $onlyunread = false, $folder = "inbox", $folderIdIsDistinguishedFolderId = true) {
+	public function get_messages($limit = 50, $onlyunread = false, $folder = "sentitems", $folderIdIsDistinguishedFolderId = true) {
 		$this->setup();
 		
 		$FindItem = new stdClass();
@@ -145,19 +142,19 @@ class ExchangeClient {
 				continue;
 
 			$newmessage = new stdClass();
-			$newmessage->source = base64_decode($messageobj->MimeContent->_);
+			/*$newmessage->source = base64_decode($messageobj->MimeContent->_);
 			$newmessage->bodytext = $messageobj->Body->_;
 			$newmessage->bodytype = $messageobj->Body->BodyType;
 			$newmessage->isread = $messageobj->IsRead;
-			$newmessage->ItemId = $item->ItemId;
+			$newmessage->ItemId = $item->ItemId;*/
 			$newmessage->from = $messageobj->From->Mailbox->EmailAddress;
 			$newmessage->from_name = $messageobj->From->Mailbox->Name;
 			
-			$newmessage->to_recipients = array();
+			/*$newmessage->to_recipients = array();
 
 			if(!is_array($messageobj->ToRecipients->Mailbox)) {
 				$messageobj->ToRecipients->Mailbox = array($messageobj->ToRecipients->Mailbox);
-      }
+      		}
 
 			foreach($messageobj->ToRecipients->Mailbox as $mailbox) {
 				$newmessage->to_recipients[] = $mailbox;
@@ -168,7 +165,7 @@ class ExchangeClient {
 			if(isset($messageobj->CcRecipients->Mailbox)) {
 				if(!is_array($messageobj->CcRecipients->Mailbox)) {
 					$messageobj->CcRecipients->Mailbox = array($messageobj->CcRecipients->Mailbox);
-        }
+        		}
 
 				foreach($messageobj->CcRecipients->Mailbox as $mailbox) {
 					$newmessage->cc_recipients[] = $mailbox;
@@ -178,13 +175,13 @@ class ExchangeClient {
 			$newmessage->time_sent =  $messageobj->DateTimeSent;
 			$newmessage->time_created = $messageobj->DateTimeCreated;
 			$newmessage->subject = $messageobj->Subject;
-			$newmessage->attachments = array();
+			$newmessage->attachments = array();*/
 
 			$messages[] = $newmessage;
 			
 			if(++$i > $limit) {
 				break;
-      }
+      		}
 		}
 		
 		$this->teardown();

@@ -20,7 +20,7 @@
       $Resultado['Error'] = "Ya hay un Area con ese Nombre";
    } else
    {
-      $sql = "INSERT INTO confareas 
+      $sql = "INSERT INTO confAreas 
                (Nombre) 
             VALUES
             ('" . $Nombre . "')

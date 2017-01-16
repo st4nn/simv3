@@ -1,12 +1,9 @@
 .page-register:before {
-  background-image: url("../../images/login.jpg");
+  background-image: url("../../images/registrar.jpg");
 }
-.page-register form {
-  width: 340px;
-  margin: 22px auto;
-}
-@media (max-width: 480px) {
-  .page-register form {
-    width: auto;
-  }
+.transparentoso
+{
+	background: transparent;
+	/*opacity: 0.1;
+  	filter:  alpha(opacity=10);*/
 }

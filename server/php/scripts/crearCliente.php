@@ -24,7 +24,7 @@
    date_default_timezone_set('America/Bogota');
    $fecha = date('Y-m-d h:i:s');
 
-   $sql = "INSERT INTO clientes 
+   $sql = "INSERT INTO Clientes 
             (idCliente, Nombre, NIT, idNaturaleza, Direccion, Telefono, sitioWeb, Actividades, idPais, idCiudad, Mision, Vision, idUsuario, fechaActualizacion) 
          VALUES
          ('" . $idCliente . "', 

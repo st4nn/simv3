@@ -1,50 +1,112 @@
 <?php
 	include "init.php";
 
-	$ec = new ExchangeClient();
 	$usuario = $_GET['usuario'];
-	$obj = $ec->init("gcg\\$usuario", "Aqui va la Clave", NULL, "https://oamail-ca.wspgroup.com/EWS/Services.wsdl");
+	$clave = $_GET['clave'];
 
-	$abj = $ec->get_messages(1);
-	$abj = $abj[0];
-	
-	$r = true;
-	$Resultado = array();
+	$obj = validarUsuario($usuario, $clave);
+	echo print_r($obj, true);
 
-	$Resultado['error'] = "";
-
-	foreach ($abj->to_recipients as $key => $value) 
+	function validarUsuario($usuario, $clave, $limite)
 	{
-		$find = strpos($value->EmailAddress, $usuario);
-		if ($find !== false)
+		$ec = new ExchangeClient();
+		$ec->init("gcg\\$usuario", $clave, NULL, "https://oamail-ca.wspgroup.com/EWS/Services.wsdl");
+
+		$abjArr = $ec->get_messages($limite);
+		if ($abjArr === false)
 		{
-			$r = false;
-			$Resultado['Nombre'] = $value->Name;
-			$Resultado['Correo'] = $value->EmailAddress;
-			break 1;
-		}
+			return false;
+		} else
+		{			
+			$Resultado = array();
+			$Nombre = $abjArr[0]->Name;
+			$Resultado['Nombre'] = $abjArr[0]->from_name;
+			$Resultado['Correo'] = $abjArr[0]->from;
+
+			return $Resultado;
+		}			
 	}
 
-	if ($Nombre == "")
+
+		
+/*		$ec = new ExchangeClient();
+		$ec->init("gcg\\$usuario", $clave, NULL, "https://oamail-ca.wspgroup.com/EWS/Services.wsdl");
+		$obj = $ec->get_messages(1);
+		echo print_r($obj[0]->from, true);
+		echo print_r($obj[0]->from_name, true);
+
+	/*
+
+	echo print_r($OBJ, true);
+
+	function validarUsuario($usuario, $clave, $limite, $salir)
 	{
-		foreach ($abj->cc_recipients as $key => $value) 
+		$ec = new ExchangeClient();
+		$obj = $ec->init("gcg\\$usuario", $clave, NULL, "https://oamail-ca.wspgroup.com/EWS/Services.wsdl");
+
+		$abjArr = $ec->get_messages($limite);
+		if ($abj === false)
 		{
-			$find = strpos($value->EmailAddress, $usuario);
-			if ($find !== false)
+			return false;
+		} else
+		{			
+			$r = true;
+
+			foreach ($abjArr as $key => $abj) 
 			{
-				$r = false;
-				$Nombre = $value->Name;
-				$Resultado['Nombre'] = $value->Name;
-				$Resultado['Correo'] = $value->EmailAddress;
-				break 1;
+				$Resultado = array();
+
+				$Resultado['error'] = "";
+
+				foreach ($abj->to_recipients as $key => $value) 
+				{
+					$find = strpos(strtolower($value->EmailAddress), strtolower($usuario));
+					if ($find !== false)
+					{
+						$r = false;
+						$Nombre = $value->Name;
+						$Resultado['Nombre'] = $value->Name;
+						$Resultado['Correo'] = $value->EmailAddress;
+						break 1;
+					}
+				}
+
+				if ($Nombre == "")
+				{
+					foreach ($abj->cc_recipients as $key => $value) 
+					{
+						$find = strpos(strtolower($value->EmailAddress), strtolower($usuario));
+						if ($find !== false)
+						{
+							$r = false;
+							$Nombre = $value->Name;
+							$Resultado['Nombre'] = $value->Name;
+							$Resultado['Correo'] = $value->EmailAddress;
+							break 1;
+						}
+					}
+				}
+
+				if (!$r)
+				{
+					break 1;
+				}
 			}
-		}
-	}
 
-	if ($r)
-	{
-		$Resultado['error'] = 'No se encontró el Usuario';
-	}
+			if ($r === true && $salir == true)
+			{
+				$Resultado['error'] = 'No se encontró el Usuario';
+				return false;
+			} else
+			{
+				if ($salir === false)
+				{
+					return validarUsuario($usuario, $clave, 5, true);
+				}
+			}
 
-	echo "Bienvenido $Nombre";
+			return $Resultado;
+		}			
+	}*/
+
 ?>

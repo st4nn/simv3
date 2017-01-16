@@ -67,46 +67,57 @@
 	    		<h1><small>Bienvenido: </small><span id="lblHome_Usuario"></span></h1>
 
 	    		<div id="cntHome" class="">
-	    			<div class="col-md-6">
-		    			<div class="panel panel-bordered panel-info">
-		    				<div class="panel-heading">
-		    					<div class="panel-title">Consolidado De Propuestas Y Oportunidades</div>
-		    				</div>
-		    				<div class="panel-body">
-		    					<table id="tblHome_Oportunidades" class="table col-md-12">
-		    						<thead>
-		    							<tr>
-		    								<th>Sector</th>
-		    								<th>Propuestas</th>
-		    								<th>Oportunidades</th>
-		    							</tr>
-		    						</thead>
-		    						<tbody class="table-hover">
+	    			<div class="row">
+		    			<div class="col-md-6">
+			    			<div class="panel panel-bordered panel-info">
+			    				<div class="panel-heading">
+			    					<h3 class="panel-title">Consolidado De Propuestas Y Oportunidades Activas</h3>
+			    				</div>
+			    				<div class="panel-body">
+			    					<table id="tblHome_Oportunidades" class="table col-md-12">
+			    						<thead>
+			    							<tr>
+			    								<th>Sector</th>
+			    								<th>Propuestas</th>
+			    								<th></th>
+			    								<th>Oportunidades</th>
+			    								<th></th>
+			    							</tr>
+			    						</thead>
+			    						<tbody class="table-hover">
 
-		    						</tbody>
-		    					</table>
-		    				</div>
-		    			</div>			    	
-	    			</div>
-    			
-	    			<div class="col-md-6">
-		    			<div class="panel panel-bordered panel-info">
-		    				<div class="panel-heading">
-		    					<div class="panel-title">Oportunidades</div>
-		    				</div>
-		    				<div class="panel-body">
-								<canvas id="canvas" class="height-200 col-md-12"></canvas>
-		    				</div>
+			    						</tbody>
+			    					</table>
+			    				</div>
+			    			</div>			    	
 		    			</div>
-			    	</div>
+
+		    			<div class="col-md-6">
+			    			<div class="panel panel-bordered panel-info">
+			    				<div class="panel-heading">
+			    					<h3 class="panel-title">Total Oportunidades</h3>
+			    					<div class="panel-actions">
+			    						<button class="btn btn-default btnHome_AgruparPorArea">Agrupar por Area</button>
+			    					</div>
+			    				</div>
+			    				<div class="panel-body">
+									<canvas id="canOportunidades" class="height-200 col-md-12"></canvas>
+			    				</div>
+			    			</div>
+				    	</div>
+		    		</div>
+    			
     			
 			    	<div class="col-md-6">
     					<div class="panel panel-bordered panel-info">
     						<div class="panel-heading">
-		    					<div class="panel-title">Propuestas</div>
+		    					<h3 class="panel-title">Total Propuestas</h3>
+		    					<div class="panel-actions">
+		    						<button class="btn btn-default btnHome_AgruparPorArea">Agrupar por Area</button>
+		    					</div>
 		    				</div>
 		    				<div class="panel-body">
-								<canvas id="canvas2" class="height-200 col-md-12"></canvas>
+								<canvas id="canPropuestas" class="height-200 col-md-12"></canvas>
 		    				</div>
 		    			</div>
 			    	</div>
@@ -119,50 +130,53 @@
 					                  <button type="submit" class="input-search-btn blue-grey-600">
 					                    <i class="icon wb-search" aria-hidden="true"></i>
 					                  </button>
-					                  <input type="text" class="form-control" name="" placeholder="Buscar...">
+					                  <input id="txtHome_Trazabilidad_Buscar" type="text" class="form-control" placeholder="Buscar...">
 					                </div>
 					            </div>
-					            <h3 class="panel-title">Trazabilidad</h3>
+		    						
+					            <h3 class="panel-title"><button type="button" class="btn btn-icon btn-warning btn-outline btn-round" data-target="#exampleModalSuccess" data-toggle="modal"><i class="icon wb-edit" aria-hidden="true"></i></button> Trazabilidad</h3>
 		    				</div>
 		    				<div class="panel-body">
-								<ul class="list-group">
+								<ul id="cntHome_Trazabilidad" class="list-group">
 				                    <li class="list-group-item">
 				                      <div class="media">
 				                        <div class="media-left">
-				                          <a class="avatar" href="javascript:void(0)">
-				                            <img class="img-responsive" src="../../assets/portraits/2.jpg"
-				                            alt="...">
-				                          </a>
+								            <i class="icon wb-chevron-right" aria-hidden="true"></i>
 				                        </div>
 				                        <div class="media-body">
-				                          <h4 class="media-heading">Ida Fleming
-				                            <span>posted an updated</span>
+				                          <h4 class="media-heading">Lesly Forrero
+				                            <span>Registró una Llamada</span>
 				                          </h4>
-				                          <small>active 14 minutes ago</small>
-				                          <div class="profile-brief">“Check if it can be corrected with overflow : hidden”</div>
+				                          <small>Nov 29, 2016</small>
+				                          <div class="profile-brief">Con el cliente <strong>TRANSMILENIO S.A.</strong> Se solicitó información adicional con respecto a...</div>
 				                        </div>
 				                      </div>
 				                    </li>
-
 				                    <li class="list-group-item">
 				                      <div class="media">
 				                        <div class="media-left">
-				                          <a class="avatar" href="javascript:void(0)">
-				                            <img class="img-responsive" src="../../assets/portraits/3.jpg"
-				                            alt="...">
-				                          </a>
+								            <i class="icon wb-chevron-right" aria-hidden="true"></i>
 				                        </div>
 				                        <div class="media-body">
-				                          <h4 class="media-heading">Julius
-				                            <span>uploaded 4 photos</span>
+				                          <h4 class="media-heading">Carolina Galeano
+				                            <span>Identificó Una Oportunidad</span>
 				                          </h4>
-				                          <small>active 14 minutes ago</small>
-				                          <div class="profile-brief">
-				                            <img class="profile-uploaded" src="../../assets/photos/placeholder.png" alt="...">
-				                            <img class="profile-uploaded" src="../../assets/photos/placeholder.png" alt="...">
-				                            <img class="profile-uploaded" src="../../assets/photos/placeholder.png" alt="...">
-				                            <img class="profile-uploaded" src="../../assets/photos/placeholder.png" alt="...">
-				                          </div>
+				                          <small>Nov 29, 2016</small>
+				                          <div class="profile-brief">Con el cliente <strong>TRANSMILENIO S.A.</strong> Se ha identificado una oportunidad con Objeto Novum formidines congressus atomorum nam permulta alterum delectatio gaudeat statim. Necessariae dicturam perspexit utrum modo amicitiae malum summumque, multis ante iudicia desiderat, civitas iudicare por un Valor de <strong>$800.000.0000.</strong></div>
+				                        </div>
+				                      </div>
+				                    </li>
+				                    <li class="list-group-item">
+				                      <div class="media">
+				                        <div class="media-left">
+								            <i class="icon wb-chevron-right" aria-hidden="true"></i>
+				                        </div>
+				                        <div class="media-body">
+				                          <h4 class="media-heading">Jhonathan Espinosa
+				                            <span>Registró una Visita</span>
+				                          </h4>
+				                          <small>Nov 22, 2016</small>
+				                          <div class="profile-brief">Con el cliente <strong>TRANSMILENIO S.A.</strong> Novum formidines congressus atomorum nam permulta alterum delectatio gaudeat statim. Necessariae dicturam perspexit utrum modo amicitiae malum summumque, multis ante iudicia desiderat, civitas iudicare</strong></div>
 				                        </div>
 				                      </div>
 				                    </li>
@@ -175,6 +189,42 @@
 	    	</div>
 		</div>
 	</content>
+
+	<div class="modal fade modal-success" id="exampleModalSuccess" aria-hidden="true" aria-labelledby="exampleModalSuccess" role="dialog" tabindex="-1">
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	            <span aria-hidden="true">×</span>
+	          </button>
+	          <h4 class="modal-title">Agregar Hito</h4>
+	        </div>
+	        <div class="modal-body">
+	          <form action="">
+	            <div class="row">
+	              <div class="col-md-12 form-group">
+	                <label for="" class="control-label">Tipo</label>
+	                <select id="" class="form-control"> 
+	                  <option value="No">Nota</option>                   
+	                  <option value="No">Observación</option>                   
+	                  <option value="Si">Llamada</option>                    
+	                  <option value="Si">Visita</option>                    
+	                </select>
+	              </div>
+	              <div class="col-md-12 form-group">
+	                <label for="" class="control-label">Descripción</label>
+	                <textarea id="" rows="3" class="form-control"> </textarea>
+	              </div>
+	            </div>
+	          </form>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	          <button type="button" class="btn btn-primary">Guardar</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
 	<fixedScripts>
 		<script src="../assets/vendor/jquery/jquery.js"></script>
 		<script src="../js/plugins.js"></script>
@@ -227,7 +277,7 @@
 		  <script src="../assets/js/components/alertify-js.js"></script> 
 
 		<customscripts>
-			<script src="../assets/vendor/chart-js/Chart.js"></script>
+			<script src="../assets/vendor/chart-js/Chart_original.js"></script>
 			 <script src="../assets/js/components/masonry.js"></script>
 			 <script src="../assets/js/components/asscrollable.js"></script>
 		</customscripts>

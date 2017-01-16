@@ -6,7 +6,7 @@
    
    $Parametro = str_replace(" ", "%", $Parametro);
    
-   $sql = "SELECT datosusuarios.idLogin AS id, datosusuarios.Nombre as name, datosusuarios.Correo AS mail FROM datosusuarios INNER JOIN login ON Login.idLogin = datosusuarios.idLogin AND Login.Estado = 'Activo' WHERE
+   $sql = "SELECT DatosUsuarios.idLogin AS id, DatosUsuarios.Nombre as name, DatosUsuarios.Correo AS mail FROM DatosUsuarios INNER JOIN login ON Login.idLogin = DatosUsuarios.idLogin AND Login.Estado = 'Activo' WHERE
             Nombre LIKE '%$Parametro%' OR Correo LIKE '%$Parametro%'  LIMIT 0, 10;";
 
 

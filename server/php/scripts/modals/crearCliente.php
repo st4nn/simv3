@@ -21,7 +21,7 @@
       $Resultado['Error'] = "Ya hay una empresa con ese Numero de Identificación o Nombre";
    } else
    {
-      $sql = "INSERT INTO clientes 
+      $sql = "INSERT INTO Clientes 
                (Nombre, NIT, idUsuario) 
             VALUES
             ('" . $Nombre . "', 

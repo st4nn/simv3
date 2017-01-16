@@ -15,7 +15,7 @@
 
    $Parametro = str_replace(" ", "%", $Parametro);
    
-   $sql = "SELECT id AS id, Nombre as name FROM confareas WHERE
+   $sql = "SELECT id AS id, Nombre as name FROM confAreas WHERE
             Nombre LIKE '%$Parametro%' LIMIT 0, 50;";
 
    $result = $link->query($sql);

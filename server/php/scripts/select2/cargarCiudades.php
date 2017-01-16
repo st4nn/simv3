@@ -16,16 +16,16 @@
    $Parametro = str_replace(" ", "%", $Parametro);
    
    $sql = "SELECT  
-            confciudad.id,
-             CONCAT(confciudad.Nombre, ' ', confdepartamentos.Nombre, ' ', confpais.Nombre) AS name
+            confCiudad.id,
+             CONCAT(confCiudad.Nombre, ' ', confDepartamentos.Nombre, ' ', confPais.Nombre) AS name
          FROM 
-            confciudad
-             LEFT JOIN confdepartamentos ON confdepartamentos.id = confciudad.idDepartamento
-             LEFT JOIN confpais ON confdepartamentos.idPais = confpais.id
+            confCiudad
+             LEFT JOIN confDepartamentos ON confDepartamentos.id = confCiudad.idDepartamento
+             LEFT JOIN confPais ON confDepartamentos.idPais = confPais.id
          WHERE 
-            confciudad.Nombre LIKE '%$Parametro%' OR
-            confdepartamentos.Nombre LIKE '%$Parametro%' OR
-            confpais.Nombre LIKE '%$Parametro%'
+            confCiudad.Nombre LIKE '%$Parametro%' OR
+            confDepartamentos.Nombre LIKE '%$Parametro%' OR
+            confPais.Nombre LIKE '%$Parametro%'
          LIMIT 0, 50;";
 
    $result = $link->query($sql);

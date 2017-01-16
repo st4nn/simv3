@@ -6,8 +6,11 @@ var modulos =
 	"clientes/informacionEstructural.html" : {titulo : "Información Estructural del Cliente", nick : "cl_InformacionEstructural"},
 	"clientes/timeline.html" : {titulo : "Acciones con el Cliente", nick : "cl_timeline"},
 	"oportunidades/op_crear.html" : {titulo : "Oportunidad de Negocios", nick : "op_crear"},
+	"oportunidades/op_home.html" : {titulo : "Oportunidades de Negocios", nick : "op_Home"},
+	"oportunidades/op_resumen.html" : {titulo : "Oportunidades de Negocios", nick : "op_resumen"},
 	"propuestas/pro_crear.html" : {titulo : "Propuesta", nick : "pro_crear"},
-	"contratos/co_crear.html" : {titulo : "Contratos", nick : "co_crear"}
+	"contratos/co_crear.html" : {titulo : "Contratos", nick : "co_crear"},
+	"infoAdministrativa/archivos.html" : {titulo : "Información Administrativa", nick : "infoAdministrativa"}
 };
 var arrPlugins =
 {
@@ -17,8 +20,11 @@ var arrPlugins =
 	cl_InformacionEstructural : ["jointjs"],
 	cl_timeline : ["select2"],
 	op_crear : ["select2", "datepicker"],
+	op_Home : ["datatable"],
+	op_resumen : ["charjs"],
 	pro_crear : ["select2", "datepicker"],
-	co_crear : ["select2", "datepicker"]
+	co_crear : ["select2", "datepicker"],
+	infoAdministrativa : ["datepicker"]
 };
 var archivosCSS = 
 {
