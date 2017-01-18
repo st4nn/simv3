@@ -6,7 +6,7 @@ $(document).ready(function() {
 });
 function functiones()
 {
-  Usuario = JSON.parse(localStorage.getItem('wsp_simv3'));
+  Usuario = JSON.parse(localStorage.getItem('wsp_olimpo'));
 
   if (Usuario == null || Usuario === undefined)
   {
@@ -15,53 +15,9 @@ function functiones()
   {
     if (Usuario.idArea == 0)
     {
-      window.location.replace("../admin/registrar.html");      
+      window.location.replace("registrar.html");      
     }
   }
-}
-
-function cargarModulo(vinculo, titulo, callback)
-{
-  if (callback === undefined)
-    {callback = function(){};}
-
-  $(".Modulo").hide();
-        var tds = "";
-        var nomModulo = "modulo_" + vinculo.replace(/\s/g, "_");
-        nomModulo = nomModulo.replace(/\./g, "_");
-        nomModulo = nomModulo.replace(/\//g, "_");
-
-        if ($('#' + nomModulo).length)
-        {
-          $('#' + nomModulo).show();
-          if (titulo != null)
-          {
-            $('#' + nomModulo).find('.page-header').find(".page-title").text(titulo);
-          }
-          callback();
-          controlarPermisos();
-        } else
-        {
-          tds += '<div id="' + nomModulo + '" class="page Modulo">';
-            tds += '<div class="page-header">';
-              tds += '<h1 class="page-title">' + titulo + '</h1>';
-            tds += '</div>';
-            tds += '<div class="page-content">';
-              tds += '<div class="panel">';
-                tds += '<p>Cargando...</p>';
-              tds += '</div>';
-            tds += '</div>';
-          tds += '</div>';
-
-          $("#contenedorDeModulos").append(tds);
-          $.get(vinculo, function(data) 
-          {
-            $("#" + nomModulo + " .panel").html(data);
-            callback();
-            controlarPermisos();
-            
-          });
-        }
 }
 
 $.fn.generarDatosEnvio = function(restricciones, callback)
@@ -164,7 +120,7 @@ function CompletarConCero(n, length)
 
 function cerrarSesion()
 {
-  delete localStorage.wsp_simv3;
+  delete localStorage.wsp_olimpo;
   window.location.replace("../index.html");
 }
 
@@ -339,12 +295,22 @@ function abrirURL(url)
   win.focus();
 }
 
-$.fn.iniciarSelectRemoto = function(script, delay, minimo)
+$.fn.iniciarSelectRemotoConDefault = function(parametros)
+{
+  var data = [{id: parametros.id, name : parametros.name}];
+
+  $(this).iniciarSelectRemoto(parametros.script, parametros.delay, parametros.minimo, data);
+  $(this).select2("val", parametros.id);
+  $(this).trigger('change.select2');
+}
+
+$.fn.iniciarSelectRemoto = function(script, delay, minimo, data)
 {
   if (script != "" && script != undefined && script != null)
   {
     delay = delay || 300;
     minimo = minimo || 3;
+    data = data || null;
 
     $(this).select2({
         ajax: {
@@ -364,6 +330,7 @@ $.fn.iniciarSelectRemoto = function(script, delay, minimo)
           },
           cache: true
         },
+        data : data,
         escapeMarkup: function (markup) { return markup; }, 
         minimumInputLength: minimo,
       templateResult: function(dato) { return dato.name;  },
@@ -1032,4 +999,17 @@ $.fn.iniciarResponsables = function(parametros)
 
       $('#txt' + idObj + '_Responsable').typeahead('val', '');
     });
+}
+
+function separadorMiles(num)
+{
+  if(!isNaN(num)){
+    num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+    num = num.split('').reverse().join('').replace(/^[\.]/,'');
+    return num;
+  } 
+  else{ 
+    alert('Solo se permiten numeros');
+    return false;
+  }
 }

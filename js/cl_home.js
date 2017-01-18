@@ -1,20 +1,15 @@
-cl_home();
-
 function cl_home()
 {
-	$(document).delegate('.lnkClHome_AbrirCliente', 'click', function(event) 
-	{
-		event.preventDefault();
-		var idCliente = $(this).attr("idCliente");
-		localStorage.setItem("wsp_simv3_idCliente", idCliente);
-		window.location.replace("cl_Crear.html");
-	});
 	$("#btnClHome_NuevoCliente").on("click", function(ev)
 		{
 			ev.preventDefault();
 			delete localStorage.wsp_simv3_idCliente;
-			window.location.replace("cl_Crear.html");
+			cargarModulo("clientes/cl_Crear.html", "Crear Cliente", function()
+			{
+				cl_Crear_cargarCliente();
+			});
 		});
+	
 	$("#frmClHome_Buscar").on("submit", function(ev)
 		{
 			ev.preventDefault();
@@ -36,7 +31,7 @@ function cl_home()
 
 						 tds += '<tr>';
 			                tds += '<td>' + val.NIT + '</td>';
-			                tds += '<td><a href="#" idCliente="' + val.idCliente + '" class="lnkClHome_AbrirCliente">' + val.Nombre + '</a></td>';
+			                tds += '<td><a href="#" idCliente="' + val.idCliente + '" class="lnAbrirCliente">' + val.Nombre + '</a></td>';
 			                tds += '<td>' + val.Telefono + '</td>';
 			                tds += '<td>' + val.Pais + '</td>';
 			                tds += '<td>' + val.Ciudad + '</td>';

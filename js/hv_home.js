@@ -2,13 +2,6 @@ cl_home();
 
 function cl_home()
 {
-	$(document).delegate('.lnkClHome_AbrirCliente', 'click', function(event) 
-	{
-		event.preventDefault();
-		var idCliente = $(this).attr("idCliente");
-		localStorage.setItem("wsp_simv3_idCliente", idCliente);
-		window.location.replace("cl_Crear.html");
-	});
 	$("#btnClHome_NuevoCliente").on("click", function(ev)
 		{
 			ev.preventDefault();

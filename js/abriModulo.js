@@ -1,4 +1,4 @@
-
+var modulosVisitados = [];
 jQuery(document).ready(function($) {
   abrirModulo();
 });
@@ -6,48 +6,46 @@ jQuery(document).ready(function($) {
 function abrirModulo()
 {
   $.ajaxSetup({
-    cache: true
+    cache: false
   });
 
   desplegarCargando();
   
-  $("body > header").abrirModulo_cargarArchivos("../admin/header.html", function()
+  $("body > header").abrirModulo_cargarArchivos("header.html", function()
     {
       $("#lblCerrarSesion").on("click", cerrarSesion);
       $("#lblUsuario").text(Usuario.nombre);
+
+      $("#btnAtras").on("click", function(evento)
+        {
+          evento.preventDefault();
+          var idPagina = parseInt($("#btnAtras").attr("idPagina"));
+          if (idPagina > 0)
+          {
+            idPagina--;
+            $("#btnAtras").attr("idPagina", idPagina);
+            if (idPagina >= 0 && idPagina < modulosVisitados.length)
+            {
+              cargarModulo(modulosVisitados[idPagina].vinculo, modulosVisitados[idPagina].titulo, function(){}, false);
+            }
+          }
+        });
     });
   
-    $("body > sidebar").abrirModulo_cargarArchivos("../admin/sidebar.html", function()
+    $("body > sidebar").abrirModulo_cargarArchivos("sidebar.html", function()
     {
-      $("body > footer").abrirModulo_cargarArchivos("../admin/footer.html", function()
+      $(document).delegate('.lnkMenu_Item', 'click', function(event) 
+      {
+        event.preventDefault();
+        var vinculo = $(this).attr("vinculo");
+        var titulo = $(this).find(".site-menu-title").text();
+        cargarModulo(vinculo, titulo);
+      });
+      $("body > footer").abrirModulo_cargarArchivos("footer.html", function()
         {
             Site.run();
             
-            var nomArchivo = location.href;
-            
-            var arrNomArchivo = location.href.split("/");
-            nomArchivo = arrNomArchivo[arrNomArchivo.length - 2] + "/" + arrNomArchivo[arrNomArchivo.length - 1];
-            var lnkMenu = $("a[href='..\/" + arrNomArchivo[arrNomArchivo.length - 2] + "\/" + arrNomArchivo[arrNomArchivo.length - 1] + "");
-
-            var tmpNomArchivo = arrNomArchivo[arrNomArchivo.length - 1];
-            arrNomArchivo = nomArchivo.split("?");
-            nomArchivo = arrNomArchivo[0];
-            arrNomArchivo = nomArchivo.split("#");
-            nomArchivo = arrNomArchivo[0];
-            //abrirModulo_cargarPlugins(nomArchivo);
-            //
-            if ($(lnkMenu != undefined))
-            {
-              $(lnkMenu).parent("li").addClass('active');
-              $(lnkMenu).parent("li").parent('ul').parent('li').addClass('active open');
-            }
-            
-            
-            if (modulos[nomArchivo] != undefined )
-            {
-              $("#lblNomModulo").text(modulos[nomArchivo].titulo);
-              abrirModulo_CargarScriptPropio();
-            } 
+            cargarModulo("inicio.html", "Inicio");
         });
     });
 }
@@ -68,75 +66,6 @@ $.fn.abrirModulo_cargarArchivos = function (modulo, callback)
 
     });
   return 1;
-}
-
-function abrirModulo_cargarPlugins(nomArchivo)
-{
-  if (modulos[nomArchivo] != undefined )
-  {
-    if  (arrPlugins[modulos[nomArchivo].nick].length > 0)
-    {
-      $.each(arrPlugins[modulos[nomArchivo].nick], function(index, val) 
-      {
-         $("customCss").append(archivosCSS[val]);
-         
-      });
-      
-      abrirModulo_cargarJs(arrPlugins[modulos[nomArchivo].nick]);
-
-    } else
-    {
-      abrirModulo_cargarJs();
-    }
-  }
-}
-
-function abrirModulo_cargarJs(plugins)
-{
-  if (plugins === undefined)
-  {
-    plugins = {};
-  }
-
-  var idxPlugin = 0;
-  var idxCargue = 0;
-  $.each(plugins, function(index, val) 
-  {
-    idxPlugin += archivosJS[val].length;
-    $.each(archivosJS[val], function(index2, urlPlugin) 
-    {
-       $.getScript(urlPlugin, function()
-       {
-          idxCargue++;
-          if (idxCargue >= idxPlugin)
-          {
-            abrirModulo_CargarScriptPropio(); 
-          }
-       });
-       $(this).delay(10);
-    });
-  });
-  
-  if (plugins === {})
-  {
-    abrirModulo_CargarScriptPropio(); 
-  }
-    
-}
-
-function abrirModulo_CargarScriptPropio()
-{
-  $.ajaxSetup({
-    cache: false
-  })
-  
-  var arrNomArchivo = location.href.split("/");
-  nomArchivo = arrNomArchivo[arrNomArchivo.length - 1];    //$("fixedScripts").append("<script src='../js/" + nomArchivo.replace(".html", ".js") + "'>");
-  $.getScript("../js/" + nomArchivo.replace(".html", ".js"), function(ev)
-    {
-      controlarPermisos();
-      $("#cntCargando").modal("hide");
-    });
 }
 
 function desplegarCargando()
@@ -160,4 +89,67 @@ function desplegarCargando()
   }
 
   $("#cntCargando").modal("show");
+}
+
+function cargarModulo(vinculo, titulo, callback, btnAtras=true)
+{
+  titulo = titulo || null;
+
+  if (callback === undefined)
+    {callback = function(){};}
+
+
+  $(".Modulo").hide();
+
+  var tds = "";
+  var nomModulo = "modulo_" + vinculo.replace(/\s/g, "_");
+  nomModulo = nomModulo.replace(/\./g, "_");
+  nomModulo = nomModulo.replace(/\//g, "_");
+
+  if (btnAtras)
+  {
+    modulosVisitados.push({
+      vinculo : vinculo,
+      titulo : titulo,
+      fecha : obtenerFecha()
+    });
+    
+    $("#btnAtras").attr("idPagina", (modulosVisitados.length-1));
+  }
+
+
+  if ($('#' + nomModulo).length)
+  {
+    $('#' + nomModulo).show();
+    if (titulo != null)
+    {
+      $('#' + nomModulo).find('.page-header').find(".page-title").text(titulo);
+    }
+    postCargarModulo(callback);
+    
+  } else
+  {
+    tds += '<div id="' + nomModulo + '" class="Modulo"></div>';
+
+    $("#contenedorDeModulos").append(tds);
+    $.get(vinculo, function(data) 
+    {
+      $("#" + nomModulo).html(data);
+      postCargarModulo(callback);
+    }).fail(function() {
+      Mensaje("Error", "No tiene permisos para acceder a este modulo", "danger");
+      $("#cntCargando").modal("hide");
+    });
+  }
+  $("#lblNomModulo").text(titulo);
+}
+
+function postCargarModulo(callback)
+{
+  if (callback === undefined)
+    {callback = function(){};}
+
+  callback();
+  $("#cntCargando").modal("hide");
+  controlarPermisos();
 }

@@ -1,15 +1,11 @@
-home();
+var graphOportunidades = null;
+var graphPropuestas = null;
 
 var tmpColores = ['249, 104, 104', '98, 168, 234', '158, 206, 103', '117, 117, 117', '247, 218, 100', '58, 169, 158', '141, 102, 88', '249, 120, 166', '146, 102, 222', '119, 214, 225', '55, 71, 79', '236, 153, 64'];
 
 function home()
 {
-	jQuery.expr[':'].Contains = function(a, i, m) { 
-	  return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0; 
-	};
-	jQuery.expr[':'].contains = function(a, i, m) { 
-	  return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0; 
-	};
+    //$("#cntHome_Actividades")
 
 	$("#lblHome_Usuario").text(Usuario.Nombre);
 
@@ -29,7 +25,24 @@ function home()
 	});
 
 	home_cargarDatos();
-	home_GenerarGraficaArea();
+	home_GenerarGraficaEmpresa();
+
+    $('.btnHome_AgruparPorArea').on("click", function(evento)
+        {
+            evento.preventDefault();
+            if ($(this).hasClass('btn-default'))
+            {
+                $('.btnHome_AgruparPorArea').removeClass('btn-default');
+                $('.btnHome_AgruparPorArea').addClass('btn-warning');
+                home_GenerarGraficaArea();
+            } else
+            {
+                $('.btnHome_AgruparPorArea').removeClass('btn-warning');
+                $('.btnHome_AgruparPorArea').addClass('btn-default');
+                home_GenerarGraficaEmpresa();
+            }
+        });
+
 }
 
 
@@ -72,7 +85,7 @@ function home_cargarDatos()
                 tds += '</td>';
                 if (val.Propuestas > 0)
                 {
-                    tds += '<td><a href="#cntDetalles" class="lnkPropuestas" Sector="' + val.Sector + '">' + val.Propuestas + '</a></td>';
+                    tds += '<td><a href="#" class="lnkPropuestas" Sector="' + val.Sector + '">' + val.Propuestas + '</a></td>';
                 } else
                 {
                     tds += '<td>' + val.Propuestas + '</td>';
@@ -87,7 +100,7 @@ function home_cargarDatos()
                 tds += '</td>';
                	if (val.Oportunidades > 0)
                 {
-                    tds += '<td><a href="#cntDetalles" class="lnkOportunidades" Sector="' + val.Sector + '">' + val.Oportunidades + '</a></td>';
+                    tds += '<td><a href="#" class="lnkOportunidades" idArea="' + val.id + '" Sector="' + val.Sector + '">' + val.Oportunidades + '</a></td>';
                 } else
                 {
                     tds += '<td>' + val.Oportunidades + '</td>';
@@ -98,9 +111,9 @@ function home_cargarDatos()
         tds += '<tr class="font-weight-900">';
         tds += '<td>TOTAL</td>';
         tds += '<td></td>';
-        tds += '<td><a href="#cntDetalles" class="lnkPropuestas" Sector="">' + Propuestas + '</a></td>';
+        tds += '<td><a href="#" class="lnkPropuestas" Sector="">' + Propuestas + '</a></td>';
         tds += '<td></td>';
-        tds += '<td><a href="#cntDetalles" class="lnkOportunidades" Sector="">' + Oportunidades + '</a></td>';
+        tds += '<td><a href="#" class="lnkOportunidades" idArea="0" Sector="">' + Oportunidades + '</a></td>';
         tds += '</tr>';
 
         $("#tblHome_Oportunidades tbody").append(tds);
@@ -126,9 +139,11 @@ function home_GenerarGraficaBarras(idObj, barChartData, opciones)
         }
     };
 
-	var ctx = document.getElementById(idObj).getContext("2d");
-
+    var ctx = document.getElementById(idObj).getContext("2d");
+    
 	var chart = new Chart(ctx, {type : 'bar', data : barChartData, options: opciones});
+
+    return chart;
 }
 
 function home_GenerarGraficaEmpresa()
@@ -164,7 +179,11 @@ function home_GenerarGraficaEmpresa()
 	  				
 
     		var barChartData = {labels:labels, datasets : datasets};
-    		home_GenerarGraficaBarras('canOportunidades', barChartData);
+            if (graphOportunidades != null)
+            {
+                graphOportunidades.destroy();
+            }
+    		graphOportunidades = home_GenerarGraficaBarras('canOportunidades', barChartData);
     	}
 
     	if (data.Propuestas != 0)
@@ -194,7 +213,11 @@ function home_GenerarGraficaEmpresa()
 	  				
 
     		var barChartData = {labels:labels, datasets : datasets};
-    		home_GenerarGraficaBarras('canPropuestas', barChartData);
+            if (graphPropuestas != null)
+            {
+                graphPropuestas.destroy();
+            }
+    		graphPropuestas = home_GenerarGraficaBarras('canPropuestas', barChartData);
     	}   	
 
     }, "json");
@@ -344,7 +367,11 @@ function home_GenerarGraficaArea()
 
     		var barChartData = {labels:labels, datasets : datasets};
     		
-			home_GenerarGraficaBarras('canOportunidades', barChartData, opciones);
+			if (graphOportunidades != null)
+            {
+                graphOportunidades.destroy();
+            }
+            graphOportunidades = home_GenerarGraficaBarras('canOportunidades', barChartData, opciones);
     	}
 
     	if (data.Propuestas != 0)
@@ -425,7 +452,11 @@ function home_GenerarGraficaArea()
 
     		var barChartData = {labels:labels, datasets : datasets};
     		
-			home_GenerarGraficaBarras('canPropuestas', barChartData, opciones);
+			if (graphPropuestas != null)
+            {
+                graphPropuestas.destroy();
+            }
+            graphPropuestas = home_GenerarGraficaBarras('canPropuestas', barChartData, opciones);
     	}
     }, "json");
 }

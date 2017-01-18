@@ -1,5 +1,3 @@
-pro_crear();
-
 function pro_crear()
 {
 	$("#txtPro_Crear_Prefijo").val(obtenerPrefijo());
@@ -166,4 +164,35 @@ function pro_crear()
 			});
 		});
 	});
+
+	var idPropuesta = localStorage.getItem('wsp_simv3_idPropuesta'); 
+	if (idPropuesta != null)
+	{
+		var criterios = [];
+
+        criterios[0] = 
+        {
+            parametro : 'id',
+            condicion : '=',
+            valor : idPropuesta
+        };
+
+        criterios = JSON.stringify(criterios);
+
+		$.post('../server/php/scripts/cargarPropuestas.php', {usuario: Usuario.id, Parametro: '', Criterios : criterios}, function(data, textStatus, xhr) 
+		{
+			delete localStorage.wsp_simv3_idPropuesta;    
+			$.each(data, function(index, val) 
+			{
+			 	$("#txtPro_Crear_Proceso").val(val.NumeroDeProceso);
+				 $.each(val, function(key, valor) 
+				 {
+				 	if ($("#txtPro_Crear_" + key).length > 0)
+				 	{
+				 		$("#txtPro_Crear_" + key).val(valor);
+				 	}
+				 });
+			});
+		}, 'json');
+	}
 }

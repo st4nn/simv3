@@ -30,7 +30,7 @@
          FROM 
             confAreas 
             LEFT JOIN oportunidades ON oportunidades.idArea = confAreas.id
-            LEFT JOIN op_fechas ON op_fechas.id = oportunidades.id AND op_fechas.Cierre >= '$fecha'
+            INNER JOIN op_fechas ON op_fechas.id = oportunidades.id AND op_fechas.Cierre >= '$fecha'
          GROUP BY 
             confAreas.id
          UNION ALL
@@ -42,9 +42,17 @@
          FROM 
             confAreas 
             LEFT JOIN propuestas ON propuestas.idArea = confAreas.id
-            LEFT JOIN pro_fechas ON pro_fechas.idPropuesta = propuestas.id AND pro_fechas.Cierre >= '$fecha'
+            INNER JOIN pro_fechas ON pro_fechas.idPropuesta = propuestas.id AND pro_fechas.Cierre >= '$fecha'
          GROUP BY 
             confAreas.id
+         UNION ALL
+         SELECT 
+            confAreas.id,
+            confAreas.Nombre,
+             0 AS oportunidades,
+             0 AS propuestas
+         FROM 
+            confAreas 
          ) AS Datos 
          GROUP BY
             id;";

@@ -7,7 +7,7 @@
 	<meta name="description" content="bootstrap admin template">
 	<meta name="author" content="">
 
-  	<title>Oportunidades | S.I.M.</title>
+  	<title>Clientes | OLIMPO</title>
 
 	<link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
   	<link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -54,11 +54,7 @@
 		<link rel="stylesheet" href="../assets/vendor/alertify-js/alertify.css">
 		<link rel="stylesheet" href="../assets/examples/css/advanced/alertify.css"> 
 	</fixedHead>
-	<customCss>
-		<link rel='stylesheet' href='../assets/vendor/datatables-bootstrap/dataTables.bootstrap.css'>
-		<link rel='stylesheet' href='../assets/vendor/datatables-fixedheader/dataTables.fixedHeader.css'>
-		<link rel='stylesheet' href='../assets/vendor/datatables-responsive/dataTables.responsive.css'>
-	</customCss>
+	<customCss></customCss>
 </head>
 <body>
 	<header></header>
@@ -71,27 +67,27 @@
 			          	<div class="panel">
 							<div class="panel-title">
 						      	<div class="pull-right">
-									<a class="btn btn-info" href="#" id="btnOpHome_NuevoCliente">
-										<i class="icon wb-user-add"></i> Nueva Oportunidad</a>
+									<a class="btn btn-info" href="#" id="btnClHome_NuevoCliente">
+										<i class="icon wb-user-add"></i> Nuevo Cliente</a>
 						        </div>
 							</div>
 							<div class="panel-body">
-								<form id="frmOpHome_Buscar">
+								<form id="frmClHome_Buscar">
 									<div class="form-group">
 					                  <div class="input-search">
 					                    <button type="submit" class="input-search-btn"><i class="icon wb-search" aria-hidden="true"></i></button>
-					                    <input type="text" class="form-control" id="txtOpHome_Parametro" placeholder="Buscar...">
+					                    <input type="text" class="form-control" id="txtClHome_Parametro" placeholder="Buscar...">
 					                  </div>
 					                </div>
 					                <button class="btn btn-success"><i class="icon wb-search"></i> Buscar</button>
-					                <button class="btn btn-warning" id="btnOpHome_BusquedaAvanzada"><i class="icon fa-cogs"></i> Busqueda Avanzada</button>
+					                <button class="btn btn-warning" id="btnClHome_BusquedaAvanzada"><i class="icon fa-cogs"></i> Busqueda Avanzada</button>
 								</form>
-								<div class="panel hide" id="cntOpHome_BusquedaAvanzada">
+								<div class="panel hide" id="cntClHome_BusquedaAvanzada">
 									<div class="panel-title">Busqueda Avanzada</div>
 									<div class="panel-body">
-										<button class="btn btn-info" id="btnOpHome_AgregarParametro"><i class="icon fa-plus-circle"></i> Agregar Parametro</button>
+										<button class="btn btn-info" id="btnClHome_AgregarParametro"><i class="icon fa-plus-circle"></i> Agregar Parametro</button>
 										<form>
-											<table class="table" id="tblOpHome_BusquedaAvanzada">
+											<table class="table" id="tblClHome_BusquedaAvanzada">
 												<thead>
 													<th>Parámetro</th>
 													<th>Condición</th>
@@ -100,7 +96,7 @@
 												<tbody class="table-hover">
 													<tr>
 														<td class="col-md-3">
-															<select class="form-control cboOpHome_Parametro">
+															<select class="form-control cboClHome_Parametro">
 																<option value="Nombre">Nombre</option>
 																<option value="NIT">NIT</option>
 																<option value="Naturaleza">Naturaleza</option>
@@ -114,7 +110,7 @@
 															</select>
 														</td>
 														<td class="col-md-3">
-															<select class="form-control cboOpHome_Condicion">
+															<select class="form-control cboClHome_Condicion">
 																<option value="=">Igual a</option>
 																<option value=">">Mayor que</option>
 																<option value=">=">Mayor o Igual que</option>
@@ -132,9 +128,9 @@
 															</select>
 														</td>
 														<td class="col-md-4">
-															<input type="text" class="form-control cboOpHome_Valor">
+															<input type="text" class="form-control cboClHome_Valor">
 														</td>
-														<td><button class="btn btn-danger btnOpHome_BorrarParametro"><i class="icon wb-trash"></i> Quitar</button></td>
+														<td><button class="btn btn-danger btnClHome_BorrarParametro"><i class="icon wb-trash"></i> Quitar</button></td>
 													</tr>
 		    									</tbody>
 											</table>
@@ -142,30 +138,26 @@
 										</form>
 									</div>
 								</div>
-								<div id="cntOpHome_Resultados" >
-									<table class="table table-hover dataTable table-striped width-full" id="tblOpHome_Resultados">
+								<div id="cntClHome_Resultados" >
+									<table class="table table-hover dataTable table-striped width-full" id="tblClHome_Resultados">
 										<thead>
 											<tr>
-												<th>Numero de Proceso</th>
-												<th>Cliente</th>
-												<th>Objeto</th>
-												<th>Presupuesto</th>
-												<th>Plazo</th>
+												<th>NIT</th>
+												<th>Nombre</th>
+												<th>Telefono</th>
+												<th>Pais</th>
 												<th>Ciudad</th>
-												<th>Area</th>
-												<th>Link</th>
+												<th>sitio Web</th>
 											</tr>
 										</thead>
 										<tfoot>
 											<tr>
-												<th>Numero de Proceso</th>
-												<th>Cliente</th>
-												<th>Objeto</th>
-												<th>Presupuesto</th>
-												<th>Plazo</th>
+												<th>NIT</th>
+												<th>Nombre</th>
+												<th>Telefono</th>
+												<th>Pais</th>
 												<th>Ciudad</th>
-												<th>Area</th>
-												<th>Link</th>
+												<th>sitio Web</th>
 											</tr>
 										</tfoot>
 										<tbody>
@@ -221,13 +213,6 @@
 
 		<script src="../assets/vendor/alertify-js/alertify.js"></script>
 		<script src="../assets/js/components/alertify-js.js"></script> 
-
-		<customscripts>
-			<script src="../assets/vendor/datatables/jquery.dataTables.js"></script>
-			<script src='../assets/vendor/datatables-bootstrap/dataTables.bootstrap.js'></script>
-			<script src='../assets/vendor/datatables-tabletools/dataTables.tableTools.js'></script>
-			<script src="../assets/js/components/datatables.js"></script>
-		  </customscripts>
 
 	</footer>
 </body>

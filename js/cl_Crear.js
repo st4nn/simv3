@@ -1,10 +1,7 @@
-cl_Crear();
 var tmpIdCiudad = "";
 function cl_Crear()
 {
 	$('[data-plugin="select2"]').select2();
-
-	cargarCl_Crear();
 
 	$("#btnCl_Crear_Nuevo").on("click", function(ev)
 		{
@@ -13,20 +10,25 @@ function cl_Crear()
 			$("#cntCl_Crear_Funciones").hide();
 			$("#txtCl_Crear_Nombre").focus();
 			$("#lblCl_Crear_Tipo").text("Crear Cliente");
-			delete localStorage.wsp_simv3_idCliente;
 			$('[data-plugin="select2"]').select2();
 		});
 
 	$("#btnCl_Crear_InfoEstructural").on("click", function(ev)
 		{
 			ev.preventDefault();
-			window.location.replace("informacionEstructural.html");
+			cargarModulo("clientes/informacionEstructural.html", "Información Estructural de " + $("#txtCl_Crear_Nombre").val(), function()
+				{
+					informacionEstructural_cargarEstructuras($("#txtCl_Crear_idCliente").val());
+				});
 		});
 
 	$("#btn_Cl_Crear_Acciones").on("click", function(ev)
 		{
 			ev.preventDefault();
-			window.location.replace("timeline.html");
+			cargarModulo("clientes/timeline.html", "Actividades de " + $("#txtCl_Crear_Nombre").val(), function()
+			{
+
+			});
 		});
 
 	$("#txtCl_Crear_idPais").on("change", txtCl_Crear_idPais_Change); 
@@ -62,18 +64,13 @@ function cl_Crear()
 					{
 						$("#txtCl_Crear_idCliente").val(parseInt(data));
 						cl_Crear_VerFunciones();
-						localStorage.setItem("wsp_simv3_idCliente", $("#txtCl_Crear_idCliente").val());    
 						Mensaje("Hey", "Los datos del Cliente han sido almacenados");
 					}
 				});
 			});
 		}
 	});
-}
 
-function cargarCl_Crear()
-{
-	
 	$.post('../server/php/scripts/cargarPaises.php', {usuario: Usuario.id}, function(data, textStatus, xhr) 
 	{
 		$("#txtCl_Crear_idPais").val();
@@ -110,31 +107,19 @@ function cargarCl_Crear()
 						tds += '<option value="' + val.id + '">' + val.Nombre + '</option>';
 					});
 					$("#txtCl_Crear_Sector").append(tds);
-
-					var idCliente = localStorage.getItem('wsp_simv3_idCliente');
-					if (idCliente == null)
-					{
-						$("#lblCl_Crear_Tipo").text("Crear Cliente");
-						$("#txtCl_Crear_idCliente").val("");
-					} else
-					{
-						cl_Crear_VerFunciones();
-						$("#txtCl_Crear_idCliente").val(idCliente);
-						cl_Crear_CargarDatosCliente();
-					}
 				}
 			}, "json");
 		}
 	}, "json");
-
 }
+
 function cl_Crear_VerFunciones()
 {
 	$("#lblCl_Crear_Tipo").text("Editar Cliente");
 	$("#cntCl_Crear_Funciones").show();
 }
 
-function cl_Crear_CargarDatosCliente()
+function cl_Crear_CargarDatosCliente(idCliente)
 {
 	$.post('../server/php/scripts/cargarDatosCliente.php', {usuario: Usuario.id, idCliente : $("#txtCl_Crear_idCliente").val()}, function(data, textStatus, xhr) 
 	{
@@ -166,10 +151,7 @@ function cl_Crear_CargarDatosCliente()
 				 }
 			});
 			$('[data-plugin="select2"]').select2();
-		} else
-		{
-			delete localStorage.wsp_simv3_idCliente;			
-		}
+		} 
 	}, "json");
 }
 
@@ -207,4 +189,20 @@ function txtCl_Crear_idPais_Change()
 			}
 		}
 	}, "json");
+}
+
+function cl_Crear_cargarCliente(idCliente)
+{
+	if (idCliente == 0 || idCliente == "" || idCliente == null || idCliente == undefined)
+	{
+		$("#lblCl_Crear_Tipo").text("Crear Cliente");
+		$("#cntCl_Crear_Funciones").hide();
+		$("#txtCl_Crear_idCliente").val("");
+		$("#frmCl_Crear")[0].reset();
+	} else
+	{
+		cl_Crear_VerFunciones();
+		$("#txtCl_Crear_idCliente").val(idCliente);
+		cl_Crear_CargarDatosCliente(idCliente);
+	}
 }

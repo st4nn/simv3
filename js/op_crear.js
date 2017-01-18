@@ -1,5 +1,3 @@
-op_crear();
-
 function op_crear()
 {
 	$(".datepicker").datepicker({
@@ -17,11 +15,14 @@ function op_crear()
 	$("#txtOp_Crear_idArea").iniciarSelectRemoto("cargarAreas", 350, 1);
 	$("#txtOp_Crear_idCiudad").iniciarSelectRemoto("cargarCiudades");
 
-	/*$('#txtOp_Crear_Responsable').iniciarSelectRemoto("cargarUsuarios");
+	var elem = document.querySelector('#frmOp_Crear .switchery');
+	var init = new Switchery(elem);
 
-	$('#txtOp_Crear_Responsable').on('select2:select', function (evt) {
-	  
-	});*/
+	var idOportunidad = localStorage.getItem('wsp_simv3_idOportunidad'); 
+	if (idOportunidad != null)
+	{
+		cargarOportunidad(idOportunidad);
+	}
 
 
 	$(document).delegate('.txtOpotunidad_Requisitos', 'change', function(event) 
@@ -272,3 +273,127 @@ function op_crear()
 	});
 }
 
+function cargarOportunidad(idOportunidad)
+{
+	var criterios = [];
+
+    criterios[0] = 
+    {
+        parametro : 'id',
+        condicion : '=',
+        valor : idOportunidad
+    };
+
+    criterios = JSON.stringify(criterios);
+
+	$.post('../server/php/scripts/cargarOportunidades.php', {usuario: Usuario.id, Parametro: '', Criterios : criterios}, function(data, textStatus, xhr) 
+	{
+		$("#lblOp_Crear_Tipo").text("Editar");
+		delete localStorage.wsp_simv3_idOportunidad;    
+		
+		$.post('../server/php/scripts/oportunidades_CargarPersonal.php', {Usuario : Usuario.id, idOportunidad: idOportunidad}, function(data, textStatus, xhr) 
+		{
+			if (data != 0)
+			{
+				var objContenedor;
+				$.each(data, function(index, val) 
+				{
+					$("#btnOportunidades_AgregarPerfil").trigger('click');
+					objContenedor = $(".cntOportunidades_Perfiles_Perfil");
+					objContenedor = objContenedor[objContenedor.length - 1];
+					var txtPerfiles = $(objContenedor).find(".form-control");
+					
+					$(txtPerfiles[0]).val(val.Cantidad);
+					$(txtPerfiles[1]).val(val.Cargo);
+					$(txtPerfiles[2]).val(val.habilitanteEstudios);
+					$(txtPerfiles[3]).val(val.habilitanteExperiencia);
+					$(txtPerfiles[4]).val(val.adicionalEstudios);
+					$(txtPerfiles[5]).val(val.adicionalExperiencia);
+
+				});
+			}
+		}, 'json');
+
+		$.post('../server/php/scripts/oportunidades_CargarResponsables.php', {Usuario : Usuario.id, idOportunidad: idOportunidad}, function(data, textStatus, xhr) 
+		{
+			if (data != 0)
+			{
+				var tds = "";
+				$.each(data, function(index, val) 
+				{
+		          tds += '<li class="list-group-item" idUsuario="' + val.idUsuario + '">';
+		            tds += '<div class="media">';
+		              tds += '<div class="media-left text-center">';
+		                  tds += '<i class="icon wb-user margin-left-10 font-size-20"></i>';
+		              tds += '</div>';
+		              tds += '<div class="media-body">';
+		                tds += '<h4 class="media-heading">' + val.Nombre + '</h4>';
+		                tds += '<small>' + val.Correo + '</small>';
+		              tds += '</div>';
+		              tds += '<div class="media-right">';
+		                tds += '<a class="btnResponsables_Quitar" href="javascript:void(0)">';
+		                  tds += '<i class="icon wb-close">';
+		                tds += '</a>';
+		              tds += '</div>';
+		            tds += '</div>';
+		          tds += '</li>';
+				});
+				$("#cntOp_Crear_Responsables_Correos").append(tds);
+			}
+
+		}, 'json');
+		
+		$.each(data, function(index, val) 
+		{
+			$("#txtOp_Crear_NumeroDeProceso").val(val.NumeroDeProceso);
+			$("#txtOp_Crear_Cliente").iniciarSelectRemotoConDefault({script : "cargarClientes", id : val.Cliente, name : val.ClienteNombre});
+			$("#txtOp_Crear_Objeto").val(val.Objeto);
+			$("#txtOp_Crear_Presupuesto").val(val.Presupuesto);
+			$("#txtOp_Crear_Plazo").val(val.Plazo);
+			$("#txtOp_Crear_idArea").iniciarSelectRemotoConDefault({script : "cargarAreas", delay : 350, minimo : 1, id : val.idArea, name : val.Area});
+			$("#txtOp_Crear_idCiudad").iniciarSelectRemotoConDefault({script : "cargarCiudades", id : val.idCiudad, name : val.Ciudad});
+			$("#txtOp_Crear_ExpresionInteres").val(val.ExpresionInteres);
+			$("#txtOp_Crear_Propuesta").val(val.Propuesta);
+			 if (val.requiereCompraPliego == 'Si')
+			 {
+				$("#chkOp_Crear_CompraPliego").trigger('click');
+				$("#txtOp_Crear_Fecha_PlazoCompraPliego").val(val.plazoCompra);
+				$("#txtOp_Crear_Fecha_ValorPliego").val(val.valorPliego);
+			 }
+
+			 $("#txtOp_Crear_Fecha_Publicacion").val(val.Publicacion);
+			 $("#txtOp_Crear_Fecha_ObservacionesPrepliego").val(val.obsPrepliego);
+			 $("#txtOp_Crear_Fecha_Apertura").val(val.Apertura);
+			 $("#txtOp_Crear_Fecha_Audiencia").val(val.Visita);
+			 $("#txtOp_Crear_Fecha_ObservacionesPliego").val(val.obsPliego);
+			 $("#txtOp_Crear_Fecha_Cierre").val(val.Cierre);
+
+			 $("#txtOp_Crear_ExperienciaHabilitante").val(val.experienciaHabilitante);
+			 $("#txtOp_Crear_ExperienciaEspecifica").val(val.experienciaEspecifica);
+
+			 $("#txtOp_Crear_Evaluacion_Tecnica").val(val.Tecnica);
+			 $("#txtOp_Crear_Evaluacion_Financiera").val(val.Financiera);
+			 $("#txtOp_Crear_Evaluacion_Economica").val(val.Economica);
+			 $("#txtOp_Crear_Evaluacion_IndustriaNacional").val(val.industriaNacional);
+			 $("#txtOp_Crear_Evaluacion_CriteriosDesempate").val(val.criteriosDesempate);
+			 $("#txtOp_Crear_ResultadoPreEvaluacion").val(val.resultadoPreEvaluacion);
+
+			 $("#txtOp_Crear_Req_CapitalDeTrabajo").val(val.capitalDeTrabajo);
+			 $("#txtOp_Crear_Req_Liquidez").val(val.Liquidez);
+			 $("#txtOp_Crear_Req_Endeudamiento").val(val.Endeudamiento);
+			 $("#txtOp_Crear_Req_CoberturaIntereses").val(val.coberturaIntereses);
+			 $("#txtOp_Crear_Req_RentabilidadPatrimonio").val(val.rentabilidadPatrimonio);
+			 $("#txtOp_Crear_Req_RentabilidadActivo").val(val.rentabilidadActivo);
+			 //$("#txtOp_Crear_Req_").val(val.);
+
+			 $(".txtOpotunidad_Requisitos").trigger('change');
+
+			 $("#txtOp_Crear_Link").val(val.Link);
+			 $("#txtOp_Crear_ResultadoFinal").val(val.idEstado);
+
+
+		});
+
+		//$("#frmOp_Crear [plugin=select2]").select2('refresh');
+	}, 'json');
+}

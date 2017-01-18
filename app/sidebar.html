@@ -2,10 +2,18 @@
 	<div class="site-menubar-body">
 		<div>
 			<div>
-				<ul class="site-menu"> <!-- Contenedor menu -->
+				<ul class="site-menu" id="cntMenu"> <!-- Contenedor menu -->
+				<li class="site-menu-item text-center" id="toggleMenubar">
+		            <a data-toggle="menubar" href="#" role="button">
+		              <i class="icon hamburger hamburger-arrow-left">
+		                  <span class="sr-only">Toggle menubar</span>
+		                  <span class="hamburger-bar"></span>
+		                </i>
+		            </a>
+		        </li>
 				<li class="site-menu-category">Menú Principal</li> <!-- Título Primer Nivel Menú-->
 				<li class="site-menu-item"> <!-- Items Menú primer nivel -->
-					<a class="animsition-link" href="../admin/home.html" data-slug="#">
+					<a class="lnkMenu_Item animsition-link" href="#" vinculo="inicio.html" data-slug="#">
 						<i class="site-menu-icon wb-home" aria-hidden="true"></i>
 						<span class="site-menu-title">Inicio</span>
 					</a>
@@ -19,7 +27,7 @@
 					</a>
 					<ul class="site-menu-sub">
 						<li class="site-menu-item">
-							<a class="animsition-link" href="../clientes/cl_home.html" data-slug="#">
+							<a class="lnkMenu_Item animsition-link" href="#" vinculo="clientes/cl_home.html" data-slug="#">
 								<i class="site-menu-icon" aria-hidden="true"></i>
 								<span class="site-menu-title">Clientes</span>
 							</a>
@@ -43,19 +51,19 @@
 						</a>
 						<ul class="site-menu-sub">
 							<li class="site-menu-item">
-								<a class="animsition-link" href="../oportunidades/op_crear.html" data-slug="#">
+								<a class="lnkMenu_Item animsition-link" href="#" vinculo="oportunidades/op_crear.html" data-slug="#">
 									<i class="site-menu-icon " aria-hidden="true"></i>
 									<span class="site-menu-title">Nueva</span> <!-- #Sub1 -->
 								</a>
 							</li>
 							<li class="site-menu-item">
-								<a class="animsition-link" href="../oportunidades/op_home.html" data-slug="#">
+								<a class="lnkMenu_Item animsition-link" href="#" vinculo="oportunidades/op_home.html" data-slug="#">
 									<i class="site-menu-icon " aria-hidden="true"></i>
-									<span class="site-menu-title">Reportes</span> <!-- #Sub1 -->
+									<span class="site-menu-title">Búsqueda</span> <!-- #Sub1 -->
 								</a>
 							</li>
 							<li class="site-menu-item">
-								<a class="animsition-link" href="../oportunidades/op_resumen.html" data-slug="#">
+								<a class="lnkMenu_Item animsition-link" href="#" vinculo="oportunidades/op_resumen.html" data-slug="#">
 									<i class="site-menu-icon " aria-hidden="true"></i>
 									<span class="site-menu-title">Resumen</span>  <!-- #Sub2 -->
 								</a>
@@ -71,13 +79,13 @@
 						</a>
 						<ul class="site-menu-sub">
 							<li class="site-menu-item">
-								<a class="animsition-link" href="../propuestas/pro_crear.html" data-slug="#">
+								<a class="lnkMenu_Item animsition-link" href="#" vinculo="propuestas/pro_crear.html" data-slug="#">
 									<i class="site-menu-icon " aria-hidden="true"></i>
 									<span class="site-menu-title">Nueva</span> <!-- #Sub1 -->
 								</a>
 							</li>
 							<li class="site-menu-item">
-								<a class="animsition-link" href="#" data-slug="#">
+								<a class="lnkMenu_Item animsition-link" href="#" vinculo="propuestas/pro_home.html" data-slug="#">
 									<i class="site-menu-icon " aria-hidden="true"></i>
 									<span class="site-menu-title">Reportes</span> <!-- #Sub2 -->
 								</a>
@@ -99,7 +107,7 @@
 							</a>
 							<ul class="site-menu-sub">
 								<li class="site-menu-item">
-									<a class="animsition-link" href="../contratos/co_crear.html" data-slug="#">
+									<a class="lnkMenu_Item animsition-link" href="#" vinculo="contratos/co_crear.html" data-slug="#">
 										<i class="site-menu-icon " aria-hidden="true"></i>
 										<span class="site-menu-title">Nuevo</span> <!-- #Sub1 -->
 									</a>
@@ -120,7 +128,7 @@
 						</li> <!-- Fin Bloque -->
 						<!-- Bloque hojas de Vida -->
 						<li class="site-menu-item has-sub">
-							<a href="javascript:void(0)" data-slug="#">
+							<a class="lnkMenu_Item animsition-link" href="#" vinculo="hojaDeVida/hv_home.html" data-slug="#">
 								<i class="site-menu-icon wb-copy" aria-hidden="true"></i>
 								<span class="site-menu-title">Hojas de Vida</span> <!-- # -->
 							</a>
@@ -146,7 +154,7 @@
 											</a>
 										</li>
 										<li class="site-menu-item">
-											<a class="animsition-link" href="../infoAdministrativa/archivos.html" data-slug="#">
+											<a class="lnkMenu_Item animsition-link" href="#" vinculo="infoAdministrativa/archivos.html" data-slug="#">
 												<i class="site-menu-icon " aria-hidden="true"></i>
 												<span class="site-menu-title">Información Administrativa</span>
 											</a>

@@ -1,5 +1,3 @@
-co_crear();
-
 function co_crear()
 {
 	$(".datepicker").datepicker({
@@ -27,6 +25,9 @@ function co_crear()
 		evento.preventDefault();
 		modalCrearArea();
 	});
+
+	var elem = document.querySelector('#frmOp_Crear .switchery');
+	var init = new Switchery(elem);
 
 	$("#btnCo_Crear_AgregarCiudad").on("click", function(evento)
 	{

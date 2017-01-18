@@ -9,6 +9,7 @@ var modulos =
 	"oportunidades/op_home.html" : {titulo : "Oportunidades de Negocios", nick : "op_Home"},
 	"oportunidades/op_resumen.html" : {titulo : "Oportunidades de Negocios", nick : "op_resumen"},
 	"propuestas/pro_crear.html" : {titulo : "Propuesta", nick : "pro_crear"},
+	"propuestas/pro_home.html" : {titulo : "Propuestas", nick : "pro_Home"},
 	"contratos/co_crear.html" : {titulo : "Contratos", nick : "co_crear"},
 	"infoAdministrativa/archivos.html" : {titulo : "Información Administrativa", nick : "infoAdministrativa"}
 };
@@ -23,6 +24,7 @@ var arrPlugins =
 	op_Home : ["datatable"],
 	op_resumen : ["charjs"],
 	pro_crear : ["select2", "datepicker"],
+	pro_Home : ["datatable"],
 	co_crear : ["select2", "datepicker"],
 	infoAdministrativa : ["datepicker"]
 };

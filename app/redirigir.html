@@ -3,13 +3,13 @@
     <script></script>
     <script>
       var pagina = $_GET('enlace');
-      console.log(pagina);
+
       if (pagina != undefined)
       {
         localStorage.setItem("wsp_simv3_enlace", JSON.stringify({enlace : "", parametro : "", hash : pagina}));  
       } else
       {
-        window.location.replace("../admin/home.html");
+        window.location.replace("home.html");
       }
 
       function $_GET(param)

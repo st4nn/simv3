@@ -7,7 +7,7 @@ function ready_login()
    * Fragmento para controlar si la sesión está activa
   **/
 
-  var Usuario = JSON.parse(localStorage.getItem('wsp_simv3'));  
+  var Usuario = JSON.parse(localStorage.getItem('wsp_olimpo'));  
 
   var objDate = 16;
   if (Usuario == null)
@@ -15,7 +15,7 @@ function ready_login()
     sessionFlag = false;
   } else
   {
-    var objUser = JSON.parse(localStorage.getItem('wsp_simv3'));
+    var objUser = JSON.parse(localStorage.getItem('wsp_olimpo'));
     var cDate = new Date();
     var sessionFlag = true;
   
@@ -28,11 +28,11 @@ function ready_login()
   if (Math.round((objDate/1000)/60) < 60 && sessionFlag)
   {
     objUser.cDate = cDate;
-    localStorage.setItem("wsp_simv3", JSON.stringify(objUser));    
-    window.location.replace("admin/redirigir.html");
+    localStorage.setItem("wsp_olimpo", JSON.stringify(objUser));    
+    window.location.replace("app/redirigir.html");
   } else
   {
-    delete localStorage.wsp_simv3;    
+    delete localStorage.wsp_olimpo;    
   }
 }
 /**
@@ -52,8 +52,8 @@ function frmLogin_submit(event)
     {
       if (data != 0)
       {
-        localStorage.setItem("wsp_simv3", JSON.stringify(data));  
-        window.location.replace("admin/redirigir.html");
+        localStorage.setItem("wsp_olimpo", JSON.stringify(data));  
+        window.location.replace("app/redirigir.html");
       } else
       {
         $(".alert").html("<strong>Error!</strong> Acceso denegado.");

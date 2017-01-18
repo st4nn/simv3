@@ -1,10 +1,6 @@
-informacionEstructual();
-
 var graph, paper;
 function informacionEstructual()
 {
-	informacionEstructural_cargarEstructuras();
-
 	$("#btnInformacionEstructural_GraficoGuardar").click(function(event) 
 	{	
 		$.post('../server/php/scripts/crearOrganigramaMiembros.php', {usuario: Usuario.id, idOrganigrama : $("#txtInformacionEstructural_idOrganigrama").val(), vinculos : JSON.stringify(graph.toJSON())}, 
@@ -76,7 +72,7 @@ function informacionEstructual()
 		event.preventDefault();
 		if ($("#txtInformacionEstructural_CrearNombre").val() != "")
 		{
-			$.post('../server/php/scripts/crearOrganigrama.php', {idLogin : Usuario.id, idCliente : localStorage.wsp_simv3_idCliente, Nombre : $("#txtInformacionEstructural_CrearNombre").val()}, function(data, textStatus, xhr) 
+			$.post('../server/php/scripts/crearOrganigrama.php', {idLogin : Usuario.id, idCliente : $("#txtCl_Crear_idCliente").val(), Nombre : $("#txtInformacionEstructural_CrearNombre").val()}, function(data, textStatus, xhr) 
 			{
 				if (isNaN(data))
 				{
@@ -201,37 +197,6 @@ function informacionEstructual()
 		informacionEstructural_crearLink({ x: 20, y: 20 }, { x: 160, y: 20 });
 	});
 
-	/*
-	var datos = [
-		{ "x" : 300, "y" : 15, "Nombre" : "Jorge Celis", "Cargo" : "CEO", "Correo" : "jorge.celis@wspgroup.com", "Telefono" : "7562989", "Ext" : "", "Cel" :  "", "Icono" : "male.png", "Color" : "#5CD29D", "textColor" : "#000", "idPadre" : 0},
-		{ "x" : 90, "y" : 200, "Nombre" : "Jhonathan Espinosa", "Cargo" : "VPMarketing", "Correo" : "jhonathan.epsinosa@wspgroup.com", "Telefono" : "7562989", "Ext" : "", "Cel" :  "3214551215", "Icono" : "male.png", "Color" : "#5CD29D", "textColor" : "#000", "idPadre" : 1},
-		{ "x" : 300, "y" : 200, "Nombre" : "Pablo Manrrique", "Cargo" : "VPSales", "Correo" : "pablo.manrrique@wspgroup.com", "Telefono" : "7562989", "Ext" : "", "Cel" :  "", "Icono" :"male.png", "Color" : "#5CD29D", "textColor" : "#000", "idPadre" : 1},
-		{ "x" : 500, "y" : 200, "Nombre" :  "Lisa Simpson", "Cargo" : "VPProduction", "Correo" : "", "Telefono" : "7562989", "Ext" : "", "Cel" :  "", "Icono" :"female.png", "Color" : "#5CD29D", "textColor" : "#000", "idPadre" : 1},
-		{ "x" : 400, "y" : 350, "Nombre" : "Maggie Simpson", "Cargo" : "Manager", "Correo" : "", "Telefono" : "7562989", "Ext" : "", "Cel" :  "", "Icono" :"female.png", "Color" : "#5CD29D", "textColor" : "#000", "idPadre" : 3},
-		{ "x" : 190, "y" : 350, "Nombre" : "Lenny Leonard", "Cargo" : "Manager", "Correo" : "", "Telefono" : "7562989", "Ext" : "", "Cel" :  "", "Icono" :"male.png", "Color" : "#5CD29D", "textColor" : "#000", "idPadre" : 2},
-		{ "x" : 190, "y" : 500, "Nombre" : "Carl Carlson", "Cargo" : "Manager", "Correo" : "", "Telefono" : "7562989", "Ext" : "", "Cel" :  "", "Icono" : "male.png", "Color" : "#5CD29D", "textColor" : "#000", "idPadre" : 2}
-	];
-
-	var objMember = [];
-	var idx = 1;
-	$.each(datos, function(index, val) 
-	{
-		
-		objMember[idx] = member(val.x, val.y, val.Nombre, val.Cargo, val.Correo, val.Telefono, val.Ext, val.Cel, val.Icono, val.Color, val.textColor);
-		idx++;
-	});
-
-	idx = 1 ;
-	$.each(datos, function(index, val) 
-	{
-		if (val.idPadre != 0)
-		{
-			informacionEstructural_crearLink(objMember[val.idPadre], objMember[idx]);
-		}
-		idx++;
-	});
-	*/
-	
 	$(document).delegate('g .rotatable', 'dblclick', function(event) 
 	{
 		$("#cntInformacionEstructural_NuevoElemento").modal("show");
@@ -276,31 +241,6 @@ function member(x, y, nombre, cargo, correo, telefono, extension, celular, image
 	    return false;
 	};
 
-function informacionEstructural_cargarEstructuras()
-{
-	$.post('../server/php/scripts/cargarEstructuras.php', {usuario : Usuario.id, idCliente : localStorage.wsp_simv3_idCliente}, function(data, textStatus, xhr) 
-	{
-		if (data != 0)
-		{
-			var tds = "";
-			$.each(data, function(index, val) 
-			{
-				tds += '<tr>';
-					tds += '<td>';
-						tds += '<button class="btn btn-danger btn-icon btn-round btnInformacionEstructural_EstructuraBorrar" idOrganigrama="' + val.idOrganigrama + '"><i class="icon wb-trash"></i></button>';
-					tds += '</td>';
-					tds += '<td>';
-						tds += '<a class="content lblInformacionOrganizacional_Estructura" href="#" idOrganigrama="' + val.idOrganigrama + '">';
-							tds += '<strong>' + val.Nombre + '</strong><br>';
-							tds += '<span class="font-size-10">' + val.Usuario + ' ' + val.fechaActualizacion + '</span>';
-						tds += '</a>';
-					tds += '</td>';
-				tds += '</tr>';
-			});
-			$("#tblInformacionEstructural_Estructuras tbody").append(tds);
-		} 
-	}, "json");
-}
 function informacionEstructural_crearLink(source, target, breakpoints)
 {
 	var tmpSource = { x: 20, y: 20 }, tmpTarget = { x: 150, y: 20 };
@@ -377,4 +317,31 @@ function informacionEstructural_crearGraph(callback)
 	}
 
 	callback();
+}
+
+function informacionEstructural_cargarEstructuras(idCliente)
+{
+	$("#tblInformacionEstructural_Estructuras tbody tr").remove();
+	$.post('../server/php/scripts/cargarEstructuras.php', {usuario : Usuario.id, idCliente : idCliente}, function(data, textStatus, xhr) 
+	{
+		if (data != 0)
+		{
+			var tds = "";
+			$.each(data, function(index, val) 
+			{
+				tds += '<tr>';
+					tds += '<td>';
+						tds += '<button class="btn btn-danger btn-icon btn-round btnInformacionEstructural_EstructuraBorrar" idOrganigrama="' + val.idOrganigrama + '"><i class="icon wb-trash"></i></button>';
+					tds += '</td>';
+					tds += '<td>';
+						tds += '<a class="content lblInformacionOrganizacional_Estructura" href="#" idOrganigrama="' + val.idOrganigrama + '">';
+							tds += '<strong>' + val.Nombre + '</strong><br>';
+							tds += '<span class="font-size-10">' + val.Usuario + ' ' + val.fechaActualizacion + '</span>';
+						tds += '</a>';
+					tds += '</td>';
+				tds += '</tr>';
+			});
+			$("#tblInformacionEstructural_Estructuras tbody").append(tds);
+		} 
+	}, "json");
 }
